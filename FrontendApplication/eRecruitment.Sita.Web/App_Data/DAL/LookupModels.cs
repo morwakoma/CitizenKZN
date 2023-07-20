@@ -94,7 +94,8 @@ namespace eRecruitment.BusinessDomain.DAL.Entities.AppModels
         public int ProfileID { get; set; }
         public int CriminalCase { get; set; }
         public string CriminalCaseDesc { get; set; }
-        public int YearsExperience { get; set; }
+        public int YearsofExperiencePublic { get; set; }
+        public int YearsExperiencePrivate { get; set; }
         public int DisciplinaryProceeding { get; set; }
         public int RetiredorDiscarged { get; set; }
         public int Business { get; set; }

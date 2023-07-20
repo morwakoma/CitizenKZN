@@ -142,7 +142,7 @@ namespace eRecruitment.Sita.Web.Controllers
       using (eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext _db = new eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext())
       {
         var d = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
-                _dal.insertProfile(-1, "", -1, "", -1, -1, "", -1, -1, -1, "", -1, "", 0, d.pkProfileID);
+                _dal.insertProfile(-1, "", -1, "", -1, -1, "", -1, -1, -1, "", -1, "", 0,0, d.pkProfileID);
 
 
 
@@ -208,7 +208,9 @@ namespace eRecruitment.Sita.Web.Controllers
 
                     e.RelinquishBusiness = Convert.ToInt32(f.RelinquishBusiness);
 
-                    e.YearsExperience = Convert.ToInt32(f.YearsExperience);
+                    e.YearsExperiencePrivate = Convert.ToInt32(f.YearsExperiencePrivate);
+                    e.YearsofExperiencePublic = Convert.ToInt32(f.YearsofExperiencePublic);
+
 
                     e.DisciplinaryProceeding = Convert.ToInt32(f.DisciplinaryProceeding);
 
@@ -304,7 +306,8 @@ namespace eRecruitment.Sita.Web.Controllers
             int DriversLicenseID = Convert.ToInt32(item.DriversLicenseID);
             int MatricID = Convert.ToInt32(item.MatricID);
             int ConditionsThatPrevents = Convert.ToInt32(item.ConditionsThatPreventsReEmploymentID);
-            int YearsExperience = Convert.ToInt32(item.YearsExperience);
+            int YearsExperiencePrivate = Convert.ToInt32(item.YearsExperiencePrivate);
+            int YearsofExperiencePublic = Convert.ToInt32(item.YearsofExperiencePublic);
             int Business = Convert.ToInt32(item.Business);
             string BusinessDesc = Convert.ToString(item.BusinessDesc);
             int RelinquishBusiness = Convert.ToInt32(item.RelinquishBusiness);
@@ -330,8 +333,8 @@ namespace eRecruitment.Sita.Web.Controllers
                 , (int)PreviouslyEmployedPS, ReEmployment, PreviouslyEmployedDepartment, (int)DriversLicenseID, (int)MatricID, (int)ConditionsThatPrevents);
 
             int profileID = _dal.GetProfileID(User.Identity.GetUserId());
-            _dal.UpdateZ83Questions(CriminalCase, CriminalCaseDesc, Business, BusinessDesc, RelinquishBusiness, Misconduct, MisconductDesc, RetiredorDiscarged, DisciplinaryProceeding, CriminalOffence, CriminalOffenceDesc,
-                                  DisciplinaryCase, DisciplinaryCaseDesc, YearsExperience, profileID);
+            _dal.UpdateZ83Questions(CriminalCase, CriminalCaseDesc, Business, BusinessDesc, RelinquishBusiness, YearsExperiencePrivate, YearsofExperiencePublic, Misconduct, MisconductDesc, RetiredorDiscarged, DisciplinaryProceeding, CriminalOffence, CriminalOffenceDesc,
+                                  DisciplinaryCase, DisciplinaryCaseDesc, profileID);
             if (postedDocumnet != null && postedDocumnet.ContentLength > 00)
             {
                 var fileExt = System.IO.Path.GetExtension(postedDocumnet.FileName).Substring(1);

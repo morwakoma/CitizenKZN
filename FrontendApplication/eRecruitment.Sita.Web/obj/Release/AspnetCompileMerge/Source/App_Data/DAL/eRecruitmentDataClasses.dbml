@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="eRecruitmentDB" Class="eRecruitmentDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MERA00412\SQLEXPRESS2019;Initial Catalog=eRecruitmentDB;Integrated Security=True" SettingsObjectName="eRecruitment.Sita.Web.Properties.Settings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="eRecruitmentDBKZN" Class="eRecruitmentDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.126.237.12;Initial Catalog=eRecruitmentDBKZN;User ID=erecruituser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
     <Type Name="AspNetRole">
       <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -54,17 +54,6 @@
       <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Attachments" Member="Attachments">
-    <Type Name="Attachment">
-      <Column Name="AttachmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="fileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="fileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="contentType" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="CreateOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Category" Member="Categories">
@@ -1032,6 +1021,51 @@
       <Column Name="ModifiedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Z83Questions" Member="Z83Questions">
+    <Type Name="Z83Question">
+      <Column Name="Z83QuestionsID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CriminalCase" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CriminalCaseDesc" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Misconduct" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MisconductDesc" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DisciplinaryProceeding" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RetiredorDiscarged" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Business" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BusinessDesc" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RelinquishBusiness" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearsExperiencePrivate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CriminalOffence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CriminalOffenceDesc" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DisciplinaryCase" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisciplinaryCaseDesc" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="YearsofExperiencePublic" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearsExperience" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Attachments" Member="Attachments">
+    <Type Name="Attachment">
+      <Column Name="AttachmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fileName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="contentType" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CreateOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FileExtension" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DocumentType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblVacancySalary" Member="tblVacancySalaries">
+    <Type Name="tblVacancySalary">
+      <Column Name="SalaryID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JobTitleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobLevel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MinValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MaxValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="VacancyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.AddProfile" Method="AddProfile">
     <Parameter Name="Userid" Parameter="userid" Type="System.String" DbType="NVarChar(128)" />
     <Parameter Name="IDNumber" Parameter="iDNumber" Type="System.String" DbType="VarChar(50)" />
@@ -1639,22 +1673,6 @@
       <Column Name="TotalJobs" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.AddAttachments" Method="AddAttachments">
-    <Parameter Name="profileID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="fileName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="fileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
-    <Parameter Name="contentType" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="FileExtension" Parameter="fileExtension" Type="System.String" DbType="VarChar(20)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.proc_eRecruitmentUpdateAttachment" Method="proc_eRecruitmentUpdateAttachment">
-    <Parameter Name="profileID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="fileName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="fileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
-    <Parameter Name="contentType" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="FileExtension" Parameter="fileExtension" Type="System.String" DbType="VarChar(20)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.proc_eRecruitmentUpdateWorkHistory" Method="proc_eRecruitmentUpdateWorkHistory">
     <Parameter Name="companyName" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="jobTitle" Type="System.String" DbType="NVarChar(50)" />
@@ -1742,6 +1760,62 @@
   </Function>
   <Function Name="dbo.proc_eRecruitmentWorkExperienceVSProfile" Method="proc_eRecruitmentWorkExperienceVSProfile">
     <Parameter Name="ProfileID" Parameter="profileID" Type="System.String" DbType="VarChar(5)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Z83Questions_Insert" Method="sp_Z83Questions_Insert">
+    <Parameter Name="ProfileID" Parameter="profileID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalCase" Parameter="criminalCase" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalCaseDesc" Parameter="criminalCaseDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="Misconduct" Parameter="misconduct" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MisconductDesc" Parameter="misconductDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="DisciplinaryProceeding" Parameter="disciplinaryProceeding" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RetiredorDiscarged" Parameter="retiredorDiscarged" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Business" Parameter="business" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BusinessDesc" Parameter="businessDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="RelinquishBusiness" Parameter="relinquishBusiness" Type="System.Int32" DbType="Int" />
+    <Parameter Name="YearsofExperiencePublic" Parameter="yearsofExperiencePublic" Type="System.Int32" DbType="Int" />
+    <Parameter Name="YearsExperiencePrivate" Parameter="yearsExperiencePrivate" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalOffence" Parameter="criminalOffence" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalOffenceDesc" Parameter="criminalOffenceDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="DisciplinaryCase" Parameter="disciplinaryCase" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DisciplinaryCaseDesc" Parameter="disciplinaryCaseDesc" Type="System.String" DbType="VarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Z83Questions" Method="sp_Z83Questions">
+    <Parameter Name="ProfileID" Parameter="profileID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalCase" Parameter="criminalCase" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalCaseDesc" Parameter="criminalCaseDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="Misconduct" Parameter="misconduct" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MisconductDesc" Parameter="misconductDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="DisciplinaryProceeding" Parameter="disciplinaryProceeding" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RetiredorDiscarged" Parameter="retiredorDiscarged" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Business" Parameter="business" Type="System.Int32" DbType="Int" />
+    <Parameter Name="BusinessDesc" Parameter="businessDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="RelinquishBusiness" Parameter="relinquishBusiness" Type="System.Int32" DbType="Int" />
+    <Parameter Name="YearsofExperiencePublic" Parameter="yearsofExperiencePublic" Type="System.Int32" DbType="Int" />
+    <Parameter Name="YearsExperiencePrivate" Parameter="yearsExperiencePrivate" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalOffence" Parameter="criminalOffence" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriminalOffenceDesc" Parameter="criminalOffenceDesc" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="DisciplinaryCase" Parameter="disciplinaryCase" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DisciplinaryCaseDesc" Parameter="disciplinaryCaseDesc" Type="System.String" DbType="VarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddAttachments" Method="AddAttachments">
+    <Parameter Name="profileID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fileName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="fileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="contentType" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="FileExtension" Parameter="fileExtension" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="DocumentType" Parameter="documentType" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.proc_eRecruitmentUpdateAttachment" Method="proc_eRecruitmentUpdateAttachment">
+    <Parameter Name="AttachmentID" Parameter="attachmentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fileName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="fileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="contentType" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="FileExtension" Parameter="fileExtension" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="DocumentType" Parameter="documentType" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

@@ -110,7 +110,7 @@
                                 <dl class="dl-horizontal">
                                     <dt>Reference Number:</dt>
                                     <dd>@Html.DisplayFor(model => model.ReferenceNo)</dd>
-                                    <dt>BPS Vacancy Number:</dt>
+                                    <dt>Advert Reference Number:</dt>
                                     <dd>@Html.DisplayFor(model => model.BPSNumber)</dd>
                                     <dt>Job Title:</dt>
                                     <dd>@Html.DisplayFor(model => model.JobTitle)</dd>
@@ -126,9 +126,9 @@
         <dd>@Html.DisplayFor(model => model.Manager)</dd>*@
                                     @*<dt>Preffered Gender:</dt>
         <dd>@Html.DisplayFor(model => model.Gender)</dd>*@
-                                    <dt>Division:</dt>
-                                    <dd>@Html.DisplayFor(model => model.DivisionName)</dd>
                                     <dt>Department:</dt>
+                                    <dd>@Html.DisplayFor(model => model.DivisionName)</dd>
+                                    <dt>Component:</dt>
                                     <dd>@Html.DisplayFor(model => model.DepartmentName)</dd>
                                     <dt>Employment Type:</dt>
                                     <dd>@Html.DisplayFor(model => model.EmploymentType)</dd>
@@ -144,7 +144,7 @@
 
                                     <dt>Closing Date:</dt>
                                     <dd>@Html.DisplayFor(model => model.ClosingDate)</dd>
-                                    <dt>Location:</dt>
+                                    <dt>Center:</dt>
                                     <dd>@Html.DisplayFor(model => model.Location)</dd>
                                     <dt>Number of Openings:</dt>
                                     <dd>@Html.DisplayFor(model => model.NumberOfOpenings)</dd>
@@ -199,9 +199,8 @@
                                         </div>
                                     }
 
-                                    @if (Model.JobLevelID >= 17) //From the tblJob Level We sorted the Job Level with ID and 17 is the D4 and Above
-                                    {
-                                        if (ViewBag.LeadershipComp != null)
+                                   
+                                        @if (ViewBag.LeadershipComp != null)
                                         {
                                             <div class="form-group">
                                                 <div class="col-md-12">
@@ -210,7 +209,7 @@
                                                 </div>
                                             </div>
                                         }
-                                    }
+                                   
 
                                     @if (ViewBag.BehaviouralComp != null)
                                     {
@@ -540,7 +539,7 @@
                                     <div class="card mt-2">
                                         <div class="card-header">
                                             <div class="box-header with-border">
-                                                <h3 class="box-title">Candidate CV -  </h3>
+                                                <h3 class="box-title">Candidate Z83  </h3>
                                                 <td>
                                                     <a href="@Url.Action("DownloadCandidateProfile", "Vacancy", new { id = @HttpContext.Current.Session["sessUserID"].ToString()})"><span class="fa fa-download" style="color:darkblue; font-size:medium; "></span> Download </a>
                                                 </td>
@@ -553,7 +552,9 @@
                                                     <tbody>
                                                         <label>
                                                             <input type="checkbox" id="chkDeclaration" onclick="Check()"
-                                                                   name="chkDeclaration" /> I hereby declare that I have required qualifications, work experience, and skills , and that my profile meets the requirement of the advertised position.
+                                                                   name="chkDeclaration" /> 
+                                                            I declare that all the information provided (including any attachments) is complete and correct to the best of my knowledge. I understand that any false information provided will result in my application being disqualified or disciplinary action taken against me if I am appointed.
+
                                                         </label>
                                                     </tbody>
                                                 </div>

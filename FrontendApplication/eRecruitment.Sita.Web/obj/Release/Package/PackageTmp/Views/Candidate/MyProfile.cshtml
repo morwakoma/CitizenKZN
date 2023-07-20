@@ -36,7 +36,7 @@
         <div class="box">
 
             <div class="box-header with-border">
-                <h3 class="box-title">My Profile</h3>
+                <h3 class="box-title">My Profile (Z83)</h3>
 
                 <div class="box box-success" style="width:100%; border: 2px solid #3CB371; box-shadow:inset 0 1px 1px rgba(0,0,0,0.075); padding: 10px; margin-top: 10px;">
                     @*<marquee direction="left" bgcolor="white" style="font-weight: bold;">Please Note: Candidate Profile is only required to be completed once, then candidate can continue to apply for different jobs. Once the profile is completed, system will allow the candidate to update the profile at any given time.</marquee>*@
@@ -180,7 +180,7 @@
                                     <li><a href="#skills" ng-click="GetCandidateSkillsData();GetSkillsTypeList();GetSkillProficiencyList()" data-toggle="tab">Skills</a></li>
                                     <li><a href="#languages" ng-click="GetCandidateLanguagesData();GetLanguageProficiencyList();GetLanguagesList()" data-toggle="tab">Languages</a></li>
                                     <li><a href="#references" ng-click="GetCandidateReferenceData()" data-toggle="tab">References</a></li>
-                                    <li><a href="#attachments" ng-click="GetCandidateAttachmentData()" data-toggle="tab">Attachments</a></li>
+                                    @*<li><a href="#attachments" ng-click="GetCandidateAttachmentData()" data-toggle="tab">Attachments</a></li>*@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="activity">
@@ -407,12 +407,12 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter Criminal Offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="CriminalCase">
                                                     <label for="inputCriminalCase" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Do you have any pending criminal case against you? <span class="required red" style="color:red;"> * </span></label>
+                                                    <label>&nbsp;&nbsp;Do you have any pending criminal case against you? <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.CriminalCase, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.CriminalCase, "---Select....---"), new { @class = "form-control", onchange = "CheckCriminalCase()", id = "CriminalCaseID", required = "required", value = "" })
                                                     </div>
@@ -421,13 +421,13 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter Criminal Offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group" id="Misconduct">
-                                                    <label for="inputMisconduct" class="control-label"><span class="required"></span>&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Have you ever been dismissed for misconduct from the Public Service?</label>
+                                                    <label for="inputMisconduct" class="control-label">&nbsp;</label>
+                                                    <label>&nbsp;&nbsp;Have you ever been dismissed for misconduct from the Public Service?<span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.Misconduct, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Misconduct, "---Select....---"), new { @class = "form-control", onchange = "CheckMisconduct()", id = "MisconductID", required = "required", value = "" })
                                                     </div>
@@ -436,12 +436,12 @@
                                                     <label for="inputMisconductDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct Desc ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryCase">
-                                                    <label for="inputDisciplinaryCase" class="control-label"><span class="required"></span>&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Do you have any pending disciplinary case against you? </label>
+                                                    <label for="inputDisciplinaryCase" class="control-label">&nbsp;</label>
+                                                    <label>&nbsp;&nbsp;Do you have any pending disciplinary case against you? <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.DisciplinaryCase, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Misconduct, "---Select....---"), new { @class = "form-control", onchange = "CheckDisciplinary()", id = "DisciplinaryCaseID", required = "required", value = "" })
                                                     </div>
@@ -450,19 +450,19 @@
                                                     <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct Desc ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="DisciplinaryProceeding">
+                                                <div class="form-group" id="DisciplinaryProceedingID">
                                                     <label for="inputDisciplinaryProceedingt" class="control-label"> &nbsp;</label>
-                                                    <label>Have you resigned from a recent job pending any disciplinary proceeding against you? If yes,<br /> (please note that the provisions of the Public Service Act shall apply).  <span class="required"></span></label>
+                                                    <label>Have you resigned from a recent job pending any disciplinary proceeding against you? If yes,<br /> (please note that the provisions of the Public Service Act shall apply).  <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.DisciplinaryProceeding, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.DisciplinaryProceeding, "---Select....---"), new { @class = "form-control", id = "DisciplinaryProceeding", required = "required", value = "" })
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="RetiredorDiscarged">
+                                                <div class="form-group" id="RetiredorDiscargedID">
                                                     <label for="inputRetiredorDiscarged" class="control-label">&nbsp;</label>
-                                                    <label> &nbsp;&nbsp;Have you been discharged or retired from the Public Service on grounds of Ill-health or on condition that your cannot be re- employed? <span class="required"></span></label>
+                                                    <label> &nbsp;&nbsp;Have you been discharged or retired from the Public Service on grounds of Ill-health or on condition that your cannot be re- employed? <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.RetiredorDiscarged, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.RetiredorDiscarged, "---Select....---"), new { @class = "form-control", id = "RetiredorDiscarged", required = "required", value = "" })
                                                     </div>
@@ -470,7 +470,7 @@
 
                                                 <div class="form-group" id="Business">
                                                     <label for="inputBusiness" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State <span class="required"></span></label>
+                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.Business, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", onchange = "CheckBusiness()", id = "BusinessID", required = "required", value = "" })
                                                     </div>
@@ -483,9 +483,9 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group" id="RelinquishBusiness">
+                                                <div class="form-group" id="RelinquishBusinessID">
                                                     <label for="inputRelinquishBusiness" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;In the event that you are employed in the Public Service, will you immediately relinquish such business interests?<span class="required"></span></label>
+                                                    <label>&nbsp;&nbsp;In the event that you are employed in the Public Service, will you immediately relinquish such business interests?<span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.RelinquishBusiness, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", id = "RelinquishBusiness", required = "required", value = "" })
                                                     </div>
@@ -493,9 +493,18 @@
 
                                                 <div class="form-group" id="YearsExperience">
                                                     <label for="inputYearsExperience" class="control-label"></label>
-                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required">&nbsp;</span></label>
+                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.YearsExperience, null, new { @id = "YearsExperience", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
+                                                        <label>&nbsp;&nbsp;Plrivate Sector:<span class="required" style="color:red;"> * </span></label>
+
+                                                        @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
+
+                                                    </div>
+                                                    <label>&nbsp;&nbsp;Public Sector:<span class="required" style="color:red;"> * </span></label>
+
+                                                    <div>
+                                                        @Html.TextBoxFor(i => item.YearsofExperiencePublic, null, new { @id = "YearsofExperiencePublic", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
+
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -1224,106 +1233,65 @@
                                     </div>
                                     <!-- /.tab-pane -->
                                     <!-- /.tab-pane -->
-             <div class="tab-pane" id="attachments">
-            <div ng-switch="AttachmentCRUDMode">
+                                    <div class="tab-pane" id="attachments">
+                                        <div ng-switch="AttachmentCRUDMode">
+                                            <div ng-switch-when="Load">
+                                                <div class="col-md-12">
+                                                    <div class="box box-default">
+                                                        <!-- /.box-header -->
+                                                        <div class="box-body">
+                                                            <div class="callout callout-warning">
+                                                                <h4>Note!</h4>
+                                                                <p>Attachments cannot be modified or deleted here, to modify the uploaded please go to Personal Information Tab and upload new one.</p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.box-body -->
+                                                    </div>
+                                                    <!-- /.box -->
+                                                </div>
+                                                <br />
+                                                <table id="example1" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>File Name</th>
+                                                            @*<th>File Type</th>*@
+                                                            @*<th>Modified On</th>*@
+                                                            @*<th>Download</th>*@
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr data-ng-repeat="d in AttachmentListData">
+                                                            <td>@*<a href=@Url.Action("DownLoadFile", "Candidate")*@{{d.fileName}}@*></a>*@</td>
+                                                            @*<td>{{d.contentType}}</td>*@
+                                                            @*<td>{{d.createdon |  date:'yyyy-MM-dd'}}</td>*@
+                                                            @*<td>*@
+                                                            @*<a class="btn btn-xs btn-success btn-xs" href='@Url.Action("DownLoadFile", "Candidate", new { id = d.fileName} )' data-toggle="tooltip" data-placement="left" title="Download file">
+                                                                    <i class="ace-icon fa fa-download bigger-120"> Download</i>
+                                                                </a>*@
+                                                            @*</td>*@
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div ng-switch-when="Add">
+                                                <div class="box box-success">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Add Attachment</h3>
+                                                    </div>
 
-                <div ng-switch-when="Add">
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <br>
-                            <h3 class="box-title">Add Attachment</h3>
-                        </div>
-                        <span style="color:red;">@ViewBag.Note</span>
-                        <div class="box-body">
-                            Attachment Name:<br />
-                            <select name="AttachmentName" id="AttachmentNameAdd" class="form-control">
-
-                                <option value="CV">CV</option>
-                                <option value="ID">ID</option>
-                                <option value="Other">Other</option>
-                                <option value="" selected>-- Please Select --</option>
-                            </select>
-                            <br>Attachment:
-                            <input type="file" required class="form-control" id="postedFile" name="postedFile" />
-                            <br />
-                            <button type="submit" class="btn btn-success" ng-click="AddAttachmentInfo()"> <span class="fa fa-save success"></span> Save</button>
-                            <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
-                        </div>
-                    </div>
-                </div>
-                <div ng-switch-when="Load">
-
-                    <button id="Add" name="Add" class="btn btn-success" ng-click="AddAttachment()"><span class="fa fa-plus"></span> Add Attachment</button><br />
-
-
-                    <div class="col-md-12">
-                        <div class="box box-default">
-                            <!-- /.box-header -->
-                            @*<div class="box-body">
-                                    <div class="callout callout-warning">
-                                        <h4>Note!</h4>
-                                        <p>Attachments cannot be added here, to uploaded please go to Personal Information Tab and upload new one.</p>
+                                                    <div class="box-body">
+                                                        Attachment Name:<br />
+                                                        <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
+                                                        <br>Attachment:
+                                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
+                                                        <br />
+                                                        <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
+                                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>*@
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
-                    </div>
-                    <br />
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>File Name</th>
-                                @*<th>File Type</th>*@
-                                @*<th>Modified On</th>*@
-                                <th>Download</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-ng-repeat="d in AttachmentListData">
-                                <td>@*<a href=@Url.Action("DownLoadFile", "Candidate")*@{{d.fileName}}@*></a>*@</td>
-                                @*<td>{{d.contentType}}</td>*@
-                                @*<td>{{d.createdon |  date:'yyyy-MM-dd'}}</td>*@
-                                <td>
-
-                                    <a class="btn btn-xs btn-success btn-xs" href='@Url.Action("DownloadAttachment", "Candidate" )?id={{d.attachmentID}}' data-toggle="tooltip" data-placement="left" title="Download file">
-                                        <i class="ace-icon fa fa-download bigger-120"> Download</i>
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a class="btn btn-xs btn-danger btn-xs" href='' data-toggle="tooltip" data-placement="left" title="Delete file" ng-click="DeleteAttachment()">
-                                        <span><input type="hidden" id="btnDeleteAttachment" value="{{d.attachmentID}}" /></span> <i class="ace-icon fa danger bigger-120"> Delete</i>
-                                    </a>
-
-
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-        @*<div ng-switch-when="Add">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Add Attachment</h3>
-                    </div>
-
-                    <div class="box-body">
-                        Attachment Name:<br />
-                        <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
-                        <br>Attachment:
-                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
-                        <br />
-                        <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
-                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
-                    </div>
-                </div>
-            </div>*@
-    </div>
-</div>
                                     <!-- /.tab-pane -->
                                 </div>
                                 <!-- /.tab-content -->
@@ -1823,70 +1791,230 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+        @*Z83 Check modals*@
+        @*CriminalOffense Model*@
 
-        <div class="modal fade" id="modal-default">
+        <div class="modal fade" id="myModalCriminalOffence" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title">Upload Profile Picture</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
                     </div>
                     <div class="modal-body">
-                        @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", role = "form" }))
-                        {
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-6">
-                                        <label style="color:red">NB: Only images are will be uploaded</label>
-                                        <input class="input-file uniform_on" id="postedFile" accept="image/gif, image/jpeg" name="postedFile" type="file">
-                                    </div>
-                                    <div class="col-md-2"></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Upload</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        }
-
+                        <p>Please Select one of the options in "Have you been convicted or found guilty of a criminal offence?"</p>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
-        <!-- /.box -->
+        @*CriminalCase Model*@
 
-        @if (TempData["message"] != null)
-        {
-            <div class="modal modal-success fade" id="mask" data-toggle="modal">
+        <div class="modal fade" id="myModalCriminalcase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "Do you have any pending criminal case against you?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        @*Misconduct Model*@
+
+        <div class="modal fade" id="myModalMisconduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "Have you ever been dismissed for misconduct from the Public Service?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        @*Disciplinary case Model*@
+
+        <div class="modal fade" id="myModalDisciplinaryCase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "Do you have any pending disciplinary case against you?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        @*DisciplinaryProceeding Model*@
+
+        <div class="modal fade" id="myModalDisciplinaryProceeding" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "Have you resigned from a recent job pending any disciplinary proceeding against you?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        @*Business Modal*@
+
+        <div class="modal fade" id="myModalBusiness" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        @*RetiredorDiscarged Modal*@
+
+        <div class="modal fade" id="myModalRetiredorDiscarged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "Have you been discharged or retired from the Public Service on grounds of Ill-health or on condition that your cannot be re- employed?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        @*RelinquishBusiness Modal*@
+
+        <div class="modal fade" id="myModalRelinquishBusiness" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select one of the options in "In the event that you are employed in the Public Service, will you immediately relinquish such business interests?"</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+            <div class="modal fade" id="modal-default">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title">Notification</h4>
+                            <h4 class="modal-title">Upload Profile Picture</h4>
                         </div>
                         <div class="modal-body">
-
-                            <p>@Html.Raw(Json.Encode(TempData["message"]).Replace(@"""", ""))</p>
+                            @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", role = "form" }))
+                            {
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-6">
+                                            <label style="color:red">NB: Only images are will be uploaded</label>
+                                            <input class="input-file uniform_on" id="postedFile" accept="image/gif, image/jpeg" name="postedFile" type="file">
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Upload</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            }
 
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" href="@Url.Action("AllUsers", "Admin")" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-                        </div>
+
                     </div>
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-        }
+            <!-- /.modal -->
+            <!-- /.box -->
+
+            @if (TempData["message"] != null)
+            {
+                <div class="modal modal-success fade" id="mask" data-toggle="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Notification</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <p>@Html.Raw(Json.Encode(TempData["message"]).Replace(@"""", ""))</p>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" href="@Url.Action("AllUsers", "Admin")" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
     </section>
 
 
@@ -1924,17 +2052,7 @@
             $("#OtherNatureOfDisability").hide();
         }
     }
-    function CheckCriminalOffence() {
-        var d = $("#CriminalCaseID").val();
-        /* alert($("#CriminalOffence").val());*/
-        if (d == 1) {
-            $("#CriminalCaseDesc").show();
-        }
-        else {
-            $("#CriminalCaseDesc").hide();
 
-        }
-    }
     function CheckCriminalOffence() {
         var d = $("#CriminalOffenceID").val();
         /* alert($("#CriminalCaseDesc").val());*/
@@ -1964,8 +2082,6 @@
         }
         else {
             $("#CriminalCaseDesc").hide();
-
-
 
         }
     }
@@ -2090,9 +2206,11 @@
         CheckProfessionallyRegistered();
         CheckPreviouslyEmployedPS();
         CheckAnyconditionsPreventing();
-        CheckCriminalOffence()
-        CheckMisconduct()
-        CheckBusiness()
+        CheckCriminalOffence();
+        CheckMisconduct();
+        CheckBusiness();
+        CheckCriminalCase();
+        CheckDisciplinary();
 
         $("#DateOfBirth").datepicker({
             format: 'dd/mm/yyyy',
@@ -2332,6 +2450,55 @@
             $('#myModalDriversLicense').modal('show');
             return;
         }
+        //criminalOffence
+        else if (document.getElementById("CriminalOffenceID").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalCriminalOffence').modal('show');
+            return;
+        }
+        //CriminalCase
+        else if (document.getElementById("CriminalCaseID").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalCriminalcase').modal('show');
+            return;
+        }
+        //myMisconduct
+        else if (document.getElementById("MisconductID").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalMisconduct').modal('show');
+            return;
+        }
+        //DisciplinaryCase
+        else if (document.getElementById("DisciplinaryCaseID").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalDisciplinaryCase').modal('show');
+            return;
+        }
+        //DisciplinaryProceeding
+        else if (document.getElementById("DisciplinaryProceeding").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalDisciplinaryProceeding').modal('show');
+            return;
+        }
+        //RetiredorDiscarged
+        else if (document.getElementById("RetiredorDiscarged").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalRetiredorDiscarged').modal('show');
+            return;
+        }
+        //Business
+        else if (document.getElementById("BusinessID").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalBusiness').modal('show');
+            return;
+        }
+        //RelinquishBusiness
+        else if (document.getElementById("RelinquishBusiness").value == -1) {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalRelinquishBusiness').modal('show');
+            return;
+        }
+
         //CompletedMatric
         else if (document.getElementById("MatricID").value == -1) {
             //alert($("#MatricID").val());
@@ -2465,4 +2632,3 @@
 
     });
 </script>
-

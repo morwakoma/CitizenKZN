@@ -2382,18 +2382,18 @@ namespace eRecruitment.Sita.Web
         //================================================================================================
         //=======================================Peter 20221014===========================================
         //Get Get Candidate Education List
-        public void UpdateZ83Questions(int criminalCase, string criminalCaseDesc, int business, string businessDesc, int relinquishBusiness, int misconduct, string misconductDesc,
-            int retiredOrDischarged, int disciplinaryProceeding, int criminalOffence, string criminalOffenceDesc, int disciplinaryCase, string disciplinaryCaseDesc, int yearsExperience, int profileID)
+        public void UpdateZ83Questions(int criminalCase, string criminalCaseDesc, int business, string businessDesc, int relinquishBusiness, int YearsExperiencePrivate, int YearsofExperiencePublic, int misconduct, string misconductDesc,
+            int retiredOrDischarged, int disciplinaryProceeding, int criminalOffence, string criminalOffenceDesc, int disciplinaryCase, string disciplinaryCaseDesc, int profileID)
         {
-            _db.sp_Z83Questions(profileID, criminalCase, criminalCaseDesc, misconduct, misconductDesc, disciplinaryProceeding, retiredOrDischarged, business, businessDesc, relinquishBusiness, yearsExperience, criminalOffence, criminalOffenceDesc, disciplinaryCase, disciplinaryCaseDesc);
+            _db.sp_Z83Questions(profileID, criminalCase, criminalCaseDesc, misconduct, misconductDesc, disciplinaryProceeding, retiredOrDischarged, business, businessDesc, relinquishBusiness, YearsofExperiencePublic, YearsExperiencePrivate, criminalOffence, criminalOffenceDesc, disciplinaryCase, disciplinaryCaseDesc);
         }
 
 
 
         public void insertProfile(int criminalCase, string criminalCaseDesc, int business, string businessDesc, int relinquishBusiness, int misconduct, string misconductDesc,
-            int retiredOrDischarged, int disciplinaryProceeding, int criminalOffence, string criminalOffenceDesc, int disciplinaryCase, string disciplinaryCaseDesc, int yearsExperience, int profileID)
+            int retiredOrDischarged, int disciplinaryProceeding, int criminalOffence, string criminalOffenceDesc, int disciplinaryCase, string disciplinaryCaseDesc, int YearsExperiencePrivate, int YearsofExperiencePublic, int profileID)
         {
-            _db.sp_Z83Questions_Insert(profileID, criminalCase, criminalCaseDesc, misconduct, misconductDesc, disciplinaryProceeding, retiredOrDischarged, business, businessDesc, relinquishBusiness, yearsExperience, criminalOffence, criminalOffenceDesc, disciplinaryCase, disciplinaryCaseDesc);
+            _db.sp_Z83Questions_Insert(profileID, criminalCase, criminalCaseDesc, misconduct, misconductDesc, disciplinaryProceeding, retiredOrDischarged, business, businessDesc, relinquishBusiness, YearsofExperiencePublic, YearsExperiencePrivate, criminalOffence, criminalOffenceDesc, disciplinaryCase, disciplinaryCaseDesc);
 
 
 
@@ -2488,7 +2488,8 @@ public List<ProfileViewModel> GetCandidateProfileInfo(string ID)
                            Business = i.Business,
                            BusinessDesc = i.BusinessDesc,
                            RelinquishBusiness = i.RelinquishBusiness,
-                           YearsExperience = i.YearsExperience,
+                           YearsofExperiencePublic = i.YearsofExperiencePublic,
+                           YearsExperiencePrivate=i.YearsExperiencePrivate,
                            CriminalOffence = i.CriminalOffence,
                            CriminalOffenceDesc = i.CriminalOffenceDesc,
                            DisciplinaryCase = i.DisciplinaryCase,
@@ -2549,7 +2550,8 @@ public List<ProfileViewModel> GetCandidateProfileInfo(string ID)
 
 
 
-                e.YearsExperience = Convert.ToInt32(d.YearsExperience);
+                e.YearsofExperiencePublic = Convert.ToInt32(d.YearsofExperiencePublic);
+                e.YearsExperiencePrivate = Convert.ToInt32(d.YearsExperiencePrivate);
                 e.Business = Convert.ToInt32(d.Business);
                 e.BusinessDesc = Convert.ToString(d.BusinessDesc);
                 e.RelinquishBusiness = Convert.ToInt32(d.RelinquishBusiness);

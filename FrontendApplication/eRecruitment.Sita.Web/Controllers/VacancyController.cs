@@ -165,7 +165,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 //cellReferenceNo.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table.AddCell(cellBPSNo);
 
-                PdfPCell cellBPSNoContent = new PdfPCell(new Phrase(data.BPSVacancyNo.ToString(), font));
+                PdfPCell cellBPSNoContent = new PdfPCell(new Phrase(data.ReferenceNo.ToString(), font));
                 cellBPSNoContent.Colspan = 1;
                 cellBPSNoContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
                 table.AddCell(cellBPSNoContent);
@@ -1137,7 +1137,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 cellP = new PdfPCell(new Phrase("Please specify the total number of years of experience you have"));
                 cellP.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table.AddCell(cellP);
-                table.AddCell(Convert.ToString(profileData.YearsExperience));
+                table.AddCell(Convert.ToString(profileData.YearsofExperiencePublic));
 
 
 
@@ -2031,7 +2031,7 @@ namespace eRecruitment.Sita.Web.Controllers
         {
           ID = id,
           ReferenceNo = data.ReferenceNo,
-            BPSNumber = data.BPSVacancyNo,
+            BPSNumber = data.ReferenceNo,
             JobTitle = data.JobTitle,
           JobLevel = data.JobLevel,
           Salary = data.Salary,

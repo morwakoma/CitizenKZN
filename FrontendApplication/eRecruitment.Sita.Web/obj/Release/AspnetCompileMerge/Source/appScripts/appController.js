@@ -324,6 +324,60 @@ angular.module('mainApp', []).controller('mainCtrl', ['$scope', function ($scope
         });
     }
 
+    $scope.AddAttachmentInfo = function ()
+    {
+        debugger;
+
+        var DocumentType = $("#AttachmentNameAdd").val();
+        var fileUpload = $("#postedFile").get(0);
+        var files = fileUpload.files;
+        var fd = new FormData();
+
+        fd.append("file", files[0]);
+        fd.append("DocumentType", DocumentType);
+        fd.append("IDNumber", $("#IDNum").val());
+
+
+        $.ajax({
+            url: "/Candidate/AddAttachment",
+            type: "POST",
+            contentType: false, 
+            processData: false,
+            data: fd, DocumentType: DocumentType,
+            datatype: "json",
+            success: function (data) {
+                $scope.GetCandidateAttachmentData();
+                $scope.AttachmentCRUDMode = "Load";
+                $scope.$apply();
+                console.log(data);
+            }
+        });
+
+
+
+
+    }
+    $scope.DeleteAttachment = function () {
+
+        var ID = $("#btnDeleteAttachment").val();
+
+        $.ajax({
+            url: "DeleteAttachment",
+            type: "POST",
+            data: { id: ID },
+            datatype: "json",
+            success: function (data) {
+                $scope.GetCandidateAttachmentData();
+                $scope.AttachmentCRUDMode = "Load";
+                $scope.$apply();
+                console.log(data);
+            }
+        });
+
+
+
+
+    }
     $scope.GetSkillProficiencyList = function () {
         $.ajax({
             type: 'GET',
@@ -494,11 +548,13 @@ angular.module('mainApp', []).controller('mainCtrl', ['$scope', function ($scope
     }
 
     $scope.GetCandidateAttachmentData = function () {
+        debugger;
         $.ajax({
             type: 'GET',
             contentType: 'application/json; charset=utf-8',
             url: 'GetCandidateAttachmentList',
             success: function (data) {
+                console.log(data);
                 if (data.error) {
                     console.log('Error: ', data);
                     $scope.SystemErr = data.error;
@@ -506,6 +562,7 @@ angular.module('mainApp', []).controller('mainCtrl', ['$scope', function ($scope
                     //$("#divLoader").hide();
                 }
                 else {
+                    console.log(data);
                     $scope.AttachmentListData = data;
                     $scope.AttachmentCRUDMode = "Load";
                     $scope.$apply();
