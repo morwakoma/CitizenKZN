@@ -27,7 +27,7 @@
         <ol class="breadcrumb">
             <li><a href="~/Home/Jobs"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="~/Candidate/MyProfile">My Career Center</a></li>
-            <li class="active">User Profile</li>
+            <li class="active">User Z83</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -36,7 +36,7 @@
         <div class="box">
 
             <div class="box-header with-border">
-                <h3 class="box-title">My Profile</h3>
+                <h3 class="box-title">My Z83</h3>
 
                 <div class="box box-success" style="width:100%; border: 2px solid #3CB371; box-shadow:inset 0 1px 1px rgba(0,0,0,0.075); padding: 10px; margin-top: 10px;">
                     @*<marquee direction="left" bgcolor="white" style="font-weight: bold;">Please Note: Candidate Profile is only required to be completed once, then candidate can continue to apply for different jobs. Once the profile is completed, system will allow the candidate to update the profile at any given time.</marquee>*@
@@ -68,7 +68,7 @@
                                 <div class="box-body box-profile">
                                     <div class="btn-group">
                                         <ul class="dropdown-menu success" id="Test" role="menu">
-                                            <li><a href="#" data-toggle="modal" data-target="#modal-default">Upload Profile Picture</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#modal-default">Upload Z83 Picture</a></li>
                                             @*<li><a href='@Html.ActionLink("UploadProfilePicture", "Candidate")'>Remove Image </a></li>*@
                                         </ul>
                                     </div>
@@ -135,7 +135,7 @@
                                         }
                                     </p>
                                     <hr>
-                                    <strong><i class="margin-r-5"></i> Location</strong>
+                                    <strong><i class="margin-r-5"></i> Centre</strong>
                                     <p class="text-muted">@Address</p>
                                     <hr>
                                     <strong><i class="margin-r-5"></i> Skills</strong>
@@ -180,7 +180,7 @@
                                     <li><a href="#skills" ng-click="GetCandidateSkillsData();GetSkillsTypeList();GetSkillProficiencyList()" data-toggle="tab">Skills</a></li>
                                     <li><a href="#languages" ng-click="GetCandidateLanguagesData();GetLanguageProficiencyList();GetLanguagesList()" data-toggle="tab">Languages</a></li>
                                     <li><a href="#references" ng-click="GetCandidateReferenceData()" data-toggle="tab">References</a></li>
-                                    @*<li><a href="#attachments" ng-click="GetCandidateAttachmentData()" data-toggle="tab">Attachments</a></li>*@
+                                    <li><a href="#attachments" ng-click="GetCandidateAttachmentData()" data-toggle="tab">Attachments</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="activity">
@@ -197,455 +197,455 @@
                                             {
                                                 @*<div style="color:red">
                     @Html.ValidationSummary()
-                </div>*@
-                                                <br />
-                                                <div class="form-group">
-                                                    <label for="inputName" class="col-sm-2 control-label">ID Number<span class="required" style="color:red;"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.IDNumber, null, new { @id = "IDNum", @class = "form-control", @readonly = "readonly", placeholder = "Enter ID Number", required = "required", value = "", onkeypress = "return isNumberKey(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputName" class="col-sm-2 control-label">Passport Number<span class="required" style="color:red;"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.PassportNumber, null, new { @id = "PassportNumber", @class = "form-control", @readonly = "readonly", placeholder = "Enter Passport Number", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputSurname" class="col-sm-2 control-label">Surname<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.Surname, null, new { @class = "form-control", placeholder = "Enter surname", @readonly = "readonly", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputName" class="col-sm-2 control-label">First Name<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.FirstName, null, new { @id = "FirstName", @readonly = "readonly", @class = "form-control", placeholder = "Enter Name", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label" for="date01">Date of Birth<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.EditorFor(i => item.DateOfBirth, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "DateOfBirth", @class = "form-control", @type = "text", placeholder = "Date of Birth", tabindex = 7 } })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputRace" class="col-sm-2 control-label">Race<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.fkRaceID, new SelectList(ViewBag.Race, "RaceID", "RaceName", item.fkRaceID, "--Select Race--"), new { @class = "form-control", id = "RaceID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputGender" class="col-sm-2 control-label">Gender<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.fkGenderID, new SelectList(ViewBag.Gender, "GenderID", "Gender", item.fkGenderID, "--Select Gender--"), new { @class = "form-control", id = "GenderID", required = "required" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputContactNo" class="col-sm-2 control-label">Contact No<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.CellNo, null, new { @maxLength = "10", @id = "CellNo", @class = "form-control", @readonly = "readonly", placeholder = "Enter contactNo", required = "required", value = "", onkeypress = "return isNumberKey(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputAlternative" class="col-sm-2 control-label">Alternative No</label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.AlternativeNo, null, new { @maxLength = "10", @id = "AlternativeNo", @class = "form-control", placeholder = "Enter Alternative Contact No", value = "", onkeypress = "return isNumberKey(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputEmail" class="col-sm-2 control-label">Email<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.EmailAddress, null, new { @id = "EmailAddress", @class = "form-control", @readonly = "readonly", placeholder = "Enter Email", required = "required", value = "", type = "email" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputUnitNo" class="col-sm-2 control-label">Unit No<span class="required" style="color:red;"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.UnitNo, null, new { @id = "UnitNo", @class = "form-control", placeholder = "Enter Unit No", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputComplex" class="col-sm-2 control-label">Complex<span class="required" style="color:red;"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.ComplexName, null, new { @id = "ComplexName", @class = "form-control", placeholder = "Enter Complex", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputStreetNo" class="col-sm-2 control-label">Street No<span class="required" style="color:red;"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @*@Html.TextBoxFor(i => item.StreetNo, null, new { @id = "StreetNo", @class = "form-control", placeholder = "Enter Street No", value = "", onkeypress = "return isNumberKey(event)" })*@
-                                                        @Html.TextBoxFor(i => item.StreetNo, null, new { @id = "StreetNo", @class = "form-control", placeholder = "Enter Street No", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputStreetName" class="col-sm-2 control-label">Street Name<span class="required" style="color:red;"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.StreetName, null, new { @id = "StreetName", @class = "form-control", placeholder = "Enter Street Name", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputSuburb" class="col-sm-2 control-label">Suburb<span class="required"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.SuburbName, null, new { @id = "SuburbName", @class = "form-control", placeholder = "Enter Suburb", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
+                </div>*@ @Html.Hidden("myAttachmentID", Url.Action("AddAttachment"))
+                                    <br />
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">ID Number<span class="required" style="color:red;"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.IDNumber, null, new { @id = "IDNum", @class = "form-control", @readonly = "readonly", placeholder = "Enter ID Number", required = "required", value = "", onkeypress = "return isNumberKey(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">Passport Number<span class="required" style="color:red;"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.PassportNumber, null, new { @id = "PassportNumber", @class = "form-control", @readonly = "readonly", placeholder = "Enter Passport Number", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputSurname" class="col-sm-2 control-label">Surname<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.Surname, null, new { @class = "form-control", placeholder = "Enter surname", @readonly = "readonly", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 control-label">First Name<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.FirstName, null, new { @id = "FirstName", @readonly = "readonly", @class = "form-control", placeholder = "Enter Name", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="date01">Date of Birth<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(i => item.DateOfBirth, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "DateOfBirth", @class = "form-control", @type = "text", placeholder = "Date of Birth", tabindex = 7 } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputRace" class="col-sm-2 control-label">Race<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.fkRaceID, new SelectList(ViewBag.Race, "RaceID", "RaceName", item.fkRaceID, "--Select Race--"), new { @class = "form-control", id = "RaceID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputGender" class="col-sm-2 control-label">Gender<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.fkGenderID, new SelectList(ViewBag.Gender, "GenderID", "Gender", item.fkGenderID, "--Select Gender--"), new { @class = "form-control", id = "GenderID", required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputContactNo" class="col-sm-2 control-label">Contact No<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.CellNo, null, new { @maxLength = "10", @id = "CellNo", @class = "form-control", @readonly = "readonly", placeholder = "Enter contactNo", required = "required", value = "", onkeypress = "return isNumberKey(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAlternative" class="col-sm-2 control-label">Alternative No</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.AlternativeNo, null, new { @maxLength = "10", @id = "AlternativeNo", @class = "form-control", placeholder = "Enter Alternative Contact No", value = "", onkeypress = "return isNumberKey(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-sm-2 control-label">Email<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.EmailAddress, null, new { @id = "EmailAddress", @class = "form-control", @readonly = "readonly", placeholder = "Enter Email", required = "required", value = "", type = "email" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputUnitNo" class="col-sm-2 control-label">Unit No<span class="required" style="color:red;"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.UnitNo, null, new { @id = "UnitNo", @class = "form-control", placeholder = "Enter Unit No", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputComplex" class="col-sm-2 control-label">Complex<span class="required" style="color:red;"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.ComplexName, null, new { @id = "ComplexName", @class = "form-control", placeholder = "Enter Complex", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputStreetNo" class="col-sm-2 control-label">Street No<span class="required" style="color:red;"></span></label>
+                                        <div class="col-sm-10">
+                                            @*@Html.TextBoxFor(i => item.StreetNo, null, new { @id = "StreetNo", @class = "form-control", placeholder = "Enter Street No", value = "", onkeypress = "return isNumberKey(event)" })*@
+                                            @Html.TextBoxFor(i => item.StreetNo, null, new { @id = "StreetNo", @class = "form-control", placeholder = "Enter Street No", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputStreetName" class="col-sm-2 control-label">Street Name<span class="required" style="color:red;"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.StreetName, null, new { @id = "StreetName", @class = "form-control", placeholder = "Enter Street Name", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputSuburb" class="col-sm-2 control-label">Suburb<span class="required"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.SuburbName, null, new { @id = "SuburbName", @class = "form-control", placeholder = "Enter Suburb", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
 
-                                                <div class="form-group">
-                                                    <label for="inputProvince" class="col-sm-2 control-label">Province<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.fkProvinceID, new SelectList(ViewBag.Province, "ProvinceID", "ProvinceName", item.fkProvinceID, "--Select Province--"), new { @class = "form-control", id = "fkProvinceID", required = "required" })
-                                                    </div>
-                                                </div>
+                                    <div class="form-group">
+                                        <label for="inputProvince" class="col-sm-2 control-label">Province<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.fkProvinceID, new SelectList(ViewBag.Province, "ProvinceID", "ProvinceName", item.fkProvinceID, "--Select Province--"), new { @class = "form-control", id = "fkProvinceID", required = "required" })
+                                        </div>
+                                    </div>
 
-                                                <div class="form-group">
-                                                    <label for="inputCity" class="col-sm-2 control-label">City<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.City, null, new { @id = "City", @class = "form-control", placeholder = "Enter City", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputPostalCode" class="col-sm-2 control-label">Postal Code<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.PostalCode, null, new { @maxLength = "4", @id = "postalCode", @class = "form-control", placeholder = "Enter Postal Code", required = "required", value = "", onkeypress = "return isNumberKey(event)" })
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group" id="ProfessionallyRegistered">
-                                                    <label for="inputDriversLicence" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Do you have valid driver's License?<span class="required red" style="color:red;"> * </span></label>
-                                                    @*<label for="inputDriversLicence" class="col-sm-2 control-label">Driver's License?<span class="required" style="color:red;"> * </span></label>*@
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.DriversLicenseID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.DriversLicenseID, "---Please Select---"), new { @class = "form-control", id = "DriversLicenseID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="ProfessionallyRegistered">
-                                                    <label for="inputMatricCompleted" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Have you completed matric or equivalent?<span class="required red" style="color:red;"> * </span></label>
-                                                    @*<label for="inputMatricCompleted" class="col-sm-2 control-label">Completed Matric?<span class="required" style="color:red;"> * </span></label>*@
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.MatricID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.MatricID, "---Please Select---"), new { @class = "form-control", id = "MatricID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group" id="ProfessionallyRegistered">
-                                                    <label for="inputProfessionallyRegistered" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;&nbsp; Are you professionally registered?<span class="required" style="color:red;"> * </span></label>
-                                                    @*<label for="inputProfessionallyRegistered" class="col-sm-2 control-label">Are You Professionally Registered?<span class="required" style="color:red;"> * </span></label>*@
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.ProfessionallyRegisteredID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.ProfessionallyRegisteredID, "---Select....---"), new { @class = "form-control", onchange = "CheckProfessionallyRegistered()", id = "ProfessionallyRegisteredID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="RegistrationDate">
-                                                    <label for="inputRegistrationDate" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;&nbsp; Registration Date<span class="required"></span></label>
-                                                    @*<label for="inputRegistrationDate" class="col-sm-2 control-label">Registration Date</label>*@
-                                                    <div>
-                                                        @Html.EditorFor(i => item.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "RegistrationDate", @class = "form-control", @type = "date", placeholder = "RegistrationDate", tabindex = 7, value = @item.RegistrationDate } })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="RegistrationNumber">
-                                                    <label for="inputRegistrationNumber" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;&nbsp; Registration Number<span class="required"></span></label>
-                                                    @*<label for="inputRegistrationNumber" class="col-sm-2 control-label">Registration Number</label>*@
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.RegistrationNumber, null, new
-                                                   {
-                                                       @id = "RegistrationNumber",
-                                                       @class = "form-control",
-                                                       placeholder = "Enter Registration Number",
-                                                       value = ""@*, onKeyPress = "return ValidateAlpha(event);"*@})
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="RegistrationBody">
-                                                    <label for="inputRegistrationBody" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;&nbsp; Registration Body<span class="required"></span></label>
-                                                    @*<label for="inputRegistrationBody" class="col-sm-2 control-label">Registration Body</label>*@
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.RegistrationBody, null, new { @id = "RegistrationBody", @class = "form-control", placeholder = "Enter Registration Body", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group" id="PreviouslyEmployedPS">
-                                                    <label for="inputPreviouslyEmployedPS" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Were you previously employed in the Public Service?<span class="required red" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.PreviouslyEmployedPS, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.PreviouslyEmployedPS, "---Select....---"), new { @class = "form-control", onchange = "CheckPreviouslyEmployedPS()", id = "PreviouslyEmployedPSID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="ProfessionallyRegistered">
-                                                    <label for="inputConditionsThatPreventsReEmployment" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;&nbsp; Are there any conditions that prevents your re-employment?<span class="required" style="color:red;"> * </span></label>
-                                                    @*<label for="inputProfessionallyRegistered" class="col-sm-2 control-label">Are You Professionally Registered?<span class="required" style="color:red;"> * </span></label>*@
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.ConditionsThatPreventsReEmploymentID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.ConditionsThatPreventsReEmploymentID, "---Select....---"), new { @class = "form-control", onchange = "CheckAnyconditionsPreventing()", id = "ConditionsThatPreventsReEmploymentID", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="ReEmployment">
-                                                    <label for="inputPreviouslyEmployedDepartment" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; If Yes please specify@*<span class="required red" style="color:red;"> * </span>*@</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.ReEmploy, null, new { @id = "ReEmploy", @class = "form-control", placeholder = "Enter Conditions", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="PreviouslyEmployedDepartment">
-                                                    <label for="inputPreviouslyEmployedDepartment" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Provide the name of the previous employing department@*<span class="required red" style="color:red;"> * </span>*@</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.PreviouslyEmployedDepartment, null, new { @id = "PreviouslyEmployedDepartment", @class = "form-control", placeholder = "Enter Department", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                //Z83
-                                                //Z83
-                                                <div class="form-group" id="CriminalOffense">
-                                                    <label for="inputCriminalOffense" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Have you been convicted or found guilty of a criminal offence (including an admission of guilt)?<span class="required red" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.CriminalOffence, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.CriminalOffence, "---Select....---"), new { @class = "form-control", onchange = "CheckCriminalOffence()", id = "CriminalOffenceID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="CriminalOffenceDesc">
-                                                    <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; If yes (provide the details):</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="CriminalCase">
-                                                    <label for="inputCriminalCase" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Do you have any pending criminal case against you? <span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.CriminalCase, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.CriminalCase, "---Select....---"), new { @class = "form-control", onchange = "CheckCriminalCase()", id = "CriminalCaseID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="CriminalCaseDesc">
-                                                    <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; If yes (provide the details):</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "", onkeypress = "return ValidateAlpha(event)" })
-                                                    </div>
-                                                </div>
+                                    <div class="form-group">
+                                        <label for="inputCity" class="col-sm-2 control-label">City<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.City, null, new { @id = "City", @class = "form-control", placeholder = "Enter City", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPostalCode" class="col-sm-2 control-label">Postal Code<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.PostalCode, null, new { @maxLength = "4", @id = "postalCode", @class = "form-control", placeholder = "Enter Postal Code", required = "required", value = "", onkeypress = "return isNumberKey(event)" })
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group" id="ProfessionallyRegistered">
+                                        <label for="inputDriversLicence" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Do you have valid driver's License?<span class="required red" style="color:red;"> * </span></label>
+                                        @*<label for="inputDriversLicence" class="col-sm-2 control-label">Driver's License?<span class="required" style="color:red;"> * </span></label>*@
+                                        <div>
+                                            @Html.DropDownListFor(m => item.DriversLicenseID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.DriversLicenseID, "---Please Select---"), new { @class = "form-control", id = "DriversLicenseID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="ProfessionallyRegistered">
+                                        <label for="inputMatricCompleted" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Have you completed matric or equivalent?<span class="required red" style="color:red;"> * </span></label>
+                                        @*<label for="inputMatricCompleted" class="col-sm-2 control-label">Completed Matric?<span class="required" style="color:red;"> * </span></label>*@
+                                        <div>
+                                            @Html.DropDownListFor(m => item.MatricID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.MatricID, "---Please Select---"), new { @class = "form-control", id = "MatricID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group" id="ProfessionallyRegistered">
+                                        <label for="inputProfessionallyRegistered" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;&nbsp; Are you professionally registered?<span class="required" style="color:red;"> * </span></label>
+                                        @*<label for="inputProfessionallyRegistered" class="col-sm-2 control-label">Are You Professionally Registered?<span class="required" style="color:red;"> * </span></label>*@
+                                        <div>
+                                            @Html.DropDownListFor(m => item.ProfessionallyRegisteredID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.ProfessionallyRegisteredID, "---Select....---"), new { @class = "form-control", onchange = "CheckProfessionallyRegistered()", id = "ProfessionallyRegisteredID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="RegistrationDate">
+                                        <label for="inputRegistrationDate" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;&nbsp; Registration Date<span class="required"></span></label>
+                                        @*<label for="inputRegistrationDate" class="col-sm-2 control-label">Registration Date</label>*@
+                                        <div>
+                                            @Html.EditorFor(i => item.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "RegistrationDate", @class = "form-control", @type = "date", placeholder = "RegistrationDate", tabindex = 7, value = @item.RegistrationDate } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="RegistrationNumber">
+                                        <label for="inputRegistrationNumber" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;&nbsp; Registration Number<span class="required"></span></label>
+                                        @*<label for="inputRegistrationNumber" class="col-sm-2 control-label">Registration Number</label>*@
+                                        <div>
+                                            @Html.TextBoxFor(i => item.RegistrationNumber, null, new
+                                       {
+                                           @id = "RegistrationNumber",
+                                           @class = "form-control",
+                                           placeholder = "Enter Registration Number",
+                                           value = ""@*, onKeyPress = "return ValidateAlpha(event);"*@})
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="RegistrationBody">
+                                        <label for="inputRegistrationBody" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;&nbsp; Registration Body<span class="required"></span></label>
+                                        @*<label for="inputRegistrationBody" class="col-sm-2 control-label">Registration Body</label>*@
+                                        <div>
+                                            @Html.TextBoxFor(i => item.RegistrationBody, null, new { @id = "RegistrationBody", @class = "form-control", placeholder = "Enter Registration Body", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group" id="PreviouslyEmployedPS">
+                                        <label for="inputPreviouslyEmployedPS" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Were you previously employed in the Public Service?<span class="required red" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.PreviouslyEmployedPS, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.PreviouslyEmployedPS, "---Select....---"), new { @class = "form-control", onchange = "CheckPreviouslyEmployedPS()", id = "PreviouslyEmployedPSID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="ProfessionallyRegistered">
+                                        <label for="inputConditionsThatPreventsReEmployment" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;&nbsp; Are there any conditions that prevents your re-employment?<span class="required" style="color:red;"> * </span></label>
+                                        @*<label for="inputProfessionallyRegistered" class="col-sm-2 control-label">Are You Professionally Registered?<span class="required" style="color:red;"> * </span></label>*@
+                                        <div>
+                                            @Html.DropDownListFor(m => item.ConditionsThatPreventsReEmploymentID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.ConditionsThatPreventsReEmploymentID, "---Select....---"), new { @class = "form-control", onchange = "CheckAnyconditionsPreventing()", id = "ConditionsThatPreventsReEmploymentID", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="ReEmployment">
+                                        <label for="inputPreviouslyEmployedDepartment" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; If Yes please specify@*<span class="required red" style="color:red;"> * </span>*@</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.ReEmploy, null, new { @id = "ReEmploy", @class = "form-control", placeholder = "Enter Conditions", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="PreviouslyEmployedDepartment">
+                                        <label for="inputPreviouslyEmployedDepartment" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Provide the name of the previous employing department@*<span class="required red" style="color:red;"> * </span>*@</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.PreviouslyEmployedDepartment, null, new { @id = "PreviouslyEmployedDepartment", @class = "form-control", placeholder = "Enter Department", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    //Z83
+                                    //Z83
+                                    <div class="form-group" id="CriminalOffense">
+                                        <label for="inputCriminalOffense" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Have you been convicted or found guilty of a criminal offence (including an admission of guilt)?<span class="required red" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.CriminalOffence, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.CriminalOffence, "---Select....---"), new { @class = "form-control", onchange = "CheckCriminalOffence()", id = "CriminalOffenceID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="CriminalOffenceDesc">
+                                        <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; If yes (provide the details):</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="CriminalCase">
+                                        <label for="inputCriminalCase" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;Do you have any pending criminal case against you? <span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.CriminalCase, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.CriminalCase, "---Select....---"), new { @class = "form-control", onchange = "CheckCriminalCase()", id = "CriminalCaseID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="CriminalCaseDesc">
+                                        <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; If yes (provide the details):</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                        </div>
+                                    </div>
 
-                                                <div class="form-group" id="Misconduct">
-                                                    <label for="inputMisconduct" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Have you ever been dismissed for misconduct from the Public Service?<span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.Misconduct, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Misconduct, "---Select....---"), new { @class = "form-control", onchange = "CheckMisconduct()", id = "MisconductID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="MisconductDesc">
-                                                    <label for="inputMisconductDesc" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; If yes (provide the details):</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "", onkeypress = "return ValidateAlpha(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="DisciplinaryCase">
-                                                    <label for="inputDisciplinaryCase" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Do you have any pending disciplinary case against you? <span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.DisciplinaryCase, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Misconduct, "---Select....---"), new { @class = "form-control", onchange = "CheckDisciplinary()", id = "DisciplinaryCaseID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="DisciplinaryCaseDesc">
-                                                    <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; If yes (provide the details):</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return ValidateAlpha(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="DisciplinaryProceedingID">
-                                                    <label for="inputDisciplinaryProceedingt" class="control-label"> &nbsp;</label>
-                                                    <label>Have you resigned from a recent job pending any disciplinary proceeding against you? If yes,<br /> (please note that the provisions of the Public Service Act shall apply).  <span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.DisciplinaryProceeding, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.DisciplinaryProceeding, "---Select....---"), new { @class = "form-control", id = "DisciplinaryProceeding", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="RetiredorDiscargedID">
-                                                    <label for="inputRetiredorDiscarged" class="control-label">&nbsp;</label>
-                                                    <label> &nbsp;&nbsp;Have you been discharged or retired from the Public Service on grounds of Ill-health or on condition that your cannot be re- employed? <span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.RetiredorDiscarged, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.RetiredorDiscarged, "---Select....---"), new { @class = "form-control", id = "RetiredorDiscarged", required = "required", value = "" })
-                                                    </div>
-                                                </div>
+                                    <div class="form-group" id="Misconduct">
+                                        <label for="inputMisconduct" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;Have you ever been dismissed for misconduct from the Public Service?<span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.Misconduct, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Misconduct, "---Select....---"), new { @class = "form-control", onchange = "CheckMisconduct()", id = "MisconductID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="MisconductDesc">
+                                        <label for="inputMisconductDesc" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; If yes (provide the details):</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="DisciplinaryCase">
+                                        <label for="inputDisciplinaryCase" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;Do you have any pending disciplinary case against you? <span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.DisciplinaryCase, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Misconduct, "---Select....---"), new { @class = "form-control", onchange = "CheckDisciplinary()", id = "DisciplinaryCaseID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="DisciplinaryCaseDesc">
+                                        <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; If yes (provide the details):</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="DisciplinaryProceedingID">
+                                        <label for="inputDisciplinaryProceedingt" class="control-label"> &nbsp;</label>
+                                        <label>Have you resigned from a recent job pending any disciplinary proceeding against you? If yes,<br /> (please note that the provisions of the Public Service Act shall apply).  <span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.DisciplinaryProceeding, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.DisciplinaryProceeding, "---Select....---"), new { @class = "form-control", id = "DisciplinaryProceeding", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="RetiredorDiscargedID">
+                                        <label for="inputRetiredorDiscarged" class="control-label">&nbsp;</label>
+                                        <label> &nbsp;&nbsp;Have you been discharged or retired from the Public Service on grounds of Ill-health or on condition that your cannot be re- employed? <span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.RetiredorDiscarged, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.RetiredorDiscarged, "---Select....---"), new { @class = "form-control", id = "RetiredorDiscarged", required = "required", value = "" })
+                                        </div>
+                                    </div>
 
-                                                <div class="form-group" id="Business">
-                                                    <label for="inputBusiness" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State <span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.Business, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", onchange = "CheckBusiness()", id = "BusinessID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="BusinessDesc">
-                                                    <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;If yes (provide the details):</label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return ValidateAlpha(event)" })
-                                                    </div>
-                                                </div>
+                                    <div class="form-group" id="Business">
+                                        <label for="inputBusiness" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State <span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.Business, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", onchange = "CheckBusiness()", id = "BusinessID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="BusinessDesc">
+                                        <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;If yes (provide the details):</label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                        </div>
+                                    </div>
 
-                                                <div class="form-group" id="RelinquishBusinessID">
-                                                    <label for="inputRelinquishBusiness" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;In the event that you are employed in the Public Service, will you immediately relinquish such business interests?<span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.RelinquishBusiness, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", id = "RelinquishBusiness", required = "required", value = "" })
-                                                    </div>
-                                                </div>
+                                    <div class="form-group" id="RelinquishBusinessID">
+                                        <label for="inputRelinquishBusiness" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp;In the event that you are employed in the Public Service, will you immediately relinquish such business interests?<span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.RelinquishBusiness, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", id = "RelinquishBusiness", required = "required", value = "" })
+                                        </div>
+                                    </div>
 
-                                                <div class="form-group" id="YearsExperience">
-                                                    <label for="inputYearsExperience" class="control-label"></label>
-                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        <label>&nbsp;&nbsp;Plrivate Sector:<span class="required" style="color:red;"> * </span></label>
+                                    <div class="form-group" id="YearsExperience">
+                                        <label for="inputYearsExperience" class="control-label"></label>
+                                        <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            <label>&nbsp;&nbsp;Plrivate Sector:<span class="required" style="color:red;"> * </span></label>
 
-                                                        @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
+                                            @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
-                                                    </div>
-                                                    <label>&nbsp;&nbsp;Public Sector:<span class="required" style="color:red;"> * </span></label>
+                                        </div>
+                                        <label>&nbsp;&nbsp;Public Sector:<span class="required" style="color:red;"> * </span></label>
 
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.YearsofExperiencePublic, null, new { @id = "YearsofExperiencePublic", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
+                                        <div>
+                                            @Html.TextBoxFor(i => item.YearsofExperiencePublic, null, new { @id = "YearsofExperiencePublic", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
-                                                    </div>
-                                                </div>
-                                                <hr>
+                                        </div>
+                                    </div>
+                                    <hr>
 
-                                                <div class="form-group">
-                                                    <label for="inputDisability" class="col-sm-2 control-label">Disability<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.fkDisabilityID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.fkDisabilityID, "--Please Select--"), new { @class = "form-control", onchange = "CheckDisability()", id = "AnswerID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="DisabilityDetails">
-                                                    <label for="inputDisabilityDetails" class="col-sm-2 control-label">Disability Details<span class="required"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.NatureOfDisability, new SelectList(ViewBag.Disability, "DisabilityID", "Disability", item.NatureOfDisability, "---Select Nature Of Disability...---"), new { @class = "form-control", onchange = "CheckDisabilityNature()", id = "DisabilityID", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="OtherNatureOfDisability">
-                                                    <label for="inputOtherNatureOfDisability" class="col-sm-2 control-label">If Other, Details</label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.OtherNatureOfDisability, null, new { @id = "OtherNatureOfDisability", @class = "form-control", placeholder = "Enter Nature if Disability is Other", value = "", onKeyPress = "return ValidateAlpha(event);" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputRSACitizen" class="col-sm-2 control-label">RSA Citizen<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.SACitizen, new SelectList(ViewBag.Citizenship, "CitizenID", "SACitizen", item.SACitizen, "--Please Select---"), new { @class = "form-control", onchange = "CheckNationality()", id = "CitizenID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="NationanityDetails">
-                                                    <label for="inputCitizen" class="col-sm-2 control-label">If No, Nationality<span class="required"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.fkNationalityID, new SelectList(ViewBag.Country, "CountryID", "CountryName", item.fkNationalityID, "---Select Language....---"), new { @class = "form-control", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="WorkPermit">
-                                                    <label for="inputWorkPermit" class="col-sm-2 control-label">Valid Work Permit<span class="required"></span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.fkWorkPermitID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.fkWorkPermitID, "---Select....---"), new { @class = "form-control", onchange = "CheckWorkPermit()", id = "WorkPermitID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" id="WorkPermitNo">
-                                                    <label for="inputCriminalOffense" class="col-sm-2 control-label">Permit Number</label>
-                                                    <div class="col-sm-10">
-                                                        @Html.TextBoxFor(i => item.WorkPermitNo, null, new { @id = "WorkPermitNo", @class = "form-control", placeholder = "Work Permit Number", value = "", onkeypress = "return isNumberKey(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputCriminalOffense" class="col-sm-2 control-label">Criminal Offence<span class="required" style="color:red;"> * </span></label>
-                                                    <div class="col-sm-10">
-                                                        @Html.DropDownListFor(m => item.pkCriminalOffenseID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.pkCriminalOffenseID, "---Select....---"), new { @class = "form-control", id = "CriminalOffenseID", required = "required", value = "" })
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="inputLanguageForCorrespondence" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Preferred language for correspondence<span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.fkLanguageForCorrespondenceID, new SelectList(ViewBag.LanguageCorr, "LanguageID", "LanguageName", item.fkLanguageForCorrespondenceID, "---Select Language....---"), new { @class = "form-control", id = "LanguageForCorrespondenceID", required = "required", value = "", @readonly = "readonly" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputTelNoDuringWorkingHours" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Telephone no during working hours<span class="required red" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.TextBoxFor(i => item.TelNoDuringWorkingHours, null, new { @maxLength = "10", @id = "TelNoDuringWorkingHours", required = "required", @class = "form-control", placeholder = "Enter Telephone No During Working Hours", value = "", onkeypress = "return isNumberKey(event)" })
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputWayForCorrespondance" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp; Preferred way of correspondence<span class="required" style="color:red;"> * </span></label>
-                                                    <div>
-                                                        @Html.DropDownListFor(m => item.MethodOfCommunicationID, new SelectList(ViewBag.CommunicationMethod, "MethodID", "MethodName", item.MethodOfCommunicationID, "--Select Method of Communication--"), new { @class = "form-control", required = "required" })
-                                                    </div>
-                                                </div>
-                                                @*<div class="form-group">
-                    <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
-                    <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
-                    </div>
-                </div>*@
-                                                <hr>
+                                    <div class="form-group">
+                                        <label for="inputDisability" class="col-sm-2 control-label">Disability<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.fkDisabilityID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.fkDisabilityID, "--Please Select--"), new { @class = "form-control", onchange = "CheckDisability()", id = "AnswerID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="DisabilityDetails">
+                                        <label for="inputDisabilityDetails" class="col-sm-2 control-label">Disability Details<span class="required"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.NatureOfDisability, new SelectList(ViewBag.Disability, "DisabilityID", "Disability", item.NatureOfDisability, "---Select Nature Of Disability...---"), new { @class = "form-control", onchange = "CheckDisabilityNature()", id = "DisabilityID", required = "required", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="OtherNatureOfDisability">
+                                        <label for="inputOtherNatureOfDisability" class="col-sm-2 control-label">If Other, Details</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.OtherNatureOfDisability, null, new { @id = "OtherNatureOfDisability", @class = "form-control", placeholder = "Enter Nature if Disability is Other", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputRSACitizen" class="col-sm-2 control-label">RSA Citizen<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.SACitizen, new SelectList(ViewBag.Citizenship, "CitizenID", "SACitizen", item.SACitizen, "--Please Select---"), new { @class = "form-control", onchange = "CheckNationality()", id = "CitizenID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="NationanityDetails">
+                                        <label for="inputCitizen" class="col-sm-2 control-label">If No, Nationality<span class="required"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.fkNationalityID, new SelectList(ViewBag.Country, "CountryID", "CountryName", item.fkNationalityID, "---Select Language....---"), new { @class = "form-control", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="WorkPermit">
+                                        <label for="inputWorkPermit" class="col-sm-2 control-label">Valid Work Permit<span class="required"></span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.fkWorkPermitID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.fkWorkPermitID, "---Select....---"), new { @class = "form-control", onchange = "CheckWorkPermit()", id = "WorkPermitID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="WorkPermitNo">
+                                        <label for="inputCriminalOffense" class="col-sm-2 control-label">Permit Number</label>
+                                        <div class="col-sm-10">
+                                            @Html.TextBoxFor(i => item.WorkPermitNo, null, new { @id = "WorkPermitNo", @class = "form-control", placeholder = "Work Permit Number", value = "", onkeypress = "return isNumberKey(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputCriminalOffense" class="col-sm-2 control-label">Criminal Offence<span class="required" style="color:red;"> * </span></label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(m => item.pkCriminalOffenseID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.pkCriminalOffenseID, "---Select....---"), new { @class = "form-control", id = "CriminalOffenseID", required = "required", value = "" })
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="inputLanguageForCorrespondence" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Preferred language for correspondence<span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.fkLanguageForCorrespondenceID, new SelectList(ViewBag.LanguageCorr, "LanguageID", "LanguageName", item.fkLanguageForCorrespondenceID, "---Select Language....---"), new { @class = "form-control", id = "LanguageForCorrespondenceID", required = "required", value = "", @readonly = "readonly" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputTelNoDuringWorkingHours" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Telephone no during working hours<span class="required red" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.TextBoxFor(i => item.TelNoDuringWorkingHours, null, new { @maxLength = "10", @id = "TelNoDuringWorkingHours", required = "required", @class = "form-control", placeholder = "Enter Telephone No During Working Hours", value = "", onkeypress = "return isNumberKey(event)" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputWayForCorrespondance" class="control-label">&nbsp;</label>
+                                        <label>&nbsp;&nbsp; Preferred way of correspondence<span class="required" style="color:red;"> * </span></label>
+                                        <div>
+                                            @Html.DropDownListFor(m => item.MethodOfCommunicationID, new SelectList(ViewBag.CommunicationMethod, "MethodID", "MethodName", item.MethodOfCommunicationID, "--Select Method of Communication--"), new { @class = "form-control", required = "required" })
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group">
+        <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
+        <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
+        <div class="col-sm-10">
+            @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
+        </div>
+    </div>*@
+                                    <hr>
 
-                                                @*<span style="color:red;">@ViewBag.Note</span>*@
-                                                <br>
-                                                <br />
-                                                @*<div class="form-group">
-                  <span class="required" style="color:red;"> PDF / Word </span>
-                  <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
-                  <div class="col-sm-10">
-                    <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
-                  </div>
-                </div>*@
-                                                @*<div class="form-group">
-                  <span class="required" style="color:red;"> PDF </span>
-                  <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
-                  <div class="col-sm-10">
-                    <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
-                  </div>
-                </div>*@
-                                                {
-                                                    var terms = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
-                                                    bool t = Convert.ToBoolean(terms.TermsAndConditions);
+                                    @*<span style="color:red;">@ViewBag.Note</span>*@
+                                    <br>
+                                    <br />
+                                    @*<div class="form-group">
+      <span class="required" style="color:red;"> PDF / Word </span>
+      <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
+      <div class="col-sm-10">
+        <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
+      </div>
+    </div>*@
+                                    @*<div class="form-group">
+      <span class="required" style="color:red;"> PDF </span>
+      <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
+      <div class="col-sm-10">
+        <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
+      </div>
+    </div>*@
+                                    {
+                                        var terms = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
+                                        bool t = Convert.ToBoolean(terms.TermsAndConditions);
 
-                                                    if (t != Convert.ToBoolean(1))
-                                                    {
-                                                        <div class="form-group">
-                                                            <div class="col-sm-offset-2 col-sm-10">
-                                                                <div class="checkbox">
-                                                                    <label>
-                                                                        <input type="checkbox" name="TermsAndConditions" id="TermsAndConditions"> I agree to the <a href="#" data-toggle="modal" data-target="#myTerms">terms and conditions</a>
-                                                                    </label>
-                                                                    @*<label>
-                                        @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
-                                        <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
-                                    </label>*@
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="col-sm-offset-2 col-sm-10">
-                                                                <button type="button" id="btnPersonalInfo" class="btn btn-primary" disabled value="Submit">Save</button>
-                                                            </div>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div class="form-group">
-                                                            <div class="col-sm-offset-2 col-sm-10">
-                                                                <button type="button" id="btnPersonalInfo" class="btn btn-primary" value="Submit">Save</button>
-                                                            </div>
-                                                        </div>
-                                                    }
-                                                }
-
-
-
-                                            }
-
+                                        if (t != Convert.ToBoolean(1))
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="TermsAndConditions" id="TermsAndConditions"> I agree to the <a href="#" data-toggle="modal" data-target="#myTerms">terms and conditions</a>
+                                                        </label>
+                                                        @*<label>
+                            @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
+                            <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
+                        </label>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="button" id="btnPersonalInfo" class="btn btn-primary" disabled value="Submit">Save</button>
+                                                </div>
+                                            </div>
                                         }
+                                        else
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-10">
+                                                    <button type="button" id="btnPersonalInfo" class="btn btn-primary" value="Submit">Save</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+
+
+                                }
+
+                            }
                                         <!-- /.post -->
                                         <!-- Post -->
                                         <!-- /.post -->
@@ -1236,20 +1236,45 @@
                                     <!-- /.tab-pane -->
                                     <div class="tab-pane" id="attachments">
                                         <div ng-switch="AttachmentCRUDMode">
-                                            <div ng-switch-when="Load">
-                                                <div class="col-md-12">
-                                                    <div class="box box-default">
-                                                        <!-- /.box-header -->
-                                                        <div class="box-body">
-                                                            <div class="callout callout-warning">
-                                                                <h4>Note!</h4>
-                                                                <p>Attachments cannot be modified or deleted here, to modify the uploaded please go to Personal Information Tab and upload new one.</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.box-body -->
-                                                    </div>
-                                                    <!-- /.box -->
+                                            <div class="box-body">
+                                                <div class="callout callout-warning">
+                                                    <h4>Note!</h4>
+                                                    <p>
+                                                        Applicants applying for posts in KZN Government Departments must only upload a copy of their CV onto the system. Certified copies of supporting documents need not accompany your application and CV, as these will be requested from shortlisted applicants only.
+                                                        Applicants applying for posts in KZN Public Entities must upload copies of all documents, including certified copies of all documents as stipulated in the advert of the Public Entity.
+                                                    </p>
                                                 </div>
+                                            </div>
+                                            <div ng-switch-when="Add">
+                                                <div class="box box-success">
+
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Add Attachment</h3>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="box-body">
+                                                        <span style="color:red;">@ViewBag.Note</span>
+                                                        Attachment Name:<br />
+                                                        <select name="AttachmentName" id="AttachmentNameAdd" class="form-control">
+
+                                                            <option value="CV">CV</option>
+                                                            <option value="ID">ID</option>
+                                                            <option value="Other">Other</option>
+                                                            <option value="" selected>-- Please Select --</option>
+                                                        </select>
+                                                        <br>Attachment:
+                                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
+                                                        <br />
+                                                        <button type="submit" class="btn btn-success" ng-click="AddAttachmentInfo()"> <span class="fa fa-save success"></span> Save</button>
+                                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div ng-switch-when="Load">
+
+                                                <button id="Add" name="Add" class="btn btn-success" ng-click="AddAttachment()"><span class="fa fa-plus"></span> Add Attachment</button><br />
                                                 <br />
                                                 <table id="example1" class="table table-bordered table-striped">
                                                     <thead>
@@ -1257,7 +1282,8 @@
                                                             <th>File Name</th>
                                                             @*<th>File Type</th>*@
                                                             @*<th>Modified On</th>*@
-                                                            @*<th>Download</th>*@
+                                                            <th>Download</th>
+                                                            <th>Delete</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1265,16 +1291,27 @@
                                                             <td>@*<a href=@Url.Action("DownLoadFile", "Candidate")*@{{d.fileName}}@*></a>*@</td>
                                                             @*<td>{{d.contentType}}</td>*@
                                                             @*<td>{{d.createdon |  date:'yyyy-MM-dd'}}</td>*@
-                                                            @*<td>*@
-                                                            @*<a class="btn btn-xs btn-success btn-xs" href='@Url.Action("DownLoadFile", "Candidate", new { id = d.fileName} )' data-toggle="tooltip" data-placement="left" title="Download file">
-                                                                <i class="ace-icon fa fa-download bigger-120"> Download</i>
-                                                            </a>*@
-                                                            @*</td>*@
+                                                            <td>
+
+                                                                <a class="btn btn-xs btn-success btn-xs" href='@Url.Action("DownloadAttachment", "Candidate" )?id={{d.attachmentID}}' data-toggle="tooltip" data-placement="left" title="Download file">
+                                                                    <i class="ace-icon fa fa-download bigger-120"> Download</i>
+                                                                </a>
+                                                            </td>
+
+                                                            <td>
+                                                                <a class="btn btn-xs btn-danger btn-xs" href='' data-toggle="tooltip" data-placement="left" title="Delete file" ng-click="DeleteAttachment()">
+                                                                    <span><input type="hidden" id="btnDeleteAttachment" value="{{d.attachmentID}}" /></span> <i class="ace-icon fa danger bigger-120"> Delete</i>
+                                                                </a>
+
+
+                                                            </td>
+
                                                         </tr>
                                                     </tbody>
                                                 </table>
+
                                             </div>
-                                            <div ng-switch-when="Add">
+                                            @*<div ng-switch-when="Add">
                                                 <div class="box box-success">
                                                     <div class="box-header with-border">
                                                         <h3 class="box-title">Add Attachment</h3>
@@ -1290,7 +1327,7 @@
                                                         <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>*@
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
