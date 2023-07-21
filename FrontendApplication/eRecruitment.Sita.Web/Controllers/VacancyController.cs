@@ -1847,7 +1847,8 @@ namespace eRecruitment.Sita.Web.Controllers
                           PhoneNumber = a.CellNo,
                           RecruiterEmail = c.RecruiterEmail,
                           JobApplied = d.JobTitle + " - " + " Job Level: " + f.JobLevelName + " Reference No: " + c.ReferenceNo,
-                          OrganisationName = g.OrganisationName + " (" + g.OrganisationCode + ")"
+                          OrganisationName = g.OrganisationName + " (" + g.OrganisationCode + ")",
+                          Correspondence=a.CorrespondanceDetails
                         };
 
         foreach (var d in candidate)
@@ -1855,7 +1856,7 @@ namespace eRecruitment.Sita.Web.Controllers
           profileID = d.ProfileID;
           FullName = d.FullName;
           JobApplied = d.JobApplied;
-          email = d.email;
+          email = d.Correspondence;
           PhoneNumber = d.PhoneNumber;
           recruiteremail = d.RecruiterEmail;
           organisationName = d.OrganisationName;
