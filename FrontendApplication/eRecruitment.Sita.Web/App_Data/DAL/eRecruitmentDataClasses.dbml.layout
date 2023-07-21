@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 30, 36.125" name="eRecruitmentDataClasses">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 30, 37.375" name="eRecruitmentDataClasses">
   <DataContextMoniker Name="/eRecruitmentDataClassesDataContext" />
   <nestedChildShapes>
     <classShape Id="bece16b3-7c28-4bed-ac19-734b6648688b" absoluteBounds="3.75, 0.75, 2, 1.1939925130208335">
@@ -602,10 +602,10 @@
         <elementListCompartment Id="44bf3bc7-b8d3-45c0-9567-c138f0c9511f" absoluteBounds="5.515, 8.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="558707fa-7d35-4d3f-9da8-1f446ab8d9eb" absoluteBounds="4, 8.125, 2, 1.9631982421875">
+    <classShape Id="dd5566b9-7d39-4833-83db-07154a21d5e2" absoluteBounds="5.625, 35.125, 2, 1.9631982421875">
       <DataClassMoniker Name="/eRecruitmentDataClassesDataContext/tblVacancySalary" />
       <nestedChildShapes>
-        <elementListCompartment Id="a1d02737-82b4-496b-9427-6ffae0edcc4e" absoluteBounds="4.015, 8.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e2e01cd4-a0a6-4fe9-8d1c-c0c538e1c00f" absoluteBounds="5.64, 35.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -121,7 +121,8 @@
                                                         {
                                                             QualificationType = c.QualificationTypeName,
                                                             InstitutionName = a.InstitutionName,
-                                                            QualificationName = a.QualificationName
+                                                            QualificationName = a.QualificationName,
+                                                            EmailAddress=b.EmailAddress
                                                         }).Take(1);
 
                                         }
@@ -130,9 +131,11 @@
                                             foreach (var q in qual)
                                             {
                                                 string qualname = string.Format("{0} from the University of {1}", @q.QualificationName, @q.InstitutionName);
+                                                string email = q.EmailAddress;
                                                 <div> @qualname</div>
                                             }
                                         }
+                                    
                                     </p>
                                     <hr>
                                     <strong><i class="margin-r-5"></i> Location</strong>
@@ -451,7 +454,7 @@
                                                     <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return isNotCharacter(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryProceedingID">
@@ -471,7 +474,7 @@
 
                                                 <div class="form-group" id="Business">
                                                     <label for="inputBusiness" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State <span class="required" style="color:red;"> * </span></label>
+                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company<br /> conducting business with the State <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.Business, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", onchange = "CheckBusiness()", id = "BusinessID", required = "required", value = "" })
                                                     </div>
@@ -480,7 +483,7 @@
                                                     <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return isNotCharacter(event)" })
                                                     </div>
                                                 </div>
 
@@ -496,7 +499,7 @@
                                                     <label for="inputYearsExperience" class="control-label"></label>
                                                     <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        <label>&nbsp;&nbsp;Plrivate Sector:<span class="required" style="color:red;"> * </span></label>
+                                                        <label>&nbsp;&nbsp;Private Sector:<span class="required" style="color:red;"> * </span></label>
 
                                                         @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
@@ -516,6 +519,7 @@
                                                         @Html.DropDownListFor(m => item.fkDisabilityID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.fkDisabilityID, "--Please Select--"), new { @class = "form-control", onchange = "CheckDisability()", id = "AnswerID", required = "required", value = "" })
                                                     </div>
                                                 </div>
+                                               
                                                 <div class="form-group" id="DisabilityDetails">
                                                     <label for="inputDisabilityDetails" class="col-sm-2 control-label">Disability Details<span class="required"></span></label>
                                                     <div class="col-sm-10">
@@ -577,9 +581,18 @@
                                                     <label for="inputWayForCorrespondance" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; Preferred way of correspondence<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        @Html.DropDownListFor(m => item.MethodOfCommunicationID, new SelectList(ViewBag.CommunicationMethod, "MethodID", "MethodName", item.MethodOfCommunicationID, "--Select Method of Communication--"), new { @class = "form-control", required = "required" })
+                                                        @Html.DropDownListFor(m => item.MethodOfCommunicationID, new SelectList(ViewBag.CommunicationMethod, "MethodID", "MethodName", item.MethodOfCommunicationID, "--Select Method of Communication--"), new { @class = "form-control",id="methodofCommunicationId", required = "required", onchange = "checkMethodofCommunication()" })
                                                     </div>
                                                 </div>
+                                                <div class="form-group" id="EmailTextbox">
+                                                    <label for="EmailMethodofCommunication" class="control-label">&nbsp;</label>
+                                                    <label>&nbsp;&nbsp;Correspondance email:<span class="required red" style="color:red;"> * </span></label>
+                                                    <div>
+                                                        
+                                                        @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "EmailAddress", required = "required", @class = "form-control", placeholder = "Enter emailAddress", value=  ""})
+                                                    </div>
+                                                </div>
+
                                                 @*<div class="form-group">
                     <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
                     <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
@@ -2164,14 +2177,22 @@
 
     function CheckDisabilityNature() {
         var d = $("#DisabilityID").val();
-        if (d == 11) {
+        if (d == 18) {
             $("#OtherNatureOfDisability").show();
         }
         else {
             $("#OtherNatureOfDisability").hide();
         }
     }
-
+    function checkMethodofCommunication() {
+        var d = $("#methodofCommunicationId").val();
+        if (d == 3) {
+            $("#EmailTextbox").show();
+        }
+        else {
+            $("#EmailTextbox").hide();
+        }
+    }
     function CheckNationality() {
         var d = $("#CitizenID").val();
         if (d == 2) {
@@ -2212,6 +2233,7 @@
         CheckBusiness();
         CheckCriminalCase();
         CheckDisciplinary();
+        checkMethodofCommunication();
 
         $("#DateOfBirth").datepicker({
             format: 'dd/mm/yyyy',
@@ -2324,6 +2346,19 @@
         return true;
     }
 
+    function isNotCharacter(evt) {
+        //var e = evt || window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (
+            (charCode >= 48 && charCode <= 57) ||  // 0-9
+            (charCode >= 65 && charCode <= 90) ||  // A-Z
+            (charCode >= 97 && charCode <= 122) || // a-z
+            charCode === 32 ||                     // Space
+            charCode === 46                        // Decimal point '.'
+        )
+            return true;
+            return false;
+    }
     function ValidateAlpha(evt) {
         var keyCode = (evt.which) ? evt.which : evt.keyCode
         if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
@@ -2589,10 +2624,10 @@
             $('#disabilityModel').modal('show');
             return;
         }
-        else if ($('#item_MethodOfCommunicationID').val() == null || $('#item_MethodOfCommunicationID').val() == '' || $('#item_MethodOfCommunicationID') == -1) {
-            $('#CorrespondenceModel').modal('show');
-            return;
-        }
+        //else if ($('#item_MethodOfCommunicationID').val() == null || $('#item_MethodOfCommunicationID').val() == '' || $('#item_MethodOfCommunicationID') == -1) {
+        //    $('#CorrespondenceModel').modal('show');
+        //    return;
+        //}
         else {
             document.getElementById("myForm").submit();
 

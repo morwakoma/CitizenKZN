@@ -94,8 +94,8 @@ namespace eRecruitment.Sita.Web.Models
         public string CriminalCaseDesc { get; set; }
         public int YearsofExperiencePublic { get; set; }
         public int YearsExperiencePrivate { get; set; }
-
-        public int DisciplinaryProceeding { get; set; }
+       
+       public int DisciplinaryProceeding { get; set; }
         public int RetiredorDiscarged { get; set; }
         public int Business { get; set; }
         public int Misconduct { get; set; }

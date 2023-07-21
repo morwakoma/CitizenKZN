@@ -218,15 +218,15 @@ namespace eRecruitment.Sita.Web.Controllers
                 table.AddCell(cellSalaryRangeContent);
 
                 //Organisation
-                PdfPCell cellOrganisationName = new PdfPCell(new Phrase("Organisation Name:", font));
-                cellOrganisationName.Colspan = 1;
-                cellOrganisationName.HorizontalAlignment = Element.ALIGN_LEFT;
-                table.AddCell(cellOrganisationName);
+                //PdfPCell cellOrganisationName = new PdfPCell(new Phrase("Organisation Name:", font));
+                //cellOrganisationName.Colspan = 1;
+                //cellOrganisationName.HorizontalAlignment = Element.ALIGN_LEFT;
+                //table.AddCell(cellOrganisationName);
 
-                PdfPCell cellOrganisationNameContent = new PdfPCell(new Phrase(data.OrganisationName.ToString(), font));
-                cellOrganisationNameContent.Colspan = 1;
-                cellOrganisationNameContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
-                table.AddCell(cellOrganisationNameContent);
+                //PdfPCell cellOrganisationNameContent = new PdfPCell(new Phrase(data.OrganisationName.ToString(), font));
+                //cellOrganisationNameContent.Colspan = 1;
+                //cellOrganisationNameContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
+                //table.AddCell(cellOrganisationNameContent);
 
                 //table.AddCell("Report To: ");
                 //table.AddCell(data.Manager);
