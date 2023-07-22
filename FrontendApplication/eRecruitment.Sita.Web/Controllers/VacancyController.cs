@@ -291,7 +291,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 cellLocation.HorizontalAlignment = Element.ALIGN_LEFT;
                 table.AddCell(cellLocation);
 
-                PdfPCell cellLocationContent = new PdfPCell(new Phrase(data.Location.ToString(), font));
+                PdfPCell cellLocationContent = new PdfPCell(new Phrase(data.Centre.ToString(), font));
                 cellLocationContent.Colspan = 1;
                 cellLocationContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
                 table.AddCell(cellLocationContent);
@@ -2037,7 +2037,7 @@ namespace eRecruitment.Sita.Web.Controllers
           JobLevel = data.JobLevel,
           Salary = data.Salary,
           OrganisationName = data.OrganisationName,
-          Manager = data.Manager,
+          //Manager = data.Manager,
           Race = data.Race,
           Gender = data.Gender,
           ////Deviation = Convert.ToString(a.DeligationReasons,
@@ -2046,7 +2046,7 @@ namespace eRecruitment.Sita.Web.Controllers
           EmploymentType = data.EmploymentType,
           ContractDuration = data.ContractDuration,
           ClosingDate = data.ClosingDate,
-          Location = data.Location,
+          Centre= data.Centre,
           //Recruiter = data.Recruiter,
           //RecruiterEmail = data.ReplyTo,
           NumberOfOpenings = (int)data.NumberOfOpenings,
@@ -2214,7 +2214,7 @@ namespace eRecruitment.Sita.Web.Controllers
             {
 
                 int? vacancyid = _dal.UpdateVacancy(id, userID, item.ReferenceNo, item.VacancyName, item.JobTitle, item.JobLevelID, item.OrganisationID,
-                 item.Recruiter, item.Location, item.ContractDuration, item.Manager, item.EmploymentTypeID, item.SalaryRange, item.Responsibility
+                 item.Recruiter, item.Centre, item.ContractDuration, item.Manager, item.EmploymentTypeID, item.SalaryRange, item.Responsibility
                 , item.QualificationsandExperience, item.TechnicalCompetenciesDescription, item.OtherSpecialRequirements, Convert.ToString(item.ClosingDate), item.Disclaimer, item.VacancyPurpose, item.RecruiterEmail, item.RecruiterTel
                 ,item.NumberOfOpenings,item.VacancyProfileID, item.DepartmentID,item.DivisionID,item.VancyTypeID, DateTime.Now);
                 if (vacancyid != null)

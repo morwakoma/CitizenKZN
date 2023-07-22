@@ -39,7 +39,9 @@
     <div class="box-body">
       @{
         //DateTime currentdate = Convert.ToDateTime(DateTime.Now.ToString("d"));
-        var appvac = _db.tblVacancies.Where(h => h.ClosingDate >= Convert.ToDateTime(DateTime.Now.ToString("d")) && h.StatusID == 3).Select(h => h.ID).Count();
+
+
+        var appvac = _db.tblVacancies.Where(h => h.ClosingDate >= Convert.ToDateTime(DateTime.Now) && h.StatusID == 3).Select(h => h.ID).Count();
 
         if (appvac > 0)
         {

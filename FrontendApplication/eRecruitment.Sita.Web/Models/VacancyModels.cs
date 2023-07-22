@@ -14,7 +14,7 @@ namespace eRecruitment.Sita.Web.Models
        // public string VacancyName { get; set; }
         public string JobTitle { get; set; }
         public string Department { get; set; }
-        public string Location { get; set; }
+        public string Centre { get; set; }
         public string EmploymentType { get; set; }
         public string Organisation { get; set; }
         public string CreatedDate { get; set; }
@@ -52,7 +52,7 @@ namespace eRecruitment.Sita.Web.Models
         [Required]
         public string RecruiterTel { get; set; }
         public int StatusID { get; set; }
-        public string Location { get; set; }
+        public string Centre { get; set; }
        
         public string Manager { get; set; }
         [Required]

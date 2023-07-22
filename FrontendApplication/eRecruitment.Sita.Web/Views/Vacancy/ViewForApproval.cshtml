@@ -167,13 +167,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Number Of Openings</label>
+                            <label>Number Of Posts</label>
                             @Html.TextAreaFor(m => @item.NumberOfOpenings, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
                         </div>
-                        <div class="col-md-12">
+                        @*<div class="col-md-12">
                             <label>Purpose of the Job</label>
                             @Html.TextAreaFor(m => @item.VacancyPurpose, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
-                        </div>
+                        </div>*@
                         <div class="col-md-12">
                             <label>Responsibilities</label>
                             @Html.TextAreaFor(m => @item.Responsibility, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
@@ -182,12 +182,12 @@
                             <label>Qualifications And Experience</label>
                             @Html.TextAreaFor(m => @item.QualificationsandExperience, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
                         </div>
-                        <div class="col-md-12">
+                        @*<div class="col-md-12">
                             <label>Technical Competencies Description</label>
                             @Html.TextAreaFor(m => @item.TechnicalCompetenciesDescription, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
-                        </div>
+                        </div>*@
                         <div class="col-md-12">
-                            <label>Additional Requirements</label>
+                            <label>Additional Information</label>
                             @Html.TextAreaFor(m => @item.OtherSpecialRequirements, new { @class = "form-control", disabled = "disabled", @readonly = "readonly" })
                         </div>
                         <div class="col-md-12">

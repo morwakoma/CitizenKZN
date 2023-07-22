@@ -336,10 +336,10 @@ angular.module('mainApp', []).controller('mainCtrl', ['$scope', function ($scope
         fd.append("file", files[0]);
         fd.append("DocumentType", DocumentType);
         fd.append("IDNumber", $("#IDNum").val());
-
+        var baseUrl = $("#myAttachmentID").val();
 
         $.ajax({
-            url: "/Candidate/AddAttachment",
+            url: baseUrl,
             type: "POST",
             contentType: false, 
             processData: false,
