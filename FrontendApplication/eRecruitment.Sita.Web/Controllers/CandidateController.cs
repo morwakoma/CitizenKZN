@@ -218,7 +218,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 e.CorrespondanceDetails = e.EmailAddress;
               }
                    
-
+              
                     P.Add(e);
 
 
@@ -297,7 +297,7 @@ namespace eRecruitment.Sita.Web.Controllers
             int? ProfessionallyRegisteredID = item.ProfessionallyRegisteredID;
             string RegistrationDate = Convert.ToString(item.RegistrationDate);
             string RegistrationNumber = item.RegistrationNumber;
-            string RegistrationBody = item.RegistrationBody;
+            string RegistrationBody = this.RemoveSpecialCharacters(item.RegistrationBody);
             int? PreviouslyEmployedPS = item.PreviouslyEmployedPS;
             string ReEmployment = item.ReEmploy;
             string PreviouslyEmployedDepartment = item.PreviouslyEmployedDepartment;
@@ -429,7 +429,7 @@ namespace eRecruitment.Sita.Web.Controllers
 
             return RedirectToAction("MyProfile", "Candidate");
         }
-
+     
         [HttpGet]
         public JsonResult GetCandidateEducationList()
         {

@@ -282,14 +282,21 @@ namespace eRecruitment.Sita.Web
     {
       using (eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext _db = new eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext())
       {
-        var data = (from a in _db.tblCandidateVacancyApplications
-                    join b in _db.tblVacancies on a.VacancyID equals b.ID
-                    join e in _db.lutJobTitles on b.JobTitleID equals e.JobTitleID
-                    join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
-                    where a.UserID == uid
-                    select a.ApplicationID).Count();
+                //var data = (from a in _db.tblCandidateVacancyApplications
+                //            join b in _db.tblVacancies on a.VacancyID equals b.ID
+                //            join e in _db.lutJobTitles on b.JobTitleID equals e.JobTitleID
+                //            join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
+                //            where a.UserID == uid
+                //            select a.ApplicationID).Count();
 
-        return data;
+                var data = (from a in _db.tblCandidateVacancyApplications
+                            join b in _db.tblVacancies on a.VacancyID equals b.ID
+                            join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
+                            where a.UserID == uid
+                            select a.ApplicationID).Count();
+
+
+                return data;
       }
     }
 

@@ -22,7 +22,7 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="eRecruitmentDBKZN")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="eRecruitmentDBKZNDev")]
 	public partial class eRecruitmentDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		

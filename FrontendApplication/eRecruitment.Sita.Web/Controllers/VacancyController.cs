@@ -1614,6 +1614,7 @@ namespace eRecruitment.Sita.Web.Controllers
         {
             string uid = User.Identity.GetUserId();
             var IDNumber = _dal.GetProfileIDNumber(uid);
+            
 
             //================Peter 20220922====================
             Session["sessUserIDnumber"] = IDNumber;
@@ -1780,6 +1781,10 @@ namespace eRecruitment.Sita.Web.Controllers
             VacancyModels vacancyQuestion = new VacancyModels();
             vacancyQuestion = _dal.GetVacancyQuestionIDPerVacancy((int)id);
             int VacancyQuestionID = vacancyQuestion.ID;
+            //int profileID1 = (from a in _db.tblProfiles
+            //                 where a.UserID == uid
+            //                 select a.pkProfileID).FirstOrDefault();
+            //var CVAttached = _db.Attachments.Where(x => x.ProfileID == profileID1 && x.DocumentType == "CV").Count();
 
             if (CandidateVacancyResponseID != null)
             {
@@ -1807,7 +1812,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 ViewBag.ErrorMessage = "You must select one of the Question Banks provided!";
                 ModelState.AddModelError("", "You must select one of the Question Banks provided");
             }
-
+         
             if (!ModelState.IsValid)
             {
                 string msg = "You must select one of the Question Banks provided!";
