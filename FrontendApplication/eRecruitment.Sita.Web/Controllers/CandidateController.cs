@@ -128,7 +128,7 @@ namespace eRecruitment.Sita.Web.Controllers
       ViewBag.LanguageProficiency = _dal.GetLanguageProficiencyList();
       ViewBag.SkillProficiency = _dal.GetSkillProficiencyList();
       ViewBag.Skills = _dal.GetSkillsList();
-
+     
       //ViewBag.Education = _dal.GetQualificationByProfileID(userid);
       //ViewBag.WorkHistory = _dal.GetWorkHistoryByProfileID(userid);
       //ViewBag.References = _dal.GetReferenceByProfileID(userid);
@@ -144,7 +144,7 @@ namespace eRecruitment.Sita.Web.Controllers
         var d = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
                 _dal.insertProfile(-1, "", -1, "", -1, -1, "", -1, -1, -1, "", -1, "", 0,0, d.pkProfileID);
 
-
+                ViewBag.Email = d.EmailAddress;
 
                 var f = _db.Z83Questions.Where(x => x.ProfileID == d.pkProfileID).FirstOrDefault();
          if (d != null)
@@ -192,27 +192,16 @@ namespace eRecruitment.Sita.Web.Controllers
           //e.MatricID = Convert.ToInt32(d.MatricID);
           e.DriversLicenseID = d.DriversLicenseID;
           e.MatricID = d.MatricID;
-                    
-        
-                    e.CriminalCase = (int)f.CriminalCase;
-
-                    e.CriminalCaseDesc = Convert.ToString(f.CriminalCaseDesc);
-
-                    e.Misconduct = Convert.ToInt32(f.Misconduct);
-
-                    e.MisconductDesc = Convert.ToString(f.MisconductDesc);
-
-                    e.Business = Convert.ToInt32(f.Business);
-
-                    e.BusinessDesc = Convert.ToString(f.BusinessDesc);
-
-                    e.RelinquishBusiness = Convert.ToInt32(f.RelinquishBusiness);
-
-                    e.YearsExperiencePrivate = Convert.ToInt32(f.YearsExperiencePrivate);
-                    e.YearsofExperiencePublic = Convert.ToInt32(f.YearsofExperiencePublic);
-
-
-                    e.DisciplinaryProceeding = Convert.ToInt32(f.DisciplinaryProceeding);
+          e.CriminalCase = (int)f.CriminalCase;
+          e.CriminalCaseDesc = Convert.ToString(f.CriminalCaseDesc);
+          e.Misconduct = Convert.ToInt32(f.Misconduct);
+          e.MisconductDesc = Convert.ToString(f.MisconductDesc);
+          e.Business = Convert.ToInt32(f.Business);
+          e.BusinessDesc = Convert.ToString(f.BusinessDesc);
+          e.RelinquishBusiness = Convert.ToInt32(f.RelinquishBusiness);
+          e.YearsExperiencePrivate = Convert.ToInt32(f.YearsExperiencePrivate);
+          e.YearsofExperiencePublic = Convert.ToInt32(f.YearsofExperiencePublic);
+          e.DisciplinaryProceeding = Convert.ToInt32(f.DisciplinaryProceeding);
 
                     e.RetiredorDiscarged = Convert.ToInt32(f.RetiredorDiscarged);
 
@@ -223,7 +212,16 @@ namespace eRecruitment.Sita.Web.Controllers
                     e.CriminalOffence = Convert.ToInt32(f.CriminalOffence);
 
                     e.CriminalOffenceDesc = Convert.ToString(f.CriminalOffenceDesc);
+              if(e.CorrespondanceDetails==null)
+             {
+
+                e.CorrespondanceDetails = e.EmailAddress;
+              }
+                   
+              
                     P.Add(e);
+
+
         }
         else
         {
@@ -299,7 +297,7 @@ namespace eRecruitment.Sita.Web.Controllers
             int? ProfessionallyRegisteredID = item.ProfessionallyRegisteredID;
             string RegistrationDate = Convert.ToString(item.RegistrationDate);
             string RegistrationNumber = item.RegistrationNumber;
-            string RegistrationBody = item.RegistrationBody;
+            string RegistrationBody = this.RemoveSpecialCharacters(item.RegistrationBody);
             int? PreviouslyEmployedPS = item.PreviouslyEmployedPS;
             string ReEmployment = item.ReEmploy;
             string PreviouslyEmployedDepartment = item.PreviouslyEmployedDepartment;
@@ -321,7 +319,7 @@ namespace eRecruitment.Sita.Web.Controllers
             string CriminalOffenceDesc = Convert.ToString(item.CriminalOffenceDesc);
             int DisciplinaryCase = Convert.ToInt32(item.DisciplinaryCase);
             string DisciplinaryCaseDesc = Convert.ToString(item.DisciplinaryCaseDesc);
-          
+            
 
             //TempData["Message"] = "Operation successful!";
             _dal.UpdateProfileInfo(Userid, IDNumber, Surname, FirstName, DateOfBirth, (int)fkRaceID
@@ -431,7 +429,7 @@ namespace eRecruitment.Sita.Web.Controllers
 
             return RedirectToAction("MyProfile", "Candidate");
         }
-
+     
         [HttpGet]
         public JsonResult GetCandidateEducationList()
         {

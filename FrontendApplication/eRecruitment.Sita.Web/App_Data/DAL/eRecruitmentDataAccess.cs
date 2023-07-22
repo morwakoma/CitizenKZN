@@ -282,14 +282,21 @@ namespace eRecruitment.Sita.Web
     {
       using (eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext _db = new eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext())
       {
-        var data = (from a in _db.tblCandidateVacancyApplications
-                    join b in _db.tblVacancies on a.VacancyID equals b.ID
-                    join e in _db.lutJobTitles on b.JobTitleID equals e.JobTitleID
-                    join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
-                    where a.UserID == uid
-                    select a.ApplicationID).Count();
+                //var data = (from a in _db.tblCandidateVacancyApplications
+                //            join b in _db.tblVacancies on a.VacancyID equals b.ID
+                //            join e in _db.lutJobTitles on b.JobTitleID equals e.JobTitleID
+                //            join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
+                //            where a.UserID == uid
+                //            select a.ApplicationID).Count();
 
-        return data;
+                var data = (from a in _db.tblCandidateVacancyApplications
+                            join b in _db.tblVacancies on a.VacancyID equals b.ID
+                            join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
+                            where a.UserID == uid
+                            select a.ApplicationID).Count();
+
+
+                return data;
       }
     }
 
@@ -815,9 +822,9 @@ namespace eRecruitment.Sita.Web
           e.ReferenceNo = Convert.ToString(d.ReferenceNo);
           e.JobTitle = Convert.ToString(d.JobTitle);
           e.Department = Convert.ToString(d.DepartmentDiscription);
-          e.Location = Convert.ToString(d.LocationDiscription);
+          e.Centre = Convert.ToString(d.Centre);
           e.EmploymentType = Convert.ToString(d.EmploymentType);
-          e.Salary = Convert.ToString(d.SalaryRange);
+          e.Salary = Convert.ToString(d.Salary);
           e.CreatedDate = Convert.ToDateTime(d.CreatedDate).ToShortDateString();
           e.ClosingDate = Convert.ToDateTime(d.ClosingDate).ToShortDateString();
           p.Add(e);
@@ -832,9 +839,9 @@ namespace eRecruitment.Sita.Web
       
       using (eRecruitmentDataClassesDataContext _db = new eRecruitmentDataClassesDataContext())
       {
-        var d = _db.GetTotalApprovedVacancyListForCandidates(id).FirstOrDefault();
+        var d = _db.GetApprovedVacancyListForCandidates(id).Count();
 
-        int totalJobs = (int)d.TotalJobs;
+        int totalJobs = (int)d;
 
         return totalJobs;
 

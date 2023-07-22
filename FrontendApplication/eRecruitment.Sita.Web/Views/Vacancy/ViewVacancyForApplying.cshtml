@@ -145,8 +145,8 @@
                                     <dt>Closing Date:</dt>
                                     <dd>@Html.DisplayFor(model => model.ClosingDate)</dd>
                                     <dt>Center:</dt>
-                                    <dd>@Html.DisplayFor(model => model.Location)</dd>
-                                    <dt>Number of Openings:</dt>
+                                    <dd>@Html.DisplayFor(model => model.Centre)</dd>
+                                    <dt>Number of Posts:</dt>
                                     <dd>@Html.DisplayFor(model => model.NumberOfOpenings)</dd>
 
                                     @*<dt>Recruiter:</dt>
@@ -161,12 +161,12 @@
             <dt>Deviation Reason:</dt>
             <dd>Model.Deviation </dd>
         }*@
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Purpose of the Job:</label>
-                                            @Html.TextAreaFor(model => model.VacancyPurpose, new { @id = "VacancyPurpose", @class = "form-control", @rows = "3", placeholder = "Purpose of the Job", disabled = "disabled", tabindex = 15, @readonly = "readonly" })
-                                        </div>
-                                    </div>
+                                    @*<div class="form-group">
+            <div class="col-md-12">
+                <label>Purpose of the Job:</label>
+                @Html.TextAreaFor(model => model.VacancyPurpose, new { @id = "VacancyPurpose", @class = "form-control", @rows = "3", placeholder = "Purpose of the Job", disabled = "disabled", tabindex = 15, @readonly = "readonly" })
+            </div>
+        </div>*@
 
                                     <div class="form-group">
                                         <div class="col-md-12">
@@ -184,42 +184,42 @@
 
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <label>Knowledge:</label>
+                                            <label>Essential Knowledge, Skills  and  Competencies Required</label>
                                             @Html.TextAreaFor(model => model.Knowledge, new { @id = "Knowledge", @class = "form-control", @rows = "3", placeholder = "Knowledge required for the Job", disabled = "disabled", tabindex = 17 })
                                         </div>
                                     </div>
 
-                                    @if (ViewBag.TechnicalComp != null)
-                                    {
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label style="font-weight: bold;">Technical Competencies:</label>
-                                                <textarea id="TechnicalCompetencyID" name="TechnicalCompetencyID" class="form-control" rows="5" placeholder="Technical Competencies Description" disabled="disabled" tabindex=18>@ViewBag.TechnicalComp</textarea>
-                                            </div>
-                                        </div>
-                                    }
+                                    @*@if (ViewBag.TechnicalComp != null)
+        {
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label style="font-weight: bold;">Technical Competencies:</label>
+                    <textarea id="TechnicalCompetencyID" name="TechnicalCompetencyID" class="form-control" rows="5" placeholder="Technical Competencies Description" disabled="disabled" tabindex=18>@ViewBag.TechnicalComp</textarea>
+                </div>
+            </div>
+        }
 
-                                   
-                                        @if (ViewBag.LeadershipComp != null)
-                                        {
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label style="font-weight: bold;">Leadership Competencies:</label>
-                                                    <textarea id="LeadershipCompetencyID" name="LeadershipCompetencyID" class="form-control" rows="5" placeholder="Leadership Competencies Description" disabled="disabled" tabindex=19>@ViewBag.LeadershipComp</textarea>
-                                                </div>
-                                            </div>
-                                        }
-                                   
 
-                                    @if (ViewBag.BehaviouralComp != null)
-                                    {
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label style="font-weight: bold;">Interpersonal and Behavioural Competencies:</label>
-                                                <textarea id="BehaviouralCompetencyID" name="BehaviouralCompetencyID" class="form-control" rows="5" placeholder="Behavioural Competencies Description" disabled="disabled" tabindex=20>@ViewBag.BehaviouralComp</textarea>
-                                            </div>
-                                        </div>
-                                    }
+            @if (ViewBag.LeadershipComp != null)
+            {
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label style="font-weight: bold;">Leadership Competencies:</label>
+                        <textarea id="LeadershipCompetencyID" name="LeadershipCompetencyID" class="form-control" rows="5" placeholder="Leadership Competencies Description" disabled="disabled" tabindex=19>@ViewBag.LeadershipComp</textarea>
+                    </div>
+                </div>
+            }
+
+
+        @if (ViewBag.BehaviouralComp != null)
+        {
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label style="font-weight: bold;">Interpersonal and Behavioural Competencies:</label>
+                    <textarea id="BehaviouralCompetencyID" name="BehaviouralCompetencyID" class="form-control" rows="5" placeholder="Behavioural Competencies Description" disabled="disabled" tabindex=20>@ViewBag.BehaviouralComp</textarea>
+                </div>
+            </div>
+        }*@
 
 
 
@@ -252,7 +252,7 @@
 
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <label>Additional Requirements:</label>
+                                            <label>Additional Information:</label>
                                             @Html.TextAreaFor(model => model.OtherSpecialRequirements, new { @id = "AdditonalRequirements", @class = "form-control", @rows = "3", placeholder = "Additional Requirements for the Job", disabled = "disabled", tabindex = 19 })
                                         </div>
                                     </div>
@@ -340,124 +340,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <div class="box box-warning">
-                                                    <div class="box-header with-border">
-                                                        <h3 class="box-title">My years of experience:<span class="required" style="color:red;"> * </span></h3>
-                                                    </div>
-                                                    <!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        @{
-                                                            int vidE = ViewBag.VacancyID;
-                                                            var dataE = _db.tblVacancyQuestions.Where(p => p.VacancyID == vidE).Select(x => x.QuestionID).ToList();
-
-                                                        }
-
-                                                        @if (ViewBag.QuetionExperienceCat != null)
-                                                        {
-                                                            foreach (var d in ViewBag.QuetionExperienceCat)
-                                                            {
-                                                                <div class="checkbox">
-                                                                    <label>
-
-                                                                        <input type="checkbox"
-                                                                               name="CandidateVacancyResponseID"
-                                                                               value="@d.QuestionID" /> @d.QuestionDesc
-                                                                        </label>
-                                                                    </div>
-
-                                                                }
-
-                                                            }
-
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <div class="box box-primary">
-                                                    <div class="box-header with-border">
-                                                        <h3 class="box-title">I have the following certification/s:</h3>
-                                                    </div>
-                                                    <!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        @{
-                                                            int vidC = ViewBag.VacancyID;
-                                                            var dataC = _db.tblVacancyQuestions.Where(p => p.VacancyID == vidC).Select(x => x.QuestionID).ToList();
-
-                                                        }
-
-                                                        @if (ViewBag.QuetionCertificationCat != null)
-                                                        {
-                                                            foreach (var d in ViewBag.QuetionCertificationCat)
-                                                            {
-                                                                <div class="checkbox">
-                                                                    <label>
-
-                                                                        <input type="checkbox"
-                                                                               name="CandidateVacancyResponseID"
-                                                                               value="@d.QuestionID" /> @d.QuestionDesc
-                                                                        </label>
-                                                                    </div>
-
-                                                                }
-
-                                                            }
-
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <div class="box box-primary">
-                                                    <div class="box-header with-border">
-                                                        <h3 class="box-title">My annual salary is:</h3>
-                                                    </div>
-                                                    <!-- /.box-header -->
-                                                    <div class="box-body">
-                                                        @{
-                                                            int vidAS = ViewBag.VacancyID;
-                                                            var dataAS = _db.tblVacancyQuestions.Where(p => p.VacancyID == vidAS).Select(x => x.QuestionID).ToList();
-
-                                                        }
-
-                                                        @if (ViewBag.QuetionAnnualSalaryCat != null)
-                                                        {
-                                                            foreach (var d in ViewBag.QuetionAnnualSalaryCat)
-                                                            {
-                                                                <div class="checkbox">
-                                                                    <label>
-
-                                                                        <input type="checkbox"
-                                                                               name="CandidateVacancyResponseID"
-                                                                               value="@d.QuestionID" /> @d.QuestionDesc
-                                                                        </label>
-                                                                    </div>
-
-                                                                }
-
-                                                            }
-
-                                                    </div>
-                                                    <!-- /.box-body -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -497,9 +379,120 @@
                                         </div>
                                     </div>
 
+                                    <!--<div class="col-md-6">
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">My years of experience:<span class="required" style="color:red;"> * </span></h3>
+                </div>-->
+                                    <!-- /.box-header -->
+                                    <!--<div class="box-body">
+        @{
+            int vidE = ViewBag.VacancyID;
+            var dataE = _db.tblVacancyQuestions.Where(p => p.VacancyID == vidE).Select(x => x.QuestionID).ToList();
 
+        }
 
+        @if (ViewBag.QuetionExperienceCat != null)
+        {
+            foreach (var d in ViewBag.QuetionExperienceCat)
+            {
+                <div class="checkbox">
+                    <label>
 
+                        <input type="checkbox"
+                               name="CandidateVacancyResponseID"
+                               value="@d.QuestionID" /> @d.QuestionDesc
+                        </label>
+                    </div>
+
+                }
+
+            }
+
+    </div>-->
+                                    <!-- /.box-body -->
+                                    <!--</div>
+            </div>
+        </div>
+    </div>-->
+                                    <!--<div class="col-md-6">
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">I have the following certification/s:</h3>
+                </div>-->
+                                    <!-- /.box-header -->
+                                    <!--<div class="box-body">
+        @{
+            int vidC = ViewBag.VacancyID;
+            var dataC = _db.tblVacancyQuestions.Where(p => p.VacancyID == vidC).Select(x => x.QuestionID).ToList();
+
+        }
+
+        @if (ViewBag.QuetionCertificationCat != null)
+        {
+            foreach (var d in ViewBag.QuetionCertificationCat)
+            {
+                <div class="checkbox">
+                    <label>
+
+                        <input type="checkbox"
+                               name="CandidateVacancyResponseID"
+                               value="@d.QuestionID" /> @d.QuestionDesc
+                        </label>
+                    </div>
+
+                }
+
+            }
+
+    </div>-->
+                                    <!-- /.box-body -->
+                                    <!--</div>
+            </div>
+        </div>
+    </div>-->
+                                    <!--<div class="col-md-6">
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">My annual salary is:</h3>
+                </div>-->
+                                    <!-- /.box-header -->
+                                    <!--<div class="box-body">
+        @{
+            int vidAS = ViewBag.VacancyID;
+            var dataAS = _db.tblVacancyQuestions.Where(p => p.VacancyID == vidAS).Select(x => x.QuestionID).ToList();
+
+        }
+
+        @if (ViewBag.QuetionAnnualSalaryCat != null)
+        {
+            foreach (var d in ViewBag.QuetionAnnualSalaryCat)
+            {
+                <div class="checkbox">
+                    <label>
+
+                        <input type="checkbox"
+                               name="CandidateVacancyResponseID"
+                               value="@d.QuestionID" /> @d.QuestionDesc
+                        </label>
+                    </div>
+
+                }
+
+            }
+
+    </div>-->
+                                    <!-- /.box-body -->
+                                    <!--</div>
+            </div>
+        </div>
+    </div>-->
                                     @*<div class="col-md-6">
             <div class="form-group">
                 <div class="col-md-12">
@@ -531,20 +524,20 @@
 
 
                                     <br />
-                          
+
                                     <div class="clearfix"></div>
 
 
                                     @*====================Peter 20221110 - DECLARATION=============================*@
                                     <div class="card mt-2">
-                                        <div class="card-header">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Candidate Z83  </h3>
-                                                <td>
-                                                    <a href="@Url.Action("DownloadCandidateProfile", "Vacancy", new { id = @HttpContext.Current.Session["sessUserID"].ToString()})"><span class="fa fa-download" style="color:darkblue; font-size:medium; "></span> Download </a>
-                                                </td>
-                                            </div>
-                                        </div>
+                                        @*<div class="card-header">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Candidate Z83  </h3>
+                    <td>
+                        <a href="@Url.Action("DownloadCandidateProfile", "Vacancy", new { id = @HttpContext.Current.Session["sessUserID"].ToString()})"><span class="fa fa-download" style="color:darkblue; font-size:medium; "></span> Download </a>
+                    </td>
+                </div>
+            </div>*@
                                         <div class="card-body">
                                             <div class="form-group">
 
@@ -552,7 +545,7 @@
                                                     <tbody>
                                                         <label>
                                                             <input type="checkbox" id="chkDeclaration" onclick="Check()"
-                                                                   name="chkDeclaration" /> 
+                                                                   name="chkDeclaration" />
                                                             I declare that all the information provided (including any attachments) is complete and correct to the best of my knowledge. I understand that any false information provided will result in my application being disqualified or disciplinary action taken against me if I am appointed.
 
                                                         </label>
@@ -563,37 +556,37 @@
                                     </div>
 
                                     <div class="form-group">
-                                            <div class="box box-warning" id="divJobQuestions">
-                                                <div class="box-header with-border">
-                                                    <h3 class="box-title">Job Specific Question:<span class="required" style="color:red;"> * </span></h3>
-                                                </div>
-                                                <div class="box-body">
-                                                    @{
-                                                        //int JTitleID = ViewBag.myJobTitleID;
-                                                        //var dataEE = _db.lutJobSpecificQuestions.Where(p => p.JobTitleID == JTitleID).Select(x => x.JobTitleID).ToList();
-                                                    }
-                                                    @if (ViewBag.QuestionJobSpecific != null)
+                                        <div class="box box-warning" id="divJobQuestions">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Job Specific Question:<span class="required" style="color:red;"> * </span></h3>
+                                            </div>
+                                            <div class="box-body">
+                                                @{
+                                                    //int JTitleID = ViewBag.myJobTitleID;
+                                                    //var dataEE = _db.lutJobSpecificQuestions.Where(p => p.JobTitleID == JTitleID).Select(x => x.JobTitleID).ToList();
+                                                }
+                                                @if (ViewBag.QuestionJobSpecific != null)
+                                                {
+                                                    if (Convert.ToString(ViewBag.QuestionJobSpecific) != "0")
                                                     {
-                                                        if(Convert.ToString( ViewBag.QuestionJobSpecific) != "0") 
-                                                        { 
-                                                            foreach (var d in ViewBag.QuestionJobSpecific)
-                                                            {
-                                                                <div class="checkbox">
-                                                                    <label>
-                                                                        <input type="checkbox" id="chkYesNo"
-                                                                               name="CandidateVacancyResponseID"
-                                                                               value="@d.JobSpecificeQuestionID" /> @d.JobSpecificeQuestionDesc
-                                                                        </label>
-                                                                    </div>
-                                                                }
+                                                        foreach (var d in ViewBag.QuestionJobSpecific)
+                                                        {
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" id="chkYesNo"
+                                                                           name="CandidateVacancyResponseID"
+                                                                           value="@d.JobSpecificeQuestionID" /> @d.JobSpecificeQuestionDesc
+                                                                    </label>
+                                                                </div>
                                                             }
+                                                        }
                                                         else
                                                         {
                                                             <h3> No job specific questions captured for this vacancy.</h3>
                                                         }
                                                     }
-                                                </div>
                                             </div>
+                                        </div>
                                     </div>
                                     @*==================================================================================*@
 
@@ -631,29 +624,26 @@
                                                                             && (x.DriversLicenseID != -1 || x.DriversLicenseID != null)
                                                                             && x.UserID == userid).Count();
                                             var education = _db.tblCandidateEducations.Where(x => x.ProfileID != 1 && x.ProfileID == profileID).Count();
-                                            //var educationQualTypefID = _db.tblCandidateEducations.Where(x => x.ProfileID != 1 && x.ProfileID == profileID).Select(x => x.QualificationTypeID).OrderBy(n => n).Distinct().ToList();
-
                                             var skills = _db.tblSkillsProfiles.Where(x => x.profileID != 1 && x.profileID == profileID).Count();
                                             //var isCandidateSA = (from a in _db.tblProfiles.Where(x => x.UserID == userid) select a.PassportNo).FirstOrDefault();
                                             var isCandidateSA = (from a in _db.tblProfiles.Where(x => x.UserID == userid) select a.IDNumber).FirstOrDefault();
+                                            var CVAttached = _db.Attachments.Where(x => x.ProfileID == profileID && x.DocumentType == "CV").Count();
                                             @*if (applcount <= 0)
-                 {
+             {
 
-                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
-
-                                            //if (ViewBag.QuetionBanks != null)
-                                            //{
-                                            //    int i = 0;
-                                            //    foreach (var d in ViewBag.QuetionBanks)
-                                            //    {
-                                            //        if (@d.QuestionID == Convert.ToInt32(educationQualTypefID[i].ToString()))
-                                            //        {
-
-                                            //        }
-                                            //        i += 1;
-                                            //    }
-                                            //}
+                <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
+                                          
+                                            <div class="row" id="cvAttached">
+                                                <div class="form-group">
+                                                    <div class="text-danger">
+                                                        <input type="hidden" 
+                                                               name="VacancyQuestionID"
+                                                               value="@CVAttached"  id="cvAttachedID"/> 
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            
 
                                             if (applcount > 0)
                                             {
@@ -665,8 +655,16 @@
                                                     </div>
                                                 </div>
                                             }
+                                            <div class="row" id="cvErrorID">
+                                                    <div class="form-group">
+                                                        <div class="text-danger">
+                                                            <label>Please ensure that you have attached your CV</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                          
                                             //==============Peter 20220917 - Display the Apply button even if the profile is not complete
-                                            else if (applcount <= 0)
+                                            if (applcount <= 0)
                                             {
                                                 <button type="submit" id="btnApplyVacancy" onclick="ValidateIDnumber()" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
                                             }
@@ -701,26 +699,27 @@
                                             }
 
 
-
-
                                             @*if (applcount >= 0 || pComplete >= 0)
-                {
-                    <button type="submit" class="btn btn-success btn-sm disabled"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+            {
+                <button type="submit" class="btn btn-success btn-sm disabled"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
                                             @*else if (applcount <= 0 || pComplete <= 0)
-                {
-                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+            {
+                <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
                                             @*else
-                {
-                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+            {
+                <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
                                         }
 
+
+
+
                                         @*<a href="@Url.Action("DownloadVacancy", "Vacancy", new { id = Model.ID })" class="btn btn-info btn-sm">
-                <span class="fa fa-download" aria-hidden="true"></span>
-                Download Advert
-            </a>*@
+            <span class="fa fa-download" aria-hidden="true"></span>
+            Download Advert
+        </a>*@
                                         @{
                                             var comp = (from a in _db.lutOrganisations
                                                         join b in _db.tblVacancies on a.OrganisationID equals b.OrganisationID
@@ -745,13 +744,6 @@
                                                 {
                                                     orgID = d.OrganisationID;
                                                 }
-
-                                                //===========Peter 20221014==================
-                                                @*<a href="@Url.Action("ApplyForVacancy", "Vacancy", new { id = @userid })" class="btn btn-info btn-sm">
-                                                    <span class="fa fa-chevron-left" aria-hidden="true"></span>
-                                                    Next
-                                                </a>*@
-                                                //===========================================
 
                                                 <a href="@Url.Action("BrowseVacancy", "Vacancy", new { id = @orgID })" class="btn btn-info btn-sm">
                                                     @*@ViewBag.Id*@
@@ -888,4 +880,24 @@
     });
     /*===================================================*/
 
+</script>
+<script>
+    $(document).ready(function () {
+        if ((body && body.readyState == 'loaded') || (body && body.readyState == 'complete')) {
+            /*event.preventDefault();*/ // Prevent the form from being submitted initially
+
+            // Get the value of the username field
+            var usernameValue = document.getElementById("cvAttachedID").value;
+
+
+            if (usernameValue == 0) {
+                // Display the error message
+                document.getElementById("cvErrorID").style.display = "block";
+            }
+                //else {
+            //    // Submit the form programmatically since the validation passed
+            //    document.getElementById("form").submit();
+            //}
+        }
+    };
 </script>

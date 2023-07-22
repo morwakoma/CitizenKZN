@@ -218,15 +218,15 @@ namespace eRecruitment.Sita.Web.Controllers
                 table.AddCell(cellSalaryRangeContent);
 
                 //Organisation
-                PdfPCell cellOrganisationName = new PdfPCell(new Phrase("Organisation Name:", font));
-                cellOrganisationName.Colspan = 1;
-                cellOrganisationName.HorizontalAlignment = Element.ALIGN_LEFT;
-                table.AddCell(cellOrganisationName);
+                //PdfPCell cellOrganisationName = new PdfPCell(new Phrase("Organisation Name:", font));
+                //cellOrganisationName.Colspan = 1;
+                //cellOrganisationName.HorizontalAlignment = Element.ALIGN_LEFT;
+                //table.AddCell(cellOrganisationName);
 
-                PdfPCell cellOrganisationNameContent = new PdfPCell(new Phrase(data.OrganisationName.ToString(), font));
-                cellOrganisationNameContent.Colspan = 1;
-                cellOrganisationNameContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
-                table.AddCell(cellOrganisationNameContent);
+                //PdfPCell cellOrganisationNameContent = new PdfPCell(new Phrase(data.OrganisationName.ToString(), font));
+                //cellOrganisationNameContent.Colspan = 1;
+                //cellOrganisationNameContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
+                //table.AddCell(cellOrganisationNameContent);
 
                 //table.AddCell("Report To: ");
                 //table.AddCell(data.Manager);
@@ -291,7 +291,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 cellLocation.HorizontalAlignment = Element.ALIGN_LEFT;
                 table.AddCell(cellLocation);
 
-                PdfPCell cellLocationContent = new PdfPCell(new Phrase(data.Location.ToString(), font));
+                PdfPCell cellLocationContent = new PdfPCell(new Phrase(data.Centre.ToString(), font));
                 cellLocationContent.Colspan = 1;
                 cellLocationContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
                 table.AddCell(cellLocationContent);
@@ -1614,6 +1614,7 @@ namespace eRecruitment.Sita.Web.Controllers
         {
             string uid = User.Identity.GetUserId();
             var IDNumber = _dal.GetProfileIDNumber(uid);
+            
 
             //================Peter 20220922====================
             Session["sessUserIDnumber"] = IDNumber;
@@ -1780,6 +1781,10 @@ namespace eRecruitment.Sita.Web.Controllers
             VacancyModels vacancyQuestion = new VacancyModels();
             vacancyQuestion = _dal.GetVacancyQuestionIDPerVacancy((int)id);
             int VacancyQuestionID = vacancyQuestion.ID;
+            //int profileID1 = (from a in _db.tblProfiles
+            //                 where a.UserID == uid
+            //                 select a.pkProfileID).FirstOrDefault();
+            //var CVAttached = _db.Attachments.Where(x => x.ProfileID == profileID1 && x.DocumentType == "CV").Count();
 
             if (CandidateVacancyResponseID != null)
             {
@@ -1807,7 +1812,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 ViewBag.ErrorMessage = "You must select one of the Question Banks provided!";
                 ModelState.AddModelError("", "You must select one of the Question Banks provided");
             }
-
+         
             if (!ModelState.IsValid)
             {
                 string msg = "You must select one of the Question Banks provided!";
@@ -1847,7 +1852,8 @@ namespace eRecruitment.Sita.Web.Controllers
                           PhoneNumber = a.CellNo,
                           RecruiterEmail = c.RecruiterEmail,
                           JobApplied = d.JobTitle + " - " + " Job Level: " + f.JobLevelName + " Reference No: " + c.ReferenceNo,
-                          OrganisationName = g.OrganisationName + " (" + g.OrganisationCode + ")"
+                          OrganisationName = g.OrganisationName + " (" + g.OrganisationCode + ")",
+                          Correspondence=a.CorrespondanceDetails
                         };
 
         foreach (var d in candidate)
@@ -1855,7 +1861,7 @@ namespace eRecruitment.Sita.Web.Controllers
           profileID = d.ProfileID;
           FullName = d.FullName;
           JobApplied = d.JobApplied;
-          email = d.email;
+          email = d.Correspondence;
           PhoneNumber = d.PhoneNumber;
           recruiteremail = d.RecruiterEmail;
           organisationName = d.OrganisationName;
@@ -2036,7 +2042,7 @@ namespace eRecruitment.Sita.Web.Controllers
           JobLevel = data.JobLevel,
           Salary = data.Salary,
           OrganisationName = data.OrganisationName,
-          Manager = data.Manager,
+          //Manager = data.Manager,
           Race = data.Race,
           Gender = data.Gender,
           ////Deviation = Convert.ToString(a.DeligationReasons,
@@ -2045,7 +2051,7 @@ namespace eRecruitment.Sita.Web.Controllers
           EmploymentType = data.EmploymentType,
           ContractDuration = data.ContractDuration,
           ClosingDate = data.ClosingDate,
-          Location = data.Location,
+          Centre= data.Centre,
           //Recruiter = data.Recruiter,
           //RecruiterEmail = data.ReplyTo,
           NumberOfOpenings = (int)data.NumberOfOpenings,
@@ -2213,7 +2219,7 @@ namespace eRecruitment.Sita.Web.Controllers
             {
 
                 int? vacancyid = _dal.UpdateVacancy(id, userID, item.ReferenceNo, item.VacancyName, item.JobTitle, item.JobLevelID, item.OrganisationID,
-                 item.Recruiter, item.Location, item.ContractDuration, item.Manager, item.EmploymentTypeID, item.SalaryRange, item.Responsibility
+                 item.Recruiter, item.Centre, item.ContractDuration, item.Manager, item.EmploymentTypeID, item.SalaryRange, item.Responsibility
                 , item.QualificationsandExperience, item.TechnicalCompetenciesDescription, item.OtherSpecialRequirements, Convert.ToString(item.ClosingDate), item.Disclaimer, item.VacancyPurpose, item.RecruiterEmail, item.RecruiterTel
                 ,item.NumberOfOpenings,item.VacancyProfileID, item.DepartmentID,item.DivisionID,item.VancyTypeID, DateTime.Now);
                 if (vacancyid != null)

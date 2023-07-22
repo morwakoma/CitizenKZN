@@ -27,7 +27,7 @@
         <ol class="breadcrumb">
             <li><a href="~/Home/Jobs"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="~/Candidate/MyProfile">My Career Center</a></li>
-            <li class="active">User Profile</li>
+            <li class="active">User Profile(Z83)</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -36,7 +36,7 @@
         <div class="box">
 
             <div class="box-header with-border">
-                <h3 class="box-title">My Profile (Z83)</h3>
+                <h3 class="box-title">My Profile(Z83)</h3>
 
                 <div class="box box-success" style="width:100%; border: 2px solid #3CB371; box-shadow:inset 0 1px 1px rgba(0,0,0,0.075); padding: 10px; margin-top: 10px;">
                     @*<marquee direction="left" bgcolor="white" style="font-weight: bold;">Please Note: Candidate Profile is only required to be completed once, then candidate can continue to apply for different jobs. Once the profile is completed, system will allow the candidate to update the profile at any given time.</marquee>*@
@@ -121,7 +121,8 @@
                                                         {
                                                             QualificationType = c.QualificationTypeName,
                                                             InstitutionName = a.InstitutionName,
-                                                            QualificationName = a.QualificationName
+                                                            QualificationName = a.QualificationName,
+                                                            EmailAddress = b.EmailAddress
                                                         }).Take(1);
 
                                         }
@@ -130,9 +131,11 @@
                                             foreach (var q in qual)
                                             {
                                                 string qualname = string.Format("{0} from the University of {1}", @q.QualificationName, @q.InstitutionName);
+                                                string email = q.EmailAddress;
                                                 <div> @qualname</div>
                                             }
                                         }
+
                                     </p>
                                     <hr>
                                     <strong><i class="margin-r-5"></i> Location</strong>
@@ -141,17 +144,17 @@
                                     <strong><i class="margin-r-5"></i> Skills</strong>
                                     <p>
                                         @*@{
-                                                var skillsData = from a in _db.tblSkillsProfiles
-                                                                 join b in _db.lutSkills on a.skillID equals b.skillID
-                                                                 join c in _db.tblProfiles on a.profileID equals c.pkProfileID
-                                                                 where c.UserID == userid
-                                                                 select new
-                                                                 {
-                                                                     SkillName = b.skillName
-                                                                 };
+                            var skillsData = from a in _db.tblSkillsProfiles
+                                             join b in _db.lutSkills on a.skillID equals b.skillID
+                                             join c in _db.tblProfiles on a.profileID equals c.pkProfileID
+                                             where c.UserID == userid
+                                             select new
+                                             {
+                                                 SkillName = b.skillName
+                                             };
 
-                                                var skills = skillsData.ToList();
-                                            }*@
+                            var skills = skillsData.ToList();
+                        }*@
                                         @if (ViewBag.SkillsProf != null)
                                         {
                                             foreach (var d in ViewBag.SkillsProf)
@@ -170,7 +173,7 @@
                             <!-- /.box -->
                         </div>
                         <!-- /.col -->
-
+                        @Html.Hidden("myAttachmentID", Url.Action("AddAttachment"))
                         <div class="col-md-9">
                             <div id="tab" class="nav-tabs-custom">
                                 <ul class="nav nav-tabs">
@@ -180,7 +183,7 @@
                                     <li><a href="#skills" ng-click="GetCandidateSkillsData();GetSkillsTypeList();GetSkillProficiencyList()" data-toggle="tab">Skills</a></li>
                                     <li><a href="#languages" ng-click="GetCandidateLanguagesData();GetLanguageProficiencyList();GetLanguagesList()" data-toggle="tab">Languages</a></li>
                                     <li><a href="#references" ng-click="GetCandidateReferenceData()" data-toggle="tab">References</a></li>
-                                    @*<li><a href="#attachments" ng-click="GetCandidateAttachmentData()" data-toggle="tab">Attachments</a></li>*@
+                                    <li><a href="#attachments" ng-click="GetCandidateAttachmentData()" data-toggle="tab">Attachments</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="activity">
@@ -196,8 +199,8 @@
                                             foreach (var item in Model)
                                             {
                                                 @*<div style="color:red">
-                                                        @Html.ValidationSummary()
-                                                    </div>*@
+                                    @Html.ValidationSummary()
+                                </div>*@
                                                 <br />
                                                 <div class="form-group">
                                                     <label for="inputName" class="col-sm-2 control-label">ID Number<span class="required" style="color:red;"></span></label>
@@ -396,6 +399,7 @@
                                                     </div>
                                                 </div>
                                                 //Z83
+                                                //Z83
                                                 <div class="form-group" id="CriminalOffense">
                                                     <label for="inputCriminalOffense" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; Have you been convicted or found guilty of a criminal offence (including an admission of guilt)?<span class="required red" style="color:red;"> * </span></label>
@@ -450,7 +454,7 @@
                                                     <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return isNotCharacter(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryProceedingID">
@@ -470,7 +474,7 @@
 
                                                 <div class="form-group" id="Business">
                                                     <label for="inputBusiness" class="control-label">&nbsp;</label>
-                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company conducting business with the State <span class="required" style="color:red;"> * </span></label>
+                                                    <label>&nbsp;&nbsp;Are you conducting business with the State or are you a Director of a Public or Private company<br /> conducting business with the State <span class="required" style="color:red;"> * </span></label>
                                                     <div>
                                                         @Html.DropDownListFor(m => item.Business, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.Business, "---Select....---"), new { @class = "form-control", onchange = "CheckBusiness()", id = "BusinessID", required = "required", value = "" })
                                                     </div>
@@ -479,7 +483,7 @@
                                                     <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return isNotCharacter(event)" })
                                                     </div>
                                                 </div>
 
@@ -495,7 +499,7 @@
                                                     <label for="inputYearsExperience" class="control-label"></label>
                                                     <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        <label>&nbsp;&nbsp;Plrivate Sector:<span class="required" style="color:red;"> * </span></label>
+                                                        <label>&nbsp;&nbsp;Private Sector:<span class="required" style="color:red;"> * </span></label>
 
                                                         @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
@@ -515,6 +519,7 @@
                                                         @Html.DropDownListFor(m => item.fkDisabilityID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.fkDisabilityID, "--Please Select--"), new { @class = "form-control", onchange = "CheckDisability()", id = "AnswerID", required = "required", value = "" })
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group" id="DisabilityDetails">
                                                     <label for="inputDisabilityDetails" class="col-sm-2 control-label">Disability Details<span class="required"></span></label>
                                                     <div class="col-sm-10">
@@ -576,35 +581,44 @@
                                                     <label for="inputWayForCorrespondance" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; Preferred way of correspondence<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        @Html.DropDownListFor(m => item.MethodOfCommunicationID, new SelectList(ViewBag.CommunicationMethod, "MethodID", "MethodName", item.MethodOfCommunicationID, "--Select Method of Communication--"), new { @class = "form-control", required = "required" })
+                                                        @Html.DropDownListFor(m => item.MethodOfCommunicationID, new SelectList(ViewBag.CommunicationMethod, "MethodID", "MethodName", item.MethodOfCommunicationID, "--Select Method of Communication--"), new { @class = "form-control", id = "methodofCommunicationId", required = "required", onchange = "checkMethodofCommunication()" })
                                                     </div>
                                                 </div>
+                                                <div class="form-group" id="EmailTextbox">
+                                                    <label for="EmailMethodofCommunication" class="control-label">&nbsp;</label>
+                                                    <label>&nbsp;&nbsp;Correspondance email:<span class="required red" style="color:red;"> * </span></label>
+                                                    <div>
+
+                                                        @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "EmailAddress", required = "required", @class = "form-control", placeholder = "Enter emailAddress", value = "" })
+                                                    </div>
+                                                </div>
+
                                                 @*<div class="form-group">
-                                                        <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
-                                                        <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
-                                                        <div class="col-sm-10">
-                                                            @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
-                                                        </div>
-                                                    </div>*@
+                                    <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
+                                    <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
+                                    </div>
+                                </div>*@
                                                 <hr>
 
                                                 @*<span style="color:red;">@ViewBag.Note</span>*@
                                                 <br>
                                                 <br />
                                                 @*<div class="form-group">
-                                                      <span class="required" style="color:red;"> PDF / Word </span>
-                                                      <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
-                                                      <div class="col-sm-10">
-                                                        <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
-                                                      </div>
-                                                    </div>*@
+                                  <span class="required" style="color:red;"> PDF / Word </span>
+                                  <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
+                                  <div class="col-sm-10">
+                                    <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
+                                  </div>
+                                </div>*@
                                                 @*<div class="form-group">
-                                                      <span class="required" style="color:red;"> PDF </span>
-                                                      <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
-                                                      <div class="col-sm-10">
-                                                        <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
-                                                      </div>
-                                                    </div>*@
+                                  <span class="required" style="color:red;"> PDF </span>
+                                  <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
+                                  <div class="col-sm-10">
+                                    <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
+                                  </div>
+                                </div>*@
                                                 {
                                                     var terms = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
                                                     bool t = Convert.ToBoolean(terms.TermsAndConditions);
@@ -618,9 +632,9 @@
                                                                         <input type="checkbox" name="TermsAndConditions" id="TermsAndConditions"> I agree to the <a href="#" data-toggle="modal" data-target="#myTerms">terms and conditions</a>
                                                                     </label>
                                                                     @*<label>
-                                                                            @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
-                                                                            <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
-                                                                        </label>*@
+                                                        @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
+                                                        <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
+                                                    </label>*@
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -701,14 +715,14 @@
                                             <div ng-switch-when="Load">
 
                                                 @*@{ if (@TempData["Message"] != null)
-                                                        {
-                                                            <div class="alert alert-success alert-dismissible" id="MyWorkflow">
-                                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                                <h4><i class="icon fa fa-check"></i> Message!</h4>
-                                                                Application successfully sent.
-                                                            </div>
-                                                        }
-                                                    }*@
+                                    {
+                                        <div class="alert alert-success alert-dismissible" id="MyWorkflow">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            <h4><i class="icon fa fa-check"></i> Message!</h4>
+                                            Application successfully sent.
+                                        </div>
+                                    }
+                                }*@
                                                 <button id="Add" name="Add" class="btn btn-success" ng-click="AddEducation()"><span class="fa fa-plus"></span> Add New Education History</button><br />
                                                 <br />
                                                 <table id="example12" class="table table-bordered table-striped">
@@ -725,8 +739,8 @@
                                                     </thead>
                                                     <tbody>
                                                         @*<pre>
-                                                                {{EducationListData | json}}
-                                                            </pre>*@
+                                            {{EducationListData | json}}
+                                        </pre>*@
                                                         <tr data-ng-repeat="d in EducationListData">
                                                             <td>{{d.institutionName}}</td>
                                                             <td>{{d.qualificationName}}</td>
@@ -841,24 +855,24 @@
                                                             <input type="text" ng-model="reasonForLeaving" class="form-control" id="reasonForLeaving" name="reasonForLeaving" /><br>
                                                         </div>
                                                         @*<div class="row">
-                                                                <div class="col-md-6">
-                                                                    <br />
-                                                                    Were You Previously Employed In The Public Service?:<span style="color:red;"> * </span>
-                                                                    <select class="form-control" ng-model="previouslyEmployedPS" id="previouslyEmployedPS" name="previouslyEmployedPS">
-                                                                        <option value="0" ng-selected>--Select--</option>
-                                                                        <option value="1">Yes</option>
-                                                                        <option value="2">No</option>
-                                                                    </select>
+                                            <div class="col-md-6">
+                                                <br />
+                                                Were You Previously Employed In The Public Service?:<span style="color:red;"> * </span>
+                                                <select class="form-control" ng-model="previouslyEmployedPS" id="previouslyEmployedPS" name="previouslyEmployedPS">
+                                                    <option value="0" ng-selected>--Select--</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="2">No</option>
+                                                </select>
 
-                                                                </div>
-                                                            </div><br />*@
+                                            </div>
+                                        </div><br />*@
                                                         @*<div class="showReEmp" ng-if="previouslyEmployedPS == 1">
 
-                                                                Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:<span style="color:red;"> * </span>
-                                                                <input type="text" ng-model="reEmployment" required class="form-control" id="reEmployment" name="reEmployment" /><br>
-                                                                Provide The Name Of The Previous Employing Department:<span style="color:red;"> * </span>
-                                                                <input type="text" ng-model="previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartment" name="previouslyEmployedDepartment" /><br>
-                                                            </div>*@
+                                            Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:<span style="color:red;"> * </span>
+                                            <input type="text" ng-model="reEmployment" required class="form-control" id="reEmployment" name="reEmployment" /><br>
+                                            Provide The Name Of The Previous Employing Department:<span style="color:red;"> * </span>
+                                            <input type="text" ng-model="previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartment" name="previouslyEmployedDepartment" /><br>
+                                        </div>*@
 
 
                                                         <button type="button" class="btn btn-success" ng-click="AddWorkHistoryInfo()"> <span class="fa fa-save success"></span> Save</button>
@@ -916,8 +930,8 @@
 
                                             <div ng-switch-when="Edit">
                                                 @*<pre>
-                                                        {{WorkHistoryDataForEdit | json}}
-                                                    </pre>*@
+                                    {{WorkHistoryDataForEdit | json}}
+                                </pre>*@
                                                 <!-- Form Element sizes -->
                                                 <div class="box box-success">
                                                     <div class="box-header with-border">
@@ -964,26 +978,26 @@
                                                             <br>
                                                         </div>
                                                         @*<div class="row">
-                                                                <div class="col-md-6">
-                                                                    <br />
-                                                                    Were You Previously Employed In The Public Service?:
-                                                                    <select class="form-control" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedPS" id="previouslyEmployedPSEdit" name="previouslyEmployedPSEdit">
-                                                                        <option value="0">--Select--</option>
-                                                                        <option value="1" ng-selected="data[0].previouslyEmployedPS == 1">Yes</option>
-                                                                        <option value="2" ng-selected="data[0].previouslyEmployedPS == 2">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br />*@
+                                            <div class="col-md-6">
+                                                <br />
+                                                Were You Previously Employed In The Public Service?:
+                                                <select class="form-control" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedPS" id="previouslyEmployedPSEdit" name="previouslyEmployedPSEdit">
+                                                    <option value="0">--Select--</option>
+                                                    <option value="1" ng-selected="data[0].previouslyEmployedPS == 1">Yes</option>
+                                                    <option value="2" ng-selected="data[0].previouslyEmployedPS == 2">No</option>
+                                                </select>
+                                            </div>
+                                        </div><br />*@
                                                         @*<div class="showReEmp" ng-if="WorkHistoryDataForEdit[0].previouslyEmployedPS == 1">
 
 
-                                                                Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:
-                                                                <input type="text" ng-model="WorkHistoryDataForEdit[0].reEmployment" required class="form-control" id="reEmploymentEdit" name="reEmploymentEdit" />
-                                                                <br>
-                                                                Provide The Name Of The Previous Employing Department:
-                                                                <input type="text" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartmentEdit" name="previouslyEmployedDepartmentEdit" />
-                                                                <br>
-                                                            </div>*@
+                                            Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:
+                                            <input type="text" ng-model="WorkHistoryDataForEdit[0].reEmployment" required class="form-control" id="reEmploymentEdit" name="reEmploymentEdit" />
+                                            <br>
+                                            Provide The Name Of The Previous Employing Department:
+                                            <input type="text" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartmentEdit" name="previouslyEmployedDepartmentEdit" />
+                                            <br>
+                                        </div>*@
                                                         <button type="button" class="btn btn-success" ng-click="UpdateWorkHistoryInfo(WorkHistoryDataForEdit[0].workHistoryID)"> <span class="fa fa-save success"></span> Save</button>
                                                         <button type="button" class="btn btn-danger" ng-click="GetCandidateWorkHistoryData()"><span class="fa fa-close danger"></span> Cancel</button>
                                                     </div>
@@ -1192,8 +1206,8 @@
                                                                         <li><a href="#" class="elements" ng-click="GetCandidateReferenceForEdit(d.referrenceID)"><span class="fa fa-pencil" style="color:blue;"></span> Edit</a></li>
                                                                         <li><a href="#" class="elements" ng-click="DeleteCandidateReference(d.referrenceID)"><span class="fa fa-trash danger" style="color:red;"></span> Delete</a></li>
                                                                         @*<li>
-                                                                                <a href="@Url.Action("Delete", "Admin")" onclick="return confirm('Are you sure you want to delete this record?')"><span class="fa fa-trash danger" style="color:red"></span> Delete</a>
-                                                                            </li>*@
+                                                            <a href="@Url.Action("Delete", "Admin")" onclick="return confirm('Are you sure you want to delete this record?')"><span class="fa fa-trash danger" style="color:red"></span> Delete</a>
+                                                        </li>*@
                                                                     </ul>
                                                                 </div>
                                                             </td>
@@ -1235,20 +1249,45 @@
                                     <!-- /.tab-pane -->
                                     <div class="tab-pane" id="attachments">
                                         <div ng-switch="AttachmentCRUDMode">
-                                            <div ng-switch-when="Load">
-                                                <div class="col-md-12">
-                                                    <div class="box box-default">
-                                                        <!-- /.box-header -->
-                                                        <div class="box-body">
-                                                            <div class="callout callout-warning">
-                                                                <h4>Note!</h4>
-                                                                <p>Attachments cannot be modified or deleted here, to modify the uploaded please go to Personal Information Tab and upload new one.</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.box-body -->
-                                                    </div>
-                                                    <!-- /.box -->
+                                            <div class="box-body">
+                                                <div class="callout callout-warning">
+                                                    <h4>Note!</h4>
+                                                    <p>
+                                                        Applicants applying for posts in KZN Government Departments must only upload a copy of their CV onto the system. Certified copies of supporting documents need not accompany your application and CV, as these will be requested from shortlisted applicants only.
+                                                        Applicants applying for posts in KZN Public Entities must upload copies of all documents, including certified copies of all documents as stipulated in the advert of the Public Entity.
+                                                    </p>
                                                 </div>
+                                            </div>
+                                            <div ng-switch-when="Add">
+                                                <div class="box box-success">
+
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Add Attachment</h3>
+                                                    </div>
+
+
+                                                    <div class="box-body">
+                                                        <span style="color:red;">@ViewBag.Note</span>
+                                                        Attachment Name:<br />
+                                                        <select name="AttachmentName" id="AttachmentNameAdd" class="form-control">
+
+                                                            <option value="CV">CV</option>
+                                                            <option value="ID">ID</option>
+                                                            <option value="Other">Other</option>
+                                                            <option value="" selected>-- Please Select --</option>
+                                                        </select>
+                                                        <br>Attachment:
+                                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
+                                                        <br />
+                                                        <button type="submit" class="btn btn-success" ng-click="AddAttachmentInfo()"> <span class="fa fa-save success"></span> Save</button>
+                                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div ng-switch-when="Load">
+
+                                                <button id="Add" name="Add" class="btn btn-success" ng-click="AddAttachment()"><span class="fa fa-plus"></span> Add Attachment</button><br />
                                                 <br />
                                                 <table id="example1" class="table table-bordered table-striped">
                                                     <thead>
@@ -1256,7 +1295,8 @@
                                                             <th>File Name</th>
                                                             @*<th>File Type</th>*@
                                                             @*<th>Modified On</th>*@
-                                                            @*<th>Download</th>*@
+                                                            <th>Download</th>
+                                                            <th>Delete</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -1264,32 +1304,43 @@
                                                             <td>@*<a href=@Url.Action("DownLoadFile", "Candidate")*@{{d.fileName}}@*></a>*@</td>
                                                             @*<td>{{d.contentType}}</td>*@
                                                             @*<td>{{d.createdon |  date:'yyyy-MM-dd'}}</td>*@
-                                                            @*<td>*@
-                                                            @*<a class="btn btn-xs btn-success btn-xs" href='@Url.Action("DownLoadFile", "Candidate", new { id = d.fileName} )' data-toggle="tooltip" data-placement="left" title="Download file">
+                                                            <td>
+
+                                                                <a class="btn btn-xs btn-success btn-xs" href='@Url.Action("DownloadAttachment", "Candidate" )?id={{d.attachmentID}}' data-toggle="tooltip" data-placement="left" title="Download file">
                                                                     <i class="ace-icon fa fa-download bigger-120"> Download</i>
-                                                                </a>*@
-                                                            @*</td>*@
+                                                                </a>
+                                                            </td>
+
+                                                            <td>
+                                                                <a class="btn btn-xs btn-danger btn-xs" href='' data-toggle="tooltip" data-placement="left" title="Delete file" ng-click="DeleteAttachment()">
+                                                                    <span><input type="hidden" id="btnDeleteAttachment" value="{{d.attachmentID}}" /></span> <i class="ace-icon fa danger bigger-120"> Delete</i>
+                                                                </a>
+
+
+                                                            </td>
+
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                            <div ng-switch-when="Add">
-                                                <div class="box box-success">
-                                                    <div class="box-header with-border">
-                                                        <h3 class="box-title">Add Attachment</h3>
-                                                    </div>
 
-                                                    <div class="box-body">
-                                                        Attachment Name:<br />
-                                                        <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
-                                                        <br>Attachment:
-                                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
-                                                        <br />
-                                                        <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
-                                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
-                                                    </div>
-                                                </div>
                                             </div>
+                                            @*<div ng-switch-when="Add">
+                                <div class="box box-success">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Attachment</h3>
+                                    </div>
+
+                                    <div class="box-body">
+                                        Attachment Name:<br />
+                                        <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
+                                        <br>Attachment:
+                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
+                                        <br />
+                                        <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
+                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>*@
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -1951,7 +2002,7 @@
                 </div>
                 <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+            </div>
             <div class="modal fade" id="modal-default">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -1959,7 +2010,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title">Upload Profile Picture</h4>
+                            <h4 class="modal-title">Upload Profile(Z83) Picture</h4>
                         </div>
                         <div class="modal-body">
                             @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", role = "form" }))
@@ -2163,14 +2214,22 @@
 
     function CheckDisabilityNature() {
         var d = $("#DisabilityID").val();
-        if (d == 11) {
+        if (d == 18) {
             $("#OtherNatureOfDisability").show();
         }
         else {
             $("#OtherNatureOfDisability").hide();
         }
     }
-
+    function checkMethodofCommunication() {
+        var d = $("#methodofCommunicationId").val();
+        if (d == 3) {
+            $("#EmailTextbox").show();
+        }
+        else {
+            $("#EmailTextbox").hide();
+        }
+    }
     function CheckNationality() {
         var d = $("#CitizenID").val();
         if (d == 2) {
@@ -2211,6 +2270,7 @@
         CheckBusiness();
         CheckCriminalCase();
         CheckDisciplinary();
+        checkMethodofCommunication();
 
         $("#DateOfBirth").datepicker({
             format: 'dd/mm/yyyy',
@@ -2323,6 +2383,19 @@
         return true;
     }
 
+    function isNotCharacter(evt) {
+        //var e = evt || window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (
+            (charCode >= 48 && charCode <= 57) ||  // 0-9
+            (charCode >= 65 && charCode <= 90) ||  // A-Z
+            (charCode >= 97 && charCode <= 122) || // a-z
+            charCode === 32 ||                     // Space
+            charCode === 46                        // Decimal point '.'
+        )
+            return true;
+            return false;
+    }
     function ValidateAlpha(evt) {
         var keyCode = (evt.which) ? evt.which : evt.keyCode
         if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
@@ -2588,10 +2661,10 @@
             $('#disabilityModel').modal('show');
             return;
         }
-        else if ($('#item_MethodOfCommunicationID').val() == null || $('#item_MethodOfCommunicationID').val() == '' || $('#item_MethodOfCommunicationID') == -1) {
-            $('#CorrespondenceModel').modal('show');
-            return;
-        }
+        //else if ($('#item_MethodOfCommunicationID').val() == null || $('#item_MethodOfCommunicationID').val() == '' || $('#item_MethodOfCommunicationID') == -1) {
+        //    $('#CorrespondenceModel').modal('show');
+        //    return;
+        //}
         else {
             document.getElementById("myForm").submit();
 
@@ -2632,3 +2705,4 @@
 
     });
 </script>
+
