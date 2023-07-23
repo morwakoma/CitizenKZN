@@ -380,12 +380,12 @@
                                     </div>
 
                                     <!--<div class="col-md-6">
-        <div class="form-group">
-            <div class="col-md-12">
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">My years of experience:<span class="required" style="color:red;"> * </span></h3>
-                    </div>-->
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">My years of experience:<span class="required" style="color:red;"> * </span></h3>
+                </div>-->
                                     <!-- /.box-header -->
                                     <!--<div class="box-body">
         @{
@@ -418,12 +418,12 @@
         </div>
     </div>-->
                                     <!--<div class="col-md-6">
-        <div class="form-group">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">I have the following certification/s:</h3>
-                    </div>-->
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">I have the following certification/s:</h3>
+                </div>-->
                                     <!-- /.box-header -->
                                     <!--<div class="box-body">
         @{
@@ -456,12 +456,12 @@
         </div>
     </div>-->
                                     <!--<div class="col-md-6">
-        <div class="form-group">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">My annual salary is:</h3>
-                    </div>-->
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">My annual salary is:</h3>
+                </div>-->
                                     <!-- /.box-header -->
                                     <!--<div class="box-body">
         @{
@@ -493,10 +493,6 @@
             </div>
         </div>
     </div>-->
-
-
-
-
                                     @*<div class="col-md-6">
             <div class="form-group">
                 <div class="col-md-12">
@@ -534,14 +530,14 @@
 
                                     @*====================Peter 20221110 - DECLARATION=============================*@
                                     <div class="card mt-2">
-                                        <div class="card-header">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Candidate Z83  </h3>
-                                                <td>
-                                                    <a href="@Url.Action("DownloadCandidateProfile", "Vacancy", new { id = @HttpContext.Current.Session["sessUserID"].ToString()})"><span class="fa fa-download" style="color:darkblue; font-size:medium; "></span> Download </a>
-                                                </td>
-                                            </div>
-                                        </div>
+                                        @*<div class="card-header">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Candidate Z83  </h3>
+                    <td>
+                        <a href="@Url.Action("DownloadCandidateProfile", "Vacancy", new { id = @HttpContext.Current.Session["sessUserID"].ToString()})"><span class="fa fa-download" style="color:darkblue; font-size:medium; "></span> Download </a>
+                    </td>
+                </div>
+            </div>*@
                                         <div class="card-body">
                                             <div class="form-group">
 
@@ -628,35 +624,30 @@
                                                                             && (x.DriversLicenseID != -1 || x.DriversLicenseID != null)
                                                                             && x.UserID == userid).Count();
                                             var education = _db.tblCandidateEducations.Where(x => x.ProfileID != 1 && x.ProfileID == profileID).Count();
-                                            //var educationQualTypefID = _db.tblCandidateEducations.Where(x => x.ProfileID != 1 && x.ProfileID == profileID).Select(x => x.QualificationTypeID).OrderBy(n => n).Distinct().ToList();
-
                                             var skills = _db.tblSkillsProfiles.Where(x => x.profileID != 1 && x.profileID == profileID).Count();
                                             //var isCandidateSA = (from a in _db.tblProfiles.Where(x => x.UserID == userid) select a.PassportNo).FirstOrDefault();
                                             var isCandidateSA = (from a in _db.tblProfiles.Where(x => x.UserID == userid) select a.IDNumber).FirstOrDefault();
-
                                             var CVAttached = _db.Attachments.Where(x => x.ProfileID == profileID && x.DocumentType == "CV").Count();
                                             @*if (applcount <= 0)
-                 {
+             {
 
-                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+                <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
 
-                                            //if (ViewBag.QuetionBanks != null)
-                                            //{
-                                            //    int i = 0;
-                                            //    foreach (var d in ViewBag.QuetionBanks)
-                                            //    {
-                                            //        if (@d.QuestionID == Convert.ToInt32(educationQualTypefID[i].ToString()))
-                                            //        {
-
-                                            //        }
-                                            //        i += 1;
-                                            //    }
-                                            //}
+                                            if (CVAttached == 0)
+                                            {
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="text-danger">
+                                                            <label>Please ensure that you have attached your CV</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
 
                                             if (applcount > 0)
                                             {
-                                                <div class="row" style="text-align:center">
+                                                <div class="row" >
                                                     <div class="form-group">
                                                         <div class="text-danger">
                                                             <label>You have already applied for this position</label>
@@ -665,104 +656,63 @@
                                                 </div>
                                             }
 
-
-
-                                            else if (applcount <= 0)
+                                            //==============Peter 20220917 - Display the Apply button even if the profile is not complete
+                                            if (applcount <= 0)
                                             {
-
-                                                if (pComplete <= 0 && education <= 0 && skills > 0)
-                                                {
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <div class="text-danger">
-                                                                <label style="font-size:x-small">Please ensure 'My Profile' is complete before applying for any position and ensure that your profile is the same as information on your CV. This information will be utilised for shortlisting purposes</label>
-                                                            </div>
+                                                <button type="submit" id="btnApplyVacancy" onclick="ValidateIDnumber()" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+                                            }
+                                            //
+                                            else if (applcount <= 0 && pComplete > 0 && education > 0 && skills > 0)
+                                            {
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="text-danger">
+                                                            <label style="font-size:smaller">Ensure that your profile is the same as information on your CV. This information will be utilised for shortlisting purposes.</label>
                                                         </div>
                                                     </div>
-                                                }
-                                                else if (CVAttached <= 0)
+                                                </div>
+                                                if (isCandidateSA != null && isCandidateSA != "" && isCandidateSA != "0")
                                                 {
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <div class="text-danger">
-                                                                <label style="font-size:x-small">Please ensure that you have attached your CV</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-
-                                                else
-                                                {
+                                                    string bad = string.Empty;
                                                     <button type="submit" id="btnApplyVacancy" onclick="ValidateIDnumber()" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-
-
-
                                                 }
+
+
+                                            }
+                                            else if (applcount <= 0 && pComplete >= 0 && education >= 0 && skills >= 0)
+                                            {
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="text-danger">
+                                                            <label style="font-size:x-small">Please ensure 'My Profile' is complete before applying for any position and ensure that your profile is the same as information on your CV. This information will be utilised for shortlisting purposes</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             }
 
 
-                                            @*else if (applcount <= 0 && pComplete > 0 && education > 0 && skills > 0)
-                {
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="text-danger">
-                                <label style="font-size:smaller">Ensure that your profile is the same as information on your CV. This information will be utilised for shortlisting purposes.</label>
-                            </div>
-                        </div>
-                    </div>
-                    }
-                    if (isCandidateSA != null && isCandidateSA != "" && isCandidateSA != "0")
-                    {
-                        string bad = string.Empty;
-                        <button type="submit" id="btnApplyVacancy" onclick="ValidateIDnumber()" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                    }
-
-                    else if (CVAttached <= 0)
-                    {
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="text-danger">
-                                    <label style="font-size:x-small">Please ensure that you have attached your CV</label>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                }
-
-                else if (applcount <= 0 && pComplete >= 0 && education >= 0 && skills >= 0)
-                {
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="text-danger">
-                                <label style="font-size:x-small">Please ensure 'My Profile' is complete before applying for any position and ensure that your profile is the same as information on your CV. This information will be utilised for shortlisting purposes</label>
-                            </div>
-                        </div>
-                    </div>
-
-                }*@
-
-
-
-
                                             @*if (applcount >= 0 || pComplete >= 0)
-                {
-                    <button type="submit" class="btn btn-success btn-sm disabled"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+            {
+                <button type="submit" class="btn btn-success btn-sm disabled"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
                                             @*else if (applcount <= 0 || pComplete <= 0)
-                {
-                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+            {
+                <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
                                             @*else
-                {
-                    <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
-                }*@
+            {
+                <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
+            }*@
                                         }
 
+
+
+
                                         @*<a href="@Url.Action("DownloadVacancy", "Vacancy", new { id = Model.ID })" class="btn btn-info btn-sm">
-                <span class="fa fa-download" aria-hidden="true"></span>
-                Download Advert
-            </a>*@
+            <span class="fa fa-download" aria-hidden="true"></span>
+            Download Advert
+        </a>*@
                                         @{
                                             var comp = (from a in _db.lutOrganisations
                                                         join b in _db.tblVacancies on a.OrganisationID equals b.OrganisationID
@@ -787,13 +737,6 @@
                                                 {
                                                     orgID = d.OrganisationID;
                                                 }
-
-                                                //===========Peter 20221014==================
-                                                @*<a href="@Url.Action("ApplyForVacancy", "Vacancy", new { id = @userid })" class="btn btn-info btn-sm">
-                        <span class="fa fa-chevron-left" aria-hidden="true"></span>
-                        Next
-                    </a>*@
-                                                //===========================================
 
                                                 <a href="@Url.Action("BrowseVacancy", "Vacancy", new { id = @orgID })" class="btn btn-info btn-sm">
                                                     @*@ViewBag.Id*@
@@ -931,3 +874,4 @@
     /*===================================================*/
 
 </script>
+

@@ -27,7 +27,7 @@
         <ol class="breadcrumb">
             <li><a href="~/Home/Jobs"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="~/Candidate/MyProfile">My Career Center</a></li>
-            <li class="active">User Profile(Z83)</li>
+            <li class="active">User Profile (Z83)</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -36,7 +36,7 @@
         <div class="box">
 
             <div class="box-header with-border">
-                <h3 class="box-title">My Profile(Z83)</h3>
+                <h3 class="box-title">My Profile (Z83)</h3>
 
                 <div class="box box-success" style="width:100%; border: 2px solid #3CB371; box-shadow:inset 0 1px 1px rgba(0,0,0,0.075); padding: 10px; margin-top: 10px;">
                     @*<marquee direction="left" bgcolor="white" style="font-weight: bold;">Please Note: Candidate Profile is only required to be completed once, then candidate can continue to apply for different jobs. Once the profile is completed, system will allow the candidate to update the profile at any given time.</marquee>*@
@@ -144,17 +144,17 @@
                                     <strong><i class="margin-r-5"></i> Skills</strong>
                                     <p>
                                         @*@{
-                            var skillsData = from a in _db.tblSkillsProfiles
-                                             join b in _db.lutSkills on a.skillID equals b.skillID
-                                             join c in _db.tblProfiles on a.profileID equals c.pkProfileID
-                                             where c.UserID == userid
-                                             select new
-                                             {
-                                                 SkillName = b.skillName
-                                             };
+                                            var skillsData = from a in _db.tblSkillsProfiles
+                                                             join b in _db.lutSkills on a.skillID equals b.skillID
+                                                             join c in _db.tblProfiles on a.profileID equals c.pkProfileID
+                                                             where c.UserID == userid
+                                                             select new
+                                                             {
+                                                                 SkillName = b.skillName
+                                                             };
 
-                            var skills = skillsData.ToList();
-                        }*@
+                                            var skills = skillsData.ToList();
+                                        }*@
                                         @if (ViewBag.SkillsProf != null)
                                         {
                                             foreach (var d in ViewBag.SkillsProf)
@@ -199,8 +199,8 @@
                                             foreach (var item in Model)
                                             {
                                                 @*<div style="color:red">
-                                    @Html.ValidationSummary()
-                                </div>*@
+                        @Html.ValidationSummary()
+                    </div>*@
                                                 <br />
                                                 <div class="form-group">
                                                     <label for="inputName" class="col-sm-2 control-label">ID Number<span class="required" style="color:red;"></span></label>
@@ -347,7 +347,7 @@
                                                         @Html.EditorFor(i => item.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "RegistrationDate", @class = "form-control", @type = "date", placeholder = "RegistrationDate", tabindex = 7, value = @item.RegistrationDate } })
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="RegistrationNumber">
+                                                <div class="form-group" id="RegistrationNumberID">
                                                     <label for="inputRegistrationNumber" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;&nbsp; Registration Number<span class="required"></span></label>
                                                     @*<label for="inputRegistrationNumber" class="col-sm-2 control-label">Registration Number</label>*@
@@ -360,12 +360,12 @@
                                                        value = ""@*, onKeyPress = "return ValidateAlpha(event);"*@})
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="RegistrationBody">
+                                                <div class="form-group" id="RegistrationBodyID">
                                                     <label for="inputRegistrationBody" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;&nbsp; Registration Body<span class="required"></span></label>
                                                     @*<label for="inputRegistrationBody" class="col-sm-2 control-label">Registration Body</label>*@
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.RegistrationBody, null, new { @id = "RegistrationBody", @class = "form-control", placeholder = "Enter Registration Body", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                                        @Html.TextBoxFor(i => item.RegistrationBody, null, new { @id = "RegistrationBody", @class = "form-control", placeholder = "Enter Registration Body", value = "" })@*, onKeyPress = "return ValidateAlpha(event);" })*@
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -388,7 +388,7 @@
                                                     <label for="inputPreviouslyEmployedDepartment" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If Yes please specify@*<span class="required red" style="color:red;"> * </span>*@</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.ReEmploy, null, new { @id = "ReEmploy", @class = "form-control", placeholder = "Enter Conditions", value = "", onKeyPress = "return ValidateAlpha(event);" })
+                                                        @Html.TextBoxFor(i => item.ReEmploy, null, new { @id = "ReEmploy", @class = "form-control", placeholder = "Enter Conditions", value = "" })@*, onKeyPress = "return ValidateAlpha(event);" })*@
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="PreviouslyEmployedDepartment">
@@ -411,7 +411,7 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="CriminalCase">
@@ -425,7 +425,7 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "" })
                                                     </div>
                                                 </div>
 
@@ -440,7 +440,7 @@
                                                     <label for="inputMisconductDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryCase">
@@ -454,7 +454,7 @@
                                                     <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return isNotCharacter(event)" })
+                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryProceedingID">
@@ -483,7 +483,7 @@
                                                     <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return isNotCharacter(event)" })
+                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "" })
                                                     </div>
                                                 </div>
 
@@ -497,14 +497,14 @@
 
                                                 <div class="form-group" id="YearsExperience">
                                                     <label for="inputYearsExperience" class="control-label"></label>
-                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
+                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have: </label>
                                                     <div>
-                                                        <label>&nbsp;&nbsp;Private Sector:<span class="required" style="color:red;"> * </span></label>
+                                                        <label>&nbsp;&nbsp;Private Sector:</label>
 
                                                         @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
                                                     </div>
-                                                    <label>&nbsp;&nbsp;Public Sector:<span class="required" style="color:red;"> * </span></label>
+                                                    <label>&nbsp;&nbsp;Public Sector:</label>
 
                                                     <div>
                                                         @Html.TextBoxFor(i => item.YearsofExperiencePublic, null, new { @id = "YearsofExperiencePublic", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
@@ -594,31 +594,31 @@
                                                 </div>
 
                                                 @*<div class="form-group">
-                                    <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
-                                    <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
-                                    <div class="col-sm-10">
-                                        @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
-                                    </div>
-                                </div>*@
+                        <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
+                        <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
+                        </div>
+                    </div>*@
                                                 <hr>
 
                                                 @*<span style="color:red;">@ViewBag.Note</span>*@
                                                 <br>
                                                 <br />
                                                 @*<div class="form-group">
-                                  <span class="required" style="color:red;"> PDF / Word </span>
-                                  <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
-                                  <div class="col-sm-10">
-                                    <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
-                                  </div>
-                                </div>*@
+                      <span class="required" style="color:red;"> PDF / Word </span>
+                      <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
+                      <div class="col-sm-10">
+                        <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
+                      </div>
+                    </div>*@
                                                 @*<div class="form-group">
-                                  <span class="required" style="color:red;"> PDF </span>
-                                  <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
-                                  <div class="col-sm-10">
-                                    <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
-                                  </div>
-                                </div>*@
+                      <span class="required" style="color:red;"> PDF </span>
+                      <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
+                      <div class="col-sm-10">
+                        <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
+                      </div>
+                    </div>*@
                                                 {
                                                     var terms = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
                                                     bool t = Convert.ToBoolean(terms.TermsAndConditions);
@@ -632,9 +632,9 @@
                                                                         <input type="checkbox" name="TermsAndConditions" id="TermsAndConditions"> I agree to the <a href="#" data-toggle="modal" data-target="#myTerms">terms and conditions</a>
                                                                     </label>
                                                                     @*<label>
-                                                        @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
-                                                        <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
-                                                    </label>*@
+                                            @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
+                                            <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
+                                        </label>*@
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -715,14 +715,14 @@
                                             <div ng-switch-when="Load">
 
                                                 @*@{ if (@TempData["Message"] != null)
-                                    {
-                                        <div class="alert alert-success alert-dismissible" id="MyWorkflow">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            <h4><i class="icon fa fa-check"></i> Message!</h4>
-                                            Application successfully sent.
-                                        </div>
-                                    }
-                                }*@
+                        {
+                            <div class="alert alert-success alert-dismissible" id="MyWorkflow">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h4><i class="icon fa fa-check"></i> Message!</h4>
+                                Application successfully sent.
+                            </div>
+                        }
+                    }*@
                                                 <button id="Add" name="Add" class="btn btn-success" ng-click="AddEducation()"><span class="fa fa-plus"></span> Add New Education History</button><br />
                                                 <br />
                                                 <table id="example12" class="table table-bordered table-striped">
@@ -739,8 +739,8 @@
                                                     </thead>
                                                     <tbody>
                                                         @*<pre>
-                                            {{EducationListData | json}}
-                                        </pre>*@
+                                {{EducationListData | json}}
+                            </pre>*@
                                                         <tr data-ng-repeat="d in EducationListData">
                                                             <td>{{d.institutionName}}</td>
                                                             <td>{{d.qualificationName}}</td>
@@ -855,24 +855,24 @@
                                                             <input type="text" ng-model="reasonForLeaving" class="form-control" id="reasonForLeaving" name="reasonForLeaving" /><br>
                                                         </div>
                                                         @*<div class="row">
-                                            <div class="col-md-6">
-                                                <br />
-                                                Were You Previously Employed In The Public Service?:<span style="color:red;"> * </span>
-                                                <select class="form-control" ng-model="previouslyEmployedPS" id="previouslyEmployedPS" name="previouslyEmployedPS">
-                                                    <option value="0" ng-selected>--Select--</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="2">No</option>
-                                                </select>
+                                <div class="col-md-6">
+                                    <br />
+                                    Were You Previously Employed In The Public Service?:<span style="color:red;"> * </span>
+                                    <select class="form-control" ng-model="previouslyEmployedPS" id="previouslyEmployedPS" name="previouslyEmployedPS">
+                                        <option value="0" ng-selected>--Select--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="2">No</option>
+                                    </select>
 
-                                            </div>
-                                        </div><br />*@
+                                </div>
+                            </div><br />*@
                                                         @*<div class="showReEmp" ng-if="previouslyEmployedPS == 1">
 
-                                            Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:<span style="color:red;"> * </span>
-                                            <input type="text" ng-model="reEmployment" required class="form-control" id="reEmployment" name="reEmployment" /><br>
-                                            Provide The Name Of The Previous Employing Department:<span style="color:red;"> * </span>
-                                            <input type="text" ng-model="previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartment" name="previouslyEmployedDepartment" /><br>
-                                        </div>*@
+                                Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:<span style="color:red;"> * </span>
+                                <input type="text" ng-model="reEmployment" required class="form-control" id="reEmployment" name="reEmployment" /><br>
+                                Provide The Name Of The Previous Employing Department:<span style="color:red;"> * </span>
+                                <input type="text" ng-model="previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartment" name="previouslyEmployedDepartment" /><br>
+                            </div>*@
 
 
                                                         <button type="button" class="btn btn-success" ng-click="AddWorkHistoryInfo()"> <span class="fa fa-save success"></span> Save</button>
@@ -930,8 +930,8 @@
 
                                             <div ng-switch-when="Edit">
                                                 @*<pre>
-                                    {{WorkHistoryDataForEdit | json}}
-                                </pre>*@
+                        {{WorkHistoryDataForEdit | json}}
+                    </pre>*@
                                                 <!-- Form Element sizes -->
                                                 <div class="box box-success">
                                                     <div class="box-header with-border">
@@ -978,26 +978,26 @@
                                                             <br>
                                                         </div>
                                                         @*<div class="row">
-                                            <div class="col-md-6">
-                                                <br />
-                                                Were You Previously Employed In The Public Service?:
-                                                <select class="form-control" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedPS" id="previouslyEmployedPSEdit" name="previouslyEmployedPSEdit">
-                                                    <option value="0">--Select--</option>
-                                                    <option value="1" ng-selected="data[0].previouslyEmployedPS == 1">Yes</option>
-                                                    <option value="2" ng-selected="data[0].previouslyEmployedPS == 2">No</option>
-                                                </select>
-                                            </div>
-                                        </div><br />*@
+                                <div class="col-md-6">
+                                    <br />
+                                    Were You Previously Employed In The Public Service?:
+                                    <select class="form-control" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedPS" id="previouslyEmployedPSEdit" name="previouslyEmployedPSEdit">
+                                        <option value="0">--Select--</option>
+                                        <option value="1" ng-selected="data[0].previouslyEmployedPS == 1">Yes</option>
+                                        <option value="2" ng-selected="data[0].previouslyEmployedPS == 2">No</option>
+                                    </select>
+                                </div>
+                            </div><br />*@
                                                         @*<div class="showReEmp" ng-if="WorkHistoryDataForEdit[0].previouslyEmployedPS == 1">
 
 
-                                            Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:
-                                            <input type="text" ng-model="WorkHistoryDataForEdit[0].reEmployment" required class="form-control" id="reEmploymentEdit" name="reEmploymentEdit" />
-                                            <br>
-                                            Provide The Name Of The Previous Employing Department:
-                                            <input type="text" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartmentEdit" name="previouslyEmployedDepartmentEdit" />
-                                            <br>
-                                        </div>*@
+                                Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:
+                                <input type="text" ng-model="WorkHistoryDataForEdit[0].reEmployment" required class="form-control" id="reEmploymentEdit" name="reEmploymentEdit" />
+                                <br>
+                                Provide The Name Of The Previous Employing Department:
+                                <input type="text" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartmentEdit" name="previouslyEmployedDepartmentEdit" />
+                                <br>
+                            </div>*@
                                                         <button type="button" class="btn btn-success" ng-click="UpdateWorkHistoryInfo(WorkHistoryDataForEdit[0].workHistoryID)"> <span class="fa fa-save success"></span> Save</button>
                                                         <button type="button" class="btn btn-danger" ng-click="GetCandidateWorkHistoryData()"><span class="fa fa-close danger"></span> Cancel</button>
                                                     </div>
@@ -1160,7 +1160,7 @@
                                                         <input type="text" ng-model="refName" required class="form-control" id="txtrefName" name="txtrefName" />
                                                         <br>Company Name:<span style="color:red;"> * </span>
                                                         <input type="text" ng-model="companyName" required class="form-control" id="txtcompanyName" name="txtcompanyName" />
-                                                        <br>Position Held:
+                                                        <br>Relationship to You:
                                                         <input type="text" ng-model="positionHeld" required class="form-control" id="txtpositionHeld" name="txtpositionHeld" />
                                                         <br>Telephone Number:<span style="color:red;"> * </span>
                                                         <input type="text" ng-model="telNo" required class="form-control SAIDNumber" id="txttelNo" name="txttelNo" maxLength="10" />
@@ -1206,8 +1206,8 @@
                                                                         <li><a href="#" class="elements" ng-click="GetCandidateReferenceForEdit(d.referrenceID)"><span class="fa fa-pencil" style="color:blue;"></span> Edit</a></li>
                                                                         <li><a href="#" class="elements" ng-click="DeleteCandidateReference(d.referrenceID)"><span class="fa fa-trash danger" style="color:red;"></span> Delete</a></li>
                                                                         @*<li>
-                                                            <a href="@Url.Action("Delete", "Admin")" onclick="return confirm('Are you sure you want to delete this record?')"><span class="fa fa-trash danger" style="color:red"></span> Delete</a>
-                                                        </li>*@
+                                                <a href="@Url.Action("Delete", "Admin")" onclick="return confirm('Are you sure you want to delete this record?')"><span class="fa fa-trash danger" style="color:red"></span> Delete</a>
+                                            </li>*@
                                                                     </ul>
                                                                 </div>
                                                             </td>
@@ -1227,7 +1227,7 @@
                                                         <input type="text" ng-model="ReferenceDataForEdit[0].refName" required class="form-control" id="txtrefName" name="txtrefName" />
                                                         <br>Company Name:
                                                         <input type="text" ng-model="ReferenceDataForEdit[0].companyName" required class="form-control" id="txtcompanyName" name="txtcompanyName" />
-                                                        <br>Position Held:
+                                                        <br>Relationship to You:
                                                         <input type="text" ng-model="ReferenceDataForEdit[0].positionHeld" required class="form-control" id="txtpositionHeld" name="txtpositionHeld" />
                                                         <br>Telephone Number:
                                                         <input type="text" ng-model="ReferenceDataForEdit[0].telNo" required class="form-control " id="txttelNo" name="txttelNo" />
@@ -1325,22 +1325,22 @@
 
                                             </div>
                                             @*<div ng-switch-when="Add">
-                                <div class="box box-success">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">Add Attachment</h3>
-                                    </div>
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Add Attachment</h3>
+                        </div>
 
-                                    <div class="box-body">
-                                        Attachment Name:<br />
-                                        <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
-                                        <br>Attachment:
-                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
-                                        <br />
-                                        <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
-                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
-                                    </div>
-                                </div>
-                            </div>*@
+                        <div class="box-body">
+                            Attachment Name:<br />
+                            <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
+                            <br>Attachment:
+                            <input type="file" required class="form-control" id="postedFile" name="postedFile" />
+                            <br />
+                            <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
+                            <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
+                        </div>
+                    </div>
+                </div>*@
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -1984,6 +1984,45 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+        @*RegistrationBody Modal*@
+        <div class="modal fade" id="myModalRegistrationBody" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Enter Registration Body</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        @*RegistrationBody Modal*@
+        <div class="modal fade" id="myModalRegistrationNumber" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Enter Registration Number</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
         @*RelinquishBusiness Modal*@
 
         <div class="modal fade" id="myModalRelinquishBusiness" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2002,70 +2041,70 @@
                 </div>
                 <!-- /.modal-content -->
             </div>
+        </div>
+        <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Upload Profile(Z83) Picture</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", role = "form" }))
+                        {
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-6">
+                                        <label style="color:red">NB: Only images are will be uploaded</label>
+                                        <input class="input-file uniform_on" id="postedFile" accept="image/gif, image/jpeg" name="postedFile" type="file">
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Upload</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
             </div>
-            <div class="modal fade" id="modal-default">
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- /.box -->
+
+        @if (TempData["message"] != null)
+        {
+            <div class="modal modal-success fade" id="mask" data-toggle="modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title">Upload Profile(Z83) Picture</h4>
+                            <h4 class="modal-title">Notification</h4>
                         </div>
                         <div class="modal-body">
-                            @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data", role = "form" }))
-                            {
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-4"></div>
-                                        <div class="col-md-6">
-                                            <label style="color:red">NB: Only images are will be uploaded</label>
-                                            <input class="input-file uniform_on" id="postedFile" accept="image/gif, image/jpeg" name="postedFile" type="file">
-                                        </div>
-                                        <div class="col-md-2"></div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Upload</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            }
+
+                            <p>@Html.Raw(Json.Encode(TempData["message"]).Replace(@"""", ""))</p>
 
                         </div>
-
+                        <div class="modal-footer">
+                            <button type="button" href="@Url.Action("AllUsers", "Admin")" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal -->
-            <!-- /.box -->
-
-            @if (TempData["message"] != null)
-            {
-                <div class="modal modal-success fade" id="mask" data-toggle="modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="modal-title">Notification</h4>
-                            </div>
-                            <div class="modal-body">
-
-                                <p>@Html.Raw(Json.Encode(TempData["message"]).Replace(@"""", ""))</p>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" href="@Url.Action("AllUsers", "Admin")" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            }
+        }
     </section>
 
 
@@ -2147,7 +2186,7 @@
 
         }
     }
-
+    
     function CheckBusiness() {
         var d = $("#BusinessID").val();
         //alert($("#AnswerID").val());
@@ -2174,21 +2213,21 @@
         //alert($("#ProfessionallyRegisteredID").val());
         if (d == 1) {
             $("#RegistrationDate").show();
-            $("#RegistrationNumber").show();
-            $("#RegistrationBody").show();
+            $("#RegistrationNumberID").show();
+            $("#RegistrationBodyID").show();
 
             document.getElementById("RegistrationDate").required = true;
-            document.getElementById("RegistrationNumber").required = true;
-            document.getElementById("RegistrationBody").required = true;
+            document.getElementById("RegistrationNumberID").required = true;
+            document.getElementById("RegistrationBodyID").required = true;
         }
         else {
             $("#RegistrationDate").hide();
-            $("#RegistrationNumber").hide();
-            $("#RegistrationBody").hide();
+            $("#RegistrationNumberID").hide();
+            $("#RegistrationBodyID").hide();
 
             document.getElementById("RegistrationDate").required = false;
-            document.getElementById("RegistrationNumber").required = false;
-            document.getElementById("RegistrationBody").required = false;
+            document.getElementById("RegistrationNumberID").required = false;
+            document.getElementById("RegistrationBodyID").required = false;
         }
     }
 
@@ -2272,6 +2311,7 @@
         CheckDisciplinary();
         checkMethodofCommunication();
 
+    
         $("#DateOfBirth").datepicker({
             format: 'dd/mm/yyyy',
             //maxDate: moment(new Date())
@@ -2461,11 +2501,11 @@
         var age = parseInt(yyyy) - parseInt(dobYY.getFullYear());
 
         //alert(dobYY.getFullYear() + ' : ' + yyyy);
-        if (age > 60) {
-            mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is above 60!');
-            mymodal.modal('show');
-            return;
-        }
+        //if (age > 60) {
+        //    mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is above 60!');
+        //    mymodal.modal('show');
+        //    return;
+        //}
         if (age < 18) {
             mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is below 18!');
             mymodal.modal('show');
@@ -2521,6 +2561,19 @@
         else if (document.getElementById("DriversLicenseID").value == -1) {
             //alert($("#DriversLicenseID").val());
             $('#myModalDriversLicense').modal('show');
+            return;
+        }
+        //RegistrationBody
+            else if (document.getElementById("RegistrationBody").value == '') {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalRegistrationBody').modal('show');
+            return;
+        }
+        
+        //RegistrationBod
+        else if (document.getElementById("RegistrationNumber").value == '') {
+            //alert($("#DriversLicenseID").val());
+            $('#myModalRegistrationNumber').modal('show');
             return;
         }
         //criminalOffence
@@ -2703,6 +2756,24 @@
             //}
         });
 
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Step 3: Get the textbox element and its current value
+        var textBox = document.getElementById("YearsExperiencePrivate");
+        var currentValue = textBox.value;
+        var textBox1 = document.getElementById("YearsofExperiencePublic");
+        var currentValue1 = textBox.value;
+        if (currentValue == 0) {
+            var modifiedValue ="";
+            textBox.value = modifiedValue;
+        }
+        if (currentValue == 0) {
+            var modifiedValue = "";
+            textBox1.value = modifiedValue;
+        }
+       
     });
 </script>
 

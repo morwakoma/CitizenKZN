@@ -7,20 +7,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>D:\WorkKZN\deploy</_PublishTargetUrl>
-    <History>True|2023-07-20T13:54:33.3769997Z;True|2023-07-11T17:02:35.7509049+02:00;True|2023-05-25T17:30:44.5672879+02:00;False|2023-05-09T19:09:28.4080813+02:00;True|2023-03-15T20:23:11.5652056+02:00;True|2022-01-19T06:20:06.3074632+02:00;True|2021-12-08T09:18:48.8596170+02:00;True|2021-12-05T09:09:07.7220163+02:00;True|2021-11-29T08:28:18.0294843+02:00;True|2021-11-03T09:19:12.0557363+02:00;False|2021-10-11T14:27:39.5217150+02:00;True|2021-06-17T23:53:46.7479665+02:00;</History>
+    <History>True|2023-07-23T09:41:30.1325853Z;True|2023-07-20T15:54:33.3769997+02:00;True|2023-07-11T17:02:35.7509049+02:00;True|2023-05-25T17:30:44.5672879+02:00;False|2023-05-09T19:09:28.4080813+02:00;True|2023-03-15T20:23:11.5652056+02:00;True|2022-01-19T06:20:06.3074632+02:00;True|2021-12-08T09:18:48.8596170+02:00;True|2021-12-05T09:09:07.7220163+02:00;True|2021-11-29T08:28:18.0294843+02:00;True|2021-11-03T09:19:12.0557363+02:00;False|2021-10-11T14:27:39.5217150+02:00;True|2021-06-17T23:53:46.7479665+02:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
       <publishTime>07/20/2023 08:39:14</publishTime>
     </File>
     <File Include="appScripts/appController.js">
-      <publishTime>07/20/2023 08:39:30</publishTime>
+      <publishTime>07/22/2023 13:15:57</publishTime>
     </File>
     <File Include="appScripts/routeConfig.js">
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="App_Data/DAL/eRecruitmentDataClasses.dbml">
-      <publishTime>07/20/2023 11:35:59</publishTime>
+      <publishTime>07/22/2023 18:27:15</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/20/2023 08:39:58</publishTime>
@@ -32,10 +32,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:14</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/20/2023 15:53:29</publishTime>
+      <publishTime>07/23/2023 11:40:32</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/20/2023 15:53:28</publishTime>
+      <publishTime>07/23/2023 11:40:32</publishTime>
     </File>
     <File Include="bin/ClosedXML.dll">
       <publishTime>07/20/2023 08:39:58</publishTime>
@@ -56,13 +56,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:58</publishTime>
     </File>
     <File Include="bin/eRecruitment.Sita.Web.dll">
-      <publishTime>07/20/2023 15:52:50</publishTime>
+      <publishTime>07/23/2023 11:40:18</publishTime>
     </File>
     <File Include="bin/eRecruitment.Sita.Web.Notifications.dll">
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="bin/eRecruitment.Sita.Web.pdb">
-      <publishTime>07/20/2023 15:52:50</publishTime>
+      <publishTime>07/23/2023 11:40:18</publishTime>
     </File>
     <File Include="bin/ExcelNumberFormat.dll">
       <publishTime>07/20/2023 08:39:59</publishTime>
@@ -22265,7 +22265,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:58</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/20/2023 15:53:17</publishTime>
+      <publishTime>07/23/2023 11:40:24</publishTime>
     </File>
     <File Include="Scripts/angular-animate.js">
       <publishTime>07/20/2023 08:39:28</publishTime>
@@ -24818,7 +24818,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="Views/Candidate/MyProfile.cshtml">
-      <publishTime>07/20/2023 15:30:44</publishTime>
+      <publishTime>07/22/2023 18:06:37</publishTime>
     </File>
     <File Include="Views/CareerCenter/AddAttachments.cshtml">
       <publishTime>07/20/2023 08:39:30</publishTime>
@@ -24905,7 +24905,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2018 09:22:12</publishTime>
     </File>
     <File Include="Views/Home/Jobs.cshtml">
-      <publishTime>07/20/2023 08:39:30</publishTime>
+      <publishTime>07/22/2023 13:15:57</publishTime>
     </File>
     <File Include="Views/Home/LogOff.cshtml">
       <publishTime>07/20/2023 08:39:30</publishTime>
@@ -24950,7 +24950,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/20/2023 08:39:30</publishTime>
+      <publishTime>07/22/2023 23:34:35</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutLanding.cshtml">
       <publishTime>08/22/2018 11:33:00</publishTime>
@@ -24977,7 +24977,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="Views/Vacancy/BrowseVacancy.cshtml">
-      <publishTime>07/20/2023 08:39:30</publishTime>
+      <publishTime>07/22/2023 13:15:57</publishTime>
     </File>
     <File Include="Views/Vacancy/CandidateScreening.cshtml">
       <publishTime>07/20/2023 08:39:30</publishTime>
@@ -24998,13 +24998,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="Views/Vacancy/ViewForApproval.cshtml">
-      <publishTime>07/20/2023 08:39:30</publishTime>
+      <publishTime>07/22/2023 13:15:57</publishTime>
     </File>
     <File Include="Views/Vacancy/ViewRejectionReason.cshtml">
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="Views/Vacancy/ViewVacancyForApplying.cshtml">
-      <publishTime>07/20/2023 08:39:30</publishTime>
+      <publishTime>07/23/2023 11:37:59</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>07/20/2023 08:39:30</publishTime>
@@ -25013,7 +25013,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/20/2023 08:39:30</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/20/2023 15:53:02</publishTime>
+      <publishTime>07/23/2023 11:40:20</publishTime>
     </File>
   </ItemGroup>
 </Project>
