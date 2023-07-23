@@ -633,21 +633,21 @@
 
                 <button type="submit" class="btn btn-success btn-sm"><span class="fa fa-check" aria-hidden="true"></span> Apply Vacancy</button>
             }*@
-                                          
-                                            <div class="row" id="cvAttached">
-                                                <div class="form-group">
-                                                    <div class="text-danger">
-                                                        <input type="hidden" 
-                                                               name="VacancyQuestionID"
-                                                               value="@CVAttached"  id="cvAttachedID"/> 
+
+                                            if (CVAttached == 0)
+                                            {
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="text-danger">
+                                                            <label>Please ensure that you have attached your CV</label>
                                                         </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            
+                                            }
 
                                             if (applcount > 0)
                                             {
-                                                <div class="row" style="text-align:center">
+                                                <div class="row" >
                                                     <div class="form-group">
                                                         <div class="text-danger">
                                                             <label>You have already applied for this position</label>
@@ -655,14 +655,7 @@
                                                     </div>
                                                 </div>
                                             }
-                                            <div class="row" id="cvErrorID">
-                                                    <div class="form-group">
-                                                        <div class="text-danger">
-                                                            <label>Please ensure that you have attached your CV</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                          
+
                                             //==============Peter 20220917 - Display the Apply button even if the profile is not complete
                                             if (applcount <= 0)
                                             {
@@ -881,23 +874,4 @@
     /*===================================================*/
 
 </script>
-<script>
-    $(document).ready(function () {
-        if ((body && body.readyState == 'loaded') || (body && body.readyState == 'complete')) {
-            /*event.preventDefault();*/ // Prevent the form from being submitted initially
 
-            // Get the value of the username field
-            var usernameValue = document.getElementById("cvAttachedID").value;
-
-
-            if (usernameValue == 0) {
-                // Display the error message
-                document.getElementById("cvErrorID").style.display = "block";
-            }
-                //else {
-            //    // Submit the form programmatically since the validation passed
-            //    document.getElementById("form").submit();
-            //}
-        }
-    };
-</script>
