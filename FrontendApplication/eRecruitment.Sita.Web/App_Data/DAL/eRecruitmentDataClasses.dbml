@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="eRecruitmentDBKZNDev" Class="eRecruitmentDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=10.126.237.12;Initial Catalog=eRecruitmentDBKZNDev;User ID=erecruituser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="eRecruitmentDBKZN" Class="eRecruitmentDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.126.237.12;Initial Catalog=eRecruitmentDBKZN;User ID=erecruituser" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DefaultConnection" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
     <Type Name="AspNetRole">
       <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -987,19 +987,6 @@
       <Column Name="CreatedByDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblCandidateVacancyApplication" Member="tblCandidateVacancyApplications">
-    <Type Name="tblCandidateVacancyApplication">
-      <Column Name="ApplicationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="VacancyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IDNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ApplicationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ApplicationStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="OrganisationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Declaration" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.lutGeneralQuestion" Member="lutGeneralQuestions">
     <Type Name="lutGeneralQuestion">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1064,6 +1051,32 @@
       <Column Name="MinValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="MaxValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="VacancyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblVacancyExtension" Member="tblVacancyExtensions">
+    <Type Name="tblVacancyExtension">
+      <Column Name="VacancyExtensionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JobTitleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="JobLevel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MinValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MaxValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="VacancyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Salary" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Centre" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCandidateVacancyApplication" Member="tblCandidateVacancyApplications">
+    <Type Name="tblCandidateVacancyApplication">
+      <Column Name="ApplicationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="VacancyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ApplicationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrganisationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Declaration" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.AddProfile" Method="AddProfile">
@@ -1756,20 +1769,6 @@
     <Parameter Name="DocumentType" Parameter="documentType" Type="System.String" DbType="VarChar(50)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.GetApprovedVacancyListForCandidates" Method="GetApprovedVacancyListForCandidates">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <ElementType Name="GetApprovedVacancyListForCandidatesResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ReferenceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Centre" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="DepartmentDiscription" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ClosingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Salary" Type="System.String" DbType="VarChar(31)" CanBeNull="true" />
-      <Column Name="EmploymentType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_GetVacancyAdDetail" Method="sp_GetVacancyAdDetail">
     <Parameter Name="VacancyID" Parameter="vacancyID" Type="System.Int32" DbType="Int" />
     <ElementType Name="sp_GetVacancyAdDetailResult">
@@ -1801,6 +1800,20 @@
       <Column Name="Disclaimer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="LeadershipCompetencies" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="BehaviouralCompetency" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetApprovedVacancyListForCandidates" Method="GetApprovedVacancyListForCandidates">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetApprovedVacancyListForCandidatesResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReferenceNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Centre" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="JobTitle" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DivisionDiscription" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ClosingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Salary" Type="System.String" DbType="VarChar(31)" CanBeNull="true" />
+      <Column Name="EmploymentType" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

@@ -165,7 +165,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 //cellReferenceNo.BackgroundColor = BaseColor.LIGHT_GRAY;
                 table.AddCell(cellBPSNo);
 
-                PdfPCell cellBPSNoContent = new PdfPCell(new Phrase(data.ReferenceNo.ToString(), font));
+                PdfPCell cellBPSNoContent = new PdfPCell(new Phrase(data.BPSVacancyNo.ToString(), font));
                 cellBPSNoContent.Colspan = 1;
                 cellBPSNoContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
                 table.AddCell(cellBPSNoContent);
@@ -207,7 +207,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 table.AddCell(cellVacancyTypeContent);
 
                 //Salary Range
-                PdfPCell cellSalaryRange = new PdfPCell(new Phrase("Salary Range:", font));
+                PdfPCell cellSalaryRange = new PdfPCell(new Phrase("Salary:", font));
                 cellSalaryRange.Colspan = 1;
                 cellSalaryRange.HorizontalAlignment = Element.ALIGN_LEFT;
                 table.AddCell(cellSalaryRange);
@@ -303,7 +303,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 //table.AddCell(data.ReplyTo);
 
                 //Number or Opening
-                PdfPCell cellNumberOfOpenings = new PdfPCell(new Phrase("Number Of Openings:", font));
+                PdfPCell cellNumberOfOpenings = new PdfPCell(new Phrase("Number Of Posts:", font));
                 cellNumberOfOpenings.Colspan = 1;
                 cellNumberOfOpenings.HorizontalAlignment = Element.ALIGN_LEFT;
                 table.AddCell(cellNumberOfOpenings);
@@ -316,22 +316,22 @@ namespace eRecruitment.Sita.Web.Controllers
                 table.AddCell(emptyCell);
 
                 //Vacancy Purpose
-                PdfPCell cellVacancyPurpose = new PdfPCell(new Phrase("Purpose of Job:",font));
-                cellVacancyPurpose.Colspan = 2;
-                cellVacancyPurpose.HorizontalAlignment = Element.ALIGN_LEFT;
-                cellVacancyPurpose.BackgroundColor = BaseColor.LIGHT_GRAY;
-                table.AddCell(cellVacancyPurpose);
+                //PdfPCell cellVacancyPurpose = new PdfPCell(new Phrase("Purpose of Job:",font));
+                //cellVacancyPurpose.Colspan = 2;
+                //cellVacancyPurpose.HorizontalAlignment = Element.ALIGN_LEFT;
+                //cellVacancyPurpose.BackgroundColor = BaseColor.LIGHT_GRAY;
+                //table.AddCell(cellVacancyPurpose);
 
-                PdfPCell cellVacancyPurposeContent = new PdfPCell(new Phrase(data.VacancyPurpose,font));
-                cellVacancyPurposeContent.Colspan = 2;
-                cellVacancyPurposeContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
-                table.AddCell(cellVacancyPurposeContent);
-                //End Vacancy Purpose
+                //PdfPCell cellVacancyPurposeContent = new PdfPCell(new Phrase(data.VacancyPurpose,font));
+                //cellVacancyPurposeContent.Colspan = 2;
+                //cellVacancyPurposeContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
+                //table.AddCell(cellVacancyPurposeContent);
+                ////End Vacancy Purpose
 
                 table.AddCell(emptyCell);
 
                 //Responsibilities
-                PdfPCell cellResponsibilities = new PdfPCell(new Phrase("Responsibilities:", font));
+                PdfPCell cellResponsibilities = new PdfPCell(new Phrase("Duties/Responsibilities:", font));
                 cellResponsibilities.Colspan = 2;
                 cellResponsibilities.HorizontalAlignment = Element.ALIGN_LEFT;
                 cellResponsibilities.BackgroundColor = BaseColor.LIGHT_GRAY;
@@ -366,7 +366,7 @@ namespace eRecruitment.Sita.Web.Controllers
                 table.AddCell(emptyCell);
 
                 //Knowledge
-                PdfPCell cellKnowledge = new PdfPCell(new Phrase("Knowledge:", font));
+                PdfPCell cellKnowledge = new PdfPCell(new Phrase("Essential Knowledge, Skills and Competencies Required:", font));
                 cellKnowledge.Colspan = 2;
                 cellKnowledge.HorizontalAlignment = Element.ALIGN_LEFT;
                 cellKnowledge.BackgroundColor = BaseColor.LIGHT_GRAY;
@@ -393,19 +393,19 @@ namespace eRecruitment.Sita.Web.Controllers
                 //    technicalCompBuilder.AppendLine(technicalCompCounter.ToString() + ". " + item.TechnicalComp + " - " + item.TechnicalCompDesc);
                 //}
 
-                PdfPCell cellTechnicalComp = new PdfPCell(new Phrase("Technical Competencies",font));
-                cellTechnicalComp.Colspan = 2;
-                cellTechnicalComp.HorizontalAlignment = Element.ALIGN_LEFT;
-                cellTechnicalComp.BackgroundColor = BaseColor.LIGHT_GRAY;
-                table.AddCell(cellTechnicalComp);
+                //PdfPCell cellTechnicalComp = new PdfPCell(new Phrase("Technical Competencies",font));
+                //cellTechnicalComp.Colspan = 2;
+                //cellTechnicalComp.HorizontalAlignment = Element.ALIGN_LEFT;
+                //cellTechnicalComp.BackgroundColor = BaseColor.LIGHT_GRAY;
+                //table.AddCell(cellTechnicalComp);
 
-                //PdfPCell cellTechnicalCompContent = new PdfPCell(new Phrase(technicalCompBuilder.ToString(),font));
-                string tcomp = string.Empty;
-                if (data.TechnicalCompetenciesDescription != null) { tcomp = data.TechnicalCompetenciesDescription.ToString(); } else { tcomp = string.Empty; }
-                PdfPCell cellTechnicalCompContent = new PdfPCell(new Phrase(tcomp, font));
-                cellTechnicalCompContent.Colspan = 2;
-                cellTechnicalCompContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
-                table.AddCell(cellTechnicalCompContent);
+                ////PdfPCell cellTechnicalCompContent = new PdfPCell(new Phrase(technicalCompBuilder.ToString(),font));
+                //string tcomp = string.Empty;
+                //if (data.TechnicalCompetenciesDescription != null) { tcomp = data.TechnicalCompetenciesDescription.ToString(); } else { tcomp = string.Empty; }
+                //PdfPCell cellTechnicalCompContent = new PdfPCell(new Phrase(tcomp, font));
+                //cellTechnicalCompContent.Colspan = 2;
+                //cellTechnicalCompContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
+                //table.AddCell(cellTechnicalCompContent);
 
                 //Leadership Competency
                 //if (data.JobLevelID >= 17) //From the tblJob Level We sorted the Job Level with ID and 17 is the D4 and Above
@@ -436,19 +436,19 @@ namespace eRecruitment.Sita.Web.Controllers
                 //}
 
 
-                PdfPCell cellLeadershipComp = new PdfPCell(new Phrase("Leadership Competencies", font));
-                cellLeadershipComp.Colspan = 2;
-                cellLeadershipComp.HorizontalAlignment = Element.ALIGN_LEFT;
-                cellLeadershipComp.BackgroundColor = BaseColor.LIGHT_GRAY;
-                table.AddCell(cellLeadershipComp);
+                //PdfPCell cellLeadershipComp = new PdfPCell(new Phrase("Leadership Competencies", font));
+                //cellLeadershipComp.Colspan = 2;
+                //cellLeadershipComp.HorizontalAlignment = Element.ALIGN_LEFT;
+                //cellLeadershipComp.BackgroundColor = BaseColor.LIGHT_GRAY;
+                //table.AddCell(cellLeadershipComp);
 
-                //PdfPCell cellLeadershipCompContent = new PdfPCell(new Phrase(leadershipCompBuilder.ToString(),font));
-                string lcomp = string.Empty;
-                if (data.LeadershipCompetencies != null) { lcomp = data.LeadershipCompetencies.ToString(); } else { lcomp = string.Empty; }
-                PdfPCell cellLeadershipCompContent = new PdfPCell(new Phrase(lcomp.ToString(), font));
-                cellLeadershipCompContent.Colspan = 2;
-                cellLeadershipCompContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
-                table.AddCell(cellLeadershipCompContent);
+                ////PdfPCell cellLeadershipCompContent = new PdfPCell(new Phrase(leadershipCompBuilder.ToString(),font));
+                //string lcomp = string.Empty;
+                //if (data.LeadershipCompetencies != null) { lcomp = data.LeadershipCompetencies.ToString(); } else { lcomp = string.Empty; }
+                //PdfPCell cellLeadershipCompContent = new PdfPCell(new Phrase(lcomp.ToString(), font));
+                //cellLeadershipCompContent.Colspan = 2;
+                //cellLeadershipCompContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
+                //table.AddCell(cellLeadershipCompContent);
 
                 //Behavioural Competency
                 ////StringBuilder behaviouralCompBuilder = new StringBuilder();
@@ -461,20 +461,20 @@ namespace eRecruitment.Sita.Web.Controllers
                 //    behaviouralCompBuilder.AppendLine(behaviouralCompCounter.ToString() + ". " + item.BehaviouralComp + " - " + item.BehaviouralCompDesc);
                 //}
 
-                table.AddCell(emptyCell);
-                PdfPCell cellBehaviouralComp = new PdfPCell(new Phrase("Interpersonal and Behavioural Competencies",font));
-                cellBehaviouralComp.Colspan = 2;
-                cellBehaviouralComp.HorizontalAlignment = Element.ALIGN_LEFT;
-                cellBehaviouralComp.BackgroundColor = BaseColor.LIGHT_GRAY;
-                table.AddCell(cellBehaviouralComp);
+                //table.AddCell(emptyCell);
+                //PdfPCell cellBehaviouralComp = new PdfPCell(new Phrase("Interpersonal and Behavioural Competencies",font));
+                //cellBehaviouralComp.Colspan = 2;
+                //cellBehaviouralComp.HorizontalAlignment = Element.ALIGN_LEFT;
+                //cellBehaviouralComp.BackgroundColor = BaseColor.LIGHT_GRAY;
+                //table.AddCell(cellBehaviouralComp);
 
-                string bcomp = string.Empty;
-                if (data.BehaviouralCompetency != null) { bcomp = data.BehaviouralCompetency.ToString(); } else { bcomp = string.Empty; }
+                //string bcomp = string.Empty;
+                //if (data.BehaviouralCompetency != null) { bcomp = data.BehaviouralCompetency.ToString(); } else { bcomp = string.Empty; }
 
-                PdfPCell cellBehaviouralCompContent = new PdfPCell(new Phrase(bcomp.ToString(),font));
-                cellBehaviouralCompContent.Colspan = 2;
-                cellBehaviouralCompContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
-                table.AddCell(cellBehaviouralCompContent);
+                //PdfPCell cellBehaviouralCompContent = new PdfPCell(new Phrase(bcomp.ToString(),font));
+                //cellBehaviouralCompContent.Colspan = 2;
+                //cellBehaviouralCompContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
+                //table.AddCell(cellBehaviouralCompContent);
 
 
 
@@ -585,8 +585,8 @@ namespace eRecruitment.Sita.Web.Controllers
              
                 if (!String.IsNullOrEmpty(data.Disclaimer))
                 {
-                    string text = data.Disclaimer.Replace("\r\n", "");
-
+                    //string text = this.RemoveSpecialCharacters(data.Disclaimer).Replace("\r\n", "");
+                    string text = this.RemoveSpecialCharacters(data.Disclaimer);
                     string[] words = text.Split(delimiterChars);
                     //System.Diagnostics.Debug.WriteLine($"{words.Length} words in text:");
                     int myVal = 0;
@@ -625,7 +625,7 @@ namespace eRecruitment.Sita.Web.Controllers
 
                 //PdfPCell cellDisclaimerContent = new PdfPCell(new Phrase(myDisclaimer));
                 //PdfPCell cellDisclaimerContent = new PdfPCell(new Phrase(data.Disclaimer));
-                PdfPCell cellDisclaimerContent = new PdfPCell(new Phrase(disclaimerData,font));
+                PdfPCell cellDisclaimerContent = new PdfPCell(new Phrase(this.RemoveSpecialCharacters(disclaimerData),font));
                 cellDisclaimerContent.Colspan = 2;
                 cellDisclaimerContent.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
                 table.AddCell(cellDisclaimerContent);
@@ -1838,9 +1838,7 @@ namespace eRecruitment.Sita.Web.Controllers
         var candidate = from a in _db.tblProfiles
                         join b in _db.tblCandidateVacancyApplications on a.IDNumber equals b.IDNumber
                         join c in _db.tblVacancies on b.VacancyID equals c.ID
-                        join d in _db.lutJobTitles on c.JobTitleID equals d.JobTitleID
-                        join e in _db.lutSalaryStructures on c.JobTitleID equals e.JobTitleID
-                        join f in _db.lutJobLevels on e.JobLevelID equals f.JobLevelID
+                        join d in _db.tblVacancyExtensions on c.ID equals d.VacancyID
                         join g in _db.lutOrganisations on c.OrganisationID equals g.OrganisationID
                         where a.UserID == uid && c.ID == id
 
@@ -1848,10 +1846,10 @@ namespace eRecruitment.Sita.Web.Controllers
                         {
                           ProfileID = a.pkProfileID,
                           FullName = a.FirstName + " " + a.Surname,
-                          email = a.EmailAddress,
+                          email = a.CorrespondanceDetails,
                           PhoneNumber = a.CellNo,
                           RecruiterEmail = c.RecruiterEmail,
-                          JobApplied = d.JobTitle + " - " + " Job Level: " + f.JobLevelName + " Reference No: " + c.ReferenceNo,
+                          JobApplied = d.JobTitle + " - " + " Job Level: " + d.JobLevel + " Reference No: " + c.ReferenceNo,
                           OrganisationName = g.OrganisationName + " (" + g.OrganisationCode + ")",
                           Correspondence=a.CorrespondanceDetails
                         };
@@ -1861,7 +1859,7 @@ namespace eRecruitment.Sita.Web.Controllers
           profileID = d.ProfileID;
           FullName = d.FullName;
           JobApplied = d.JobApplied;
-          email = d.Correspondence;
+          email = d.Correspondence;     
           PhoneNumber = d.PhoneNumber;
           recruiteremail = d.RecruiterEmail;
           organisationName = d.OrganisationName;
@@ -2037,7 +2035,7 @@ namespace eRecruitment.Sita.Web.Controllers
         {
           ID = id,
           ReferenceNo = data.ReferenceNo,
-            BPSNumber = data.ReferenceNo,
+            BPSVacancyNo = data.BPSVacancyNo,
             JobTitle = data.JobTitle,
           JobLevel = data.JobLevel,
           Salary = data.Salary,

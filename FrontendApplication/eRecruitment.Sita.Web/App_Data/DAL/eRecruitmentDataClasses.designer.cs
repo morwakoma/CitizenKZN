@@ -22,7 +22,7 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="eRecruitmentDBKZNDev")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="eRecruitmentDBKZN")]
 	public partial class eRecruitmentDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -291,9 +291,6 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
     partial void InsertSpecialCharacter(SpecialCharacter instance);
     partial void UpdateSpecialCharacter(SpecialCharacter instance);
     partial void DeleteSpecialCharacter(SpecialCharacter instance);
-    partial void InserttblCandidateVacancyApplication(tblCandidateVacancyApplication instance);
-    partial void UpdatetblCandidateVacancyApplication(tblCandidateVacancyApplication instance);
-    partial void DeletetblCandidateVacancyApplication(tblCandidateVacancyApplication instance);
     partial void InsertlutGeneralQuestion(lutGeneralQuestion instance);
     partial void UpdatelutGeneralQuestion(lutGeneralQuestion instance);
     partial void DeletelutGeneralQuestion(lutGeneralQuestion instance);
@@ -309,6 +306,12 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
     partial void InserttblVacancySalary(tblVacancySalary instance);
     partial void UpdatetblVacancySalary(tblVacancySalary instance);
     partial void DeletetblVacancySalary(tblVacancySalary instance);
+    partial void InserttblVacancyExtension(tblVacancyExtension instance);
+    partial void UpdatetblVacancyExtension(tblVacancyExtension instance);
+    partial void DeletetblVacancyExtension(tblVacancyExtension instance);
+    partial void InserttblCandidateVacancyApplication(tblCandidateVacancyApplication instance);
+    partial void UpdatetblCandidateVacancyApplication(tblCandidateVacancyApplication instance);
+    partial void DeletetblCandidateVacancyApplication(tblCandidateVacancyApplication instance);
     #endregion
 		
 		public eRecruitmentDataClassesDataContext() : 
@@ -1101,14 +1104,6 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<tblCandidateVacancyApplication> tblCandidateVacancyApplications
-		{
-			get
-			{
-				return this.GetTable<tblCandidateVacancyApplication>();
-			}
-		}
-		
 		public System.Data.Linq.Table<lutGeneralQuestion> lutGeneralQuestions
 		{
 			get
@@ -1146,6 +1141,22 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 			get
 			{
 				return this.GetTable<tblVacancySalary>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblVacancyExtension> tblVacancyExtensions
+		{
+			get
+			{
+				return this.GetTable<tblVacancyExtension>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblCandidateVacancyApplication> tblCandidateVacancyApplications
+		{
+			get
+			{
+				return this.GetTable<tblCandidateVacancyApplication>();
 			}
 		}
 		
@@ -1835,18 +1846,18 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetApprovedVacancyListForCandidates")]
-		public ISingleResult<GetApprovedVacancyListForCandidatesResult> GetApprovedVacancyListForCandidates([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
-			return ((ISingleResult<GetApprovedVacancyListForCandidatesResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetVacancyAdDetail")]
 		public ISingleResult<sp_GetVacancyAdDetailResult> sp_GetVacancyAdDetail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="VacancyID", DbType="Int")] System.Nullable<int> vacancyID)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), vacancyID);
 			return ((ISingleResult<sp_GetVacancyAdDetailResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetApprovedVacancyListForCandidates")]
+		public ISingleResult<GetApprovedVacancyListForCandidatesResult> GetApprovedVacancyListForCandidates([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<GetApprovedVacancyListForCandidatesResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -19082,260 +19093,6 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblCandidateVacancyApplication")]
-	public partial class tblCandidateVacancyApplication : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ApplicationID;
-		
-		private string _UserID;
-		
-		private int _VacancyID;
-		
-		private string _IDNumber;
-		
-		private System.DateTime _ApplicationDate;
-		
-		private System.Nullable<int> _ApplicationStatusID;
-		
-		private System.Nullable<System.DateTime> _CreatedOn;
-		
-		private System.Nullable<int> _OrganisationID;
-		
-		private System.Nullable<int> _Declaration;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnApplicationIDChanging(int value);
-    partial void OnApplicationIDChanged();
-    partial void OnUserIDChanging(string value);
-    partial void OnUserIDChanged();
-    partial void OnVacancyIDChanging(int value);
-    partial void OnVacancyIDChanged();
-    partial void OnIDNumberChanging(string value);
-    partial void OnIDNumberChanged();
-    partial void OnApplicationDateChanging(System.DateTime value);
-    partial void OnApplicationDateChanged();
-    partial void OnApplicationStatusIDChanging(System.Nullable<int> value);
-    partial void OnApplicationStatusIDChanged();
-    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedOnChanged();
-    partial void OnOrganisationIDChanging(System.Nullable<int> value);
-    partial void OnOrganisationIDChanged();
-    partial void OnDeclarationChanging(System.Nullable<int> value);
-    partial void OnDeclarationChanged();
-    #endregion
-		
-		public tblCandidateVacancyApplication()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ApplicationID
-		{
-			get
-			{
-				return this._ApplicationID;
-			}
-			set
-			{
-				if ((this._ApplicationID != value))
-				{
-					this.OnApplicationIDChanging(value);
-					this.SendPropertyChanging();
-					this._ApplicationID = value;
-					this.SendPropertyChanged("ApplicationID");
-					this.OnApplicationIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VacancyID", DbType="Int NOT NULL")]
-		public int VacancyID
-		{
-			get
-			{
-				return this._VacancyID;
-			}
-			set
-			{
-				if ((this._VacancyID != value))
-				{
-					this.OnVacancyIDChanging(value);
-					this.SendPropertyChanging();
-					this._VacancyID = value;
-					this.SendPropertyChanged("VacancyID");
-					this.OnVacancyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDNumber", DbType="VarChar(50)")]
-		public string IDNumber
-		{
-			get
-			{
-				return this._IDNumber;
-			}
-			set
-			{
-				if ((this._IDNumber != value))
-				{
-					this.OnIDNumberChanging(value);
-					this.SendPropertyChanging();
-					this._IDNumber = value;
-					this.SendPropertyChanged("IDNumber");
-					this.OnIDNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationDate", DbType="DateTime NOT NULL")]
-		public System.DateTime ApplicationDate
-		{
-			get
-			{
-				return this._ApplicationDate;
-			}
-			set
-			{
-				if ((this._ApplicationDate != value))
-				{
-					this.OnApplicationDateChanging(value);
-					this.SendPropertyChanging();
-					this._ApplicationDate = value;
-					this.SendPropertyChanged("ApplicationDate");
-					this.OnApplicationDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationStatusID", DbType="Int")]
-		public System.Nullable<int> ApplicationStatusID
-		{
-			get
-			{
-				return this._ApplicationStatusID;
-			}
-			set
-			{
-				if ((this._ApplicationStatusID != value))
-				{
-					this.OnApplicationStatusIDChanging(value);
-					this.SendPropertyChanging();
-					this._ApplicationStatusID = value;
-					this.SendPropertyChanged("ApplicationStatusID");
-					this.OnApplicationStatusIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedOn
-		{
-			get
-			{
-				return this._CreatedOn;
-			}
-			set
-			{
-				if ((this._CreatedOn != value))
-				{
-					this.OnCreatedOnChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedOn = value;
-					this.SendPropertyChanged("CreatedOn");
-					this.OnCreatedOnChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrganisationID", DbType="Int")]
-		public System.Nullable<int> OrganisationID
-		{
-			get
-			{
-				return this._OrganisationID;
-			}
-			set
-			{
-				if ((this._OrganisationID != value))
-				{
-					this.OnOrganisationIDChanging(value);
-					this.SendPropertyChanging();
-					this._OrganisationID = value;
-					this.SendPropertyChanged("OrganisationID");
-					this.OnOrganisationIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Declaration", DbType="Int")]
-		public System.Nullable<int> Declaration
-		{
-			get
-			{
-				return this._Declaration;
-			}
-			set
-			{
-				if ((this._Declaration != value))
-				{
-					this.OnDeclarationChanging(value);
-					this.SendPropertyChanging();
-					this._Declaration = value;
-					this.SendPropertyChanged("Declaration");
-					this.OnDeclarationChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lutGeneralQuestion")]
 	public partial class lutGeneralQuestion : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -20605,6 +20362,514 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 					this._VacancyID = value;
 					this.SendPropertyChanged("VacancyID");
 					this.OnVacancyIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblVacancyExtension")]
+	public partial class tblVacancyExtension : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _VacancyExtensionID;
+		
+		private System.Nullable<int> _JobTitleID;
+		
+		private string _JobTitle;
+		
+		private string _JobLevel;
+		
+		private System.Nullable<decimal> _MinValue;
+		
+		private System.Nullable<decimal> _MaxValue;
+		
+		private System.Nullable<int> _VacancyID;
+		
+		private string _Salary;
+		
+		private string _Centre;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnVacancyExtensionIDChanging(int value);
+    partial void OnVacancyExtensionIDChanged();
+    partial void OnJobTitleIDChanging(System.Nullable<int> value);
+    partial void OnJobTitleIDChanged();
+    partial void OnJobTitleChanging(string value);
+    partial void OnJobTitleChanged();
+    partial void OnJobLevelChanging(string value);
+    partial void OnJobLevelChanged();
+    partial void OnMinValueChanging(System.Nullable<decimal> value);
+    partial void OnMinValueChanged();
+    partial void OnMaxValueChanging(System.Nullable<decimal> value);
+    partial void OnMaxValueChanged();
+    partial void OnVacancyIDChanging(System.Nullable<int> value);
+    partial void OnVacancyIDChanged();
+    partial void OnSalaryChanging(string value);
+    partial void OnSalaryChanged();
+    partial void OnCentreChanging(string value);
+    partial void OnCentreChanged();
+    #endregion
+		
+		public tblVacancyExtension()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VacancyExtensionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int VacancyExtensionID
+		{
+			get
+			{
+				return this._VacancyExtensionID;
+			}
+			set
+			{
+				if ((this._VacancyExtensionID != value))
+				{
+					this.OnVacancyExtensionIDChanging(value);
+					this.SendPropertyChanging();
+					this._VacancyExtensionID = value;
+					this.SendPropertyChanged("VacancyExtensionID");
+					this.OnVacancyExtensionIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitleID", DbType="Int")]
+		public System.Nullable<int> JobTitleID
+		{
+			get
+			{
+				return this._JobTitleID;
+			}
+			set
+			{
+				if ((this._JobTitleID != value))
+				{
+					this.OnJobTitleIDChanging(value);
+					this.SendPropertyChanging();
+					this._JobTitleID = value;
+					this.SendPropertyChanged("JobTitleID");
+					this.OnJobTitleIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(250)")]
+		public string JobTitle
+		{
+			get
+			{
+				return this._JobTitle;
+			}
+			set
+			{
+				if ((this._JobTitle != value))
+				{
+					this.OnJobTitleChanging(value);
+					this.SendPropertyChanging();
+					this._JobTitle = value;
+					this.SendPropertyChanged("JobTitle");
+					this.OnJobTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobLevel", DbType="NVarChar(50)")]
+		public string JobLevel
+		{
+			get
+			{
+				return this._JobLevel;
+			}
+			set
+			{
+				if ((this._JobLevel != value))
+				{
+					this.OnJobLevelChanging(value);
+					this.SendPropertyChanging();
+					this._JobLevel = value;
+					this.SendPropertyChanged("JobLevel");
+					this.OnJobLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MinValue", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> MinValue
+		{
+			get
+			{
+				return this._MinValue;
+			}
+			set
+			{
+				if ((this._MinValue != value))
+				{
+					this.OnMinValueChanging(value);
+					this.SendPropertyChanging();
+					this._MinValue = value;
+					this.SendPropertyChanged("MinValue");
+					this.OnMinValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxValue", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> MaxValue
+		{
+			get
+			{
+				return this._MaxValue;
+			}
+			set
+			{
+				if ((this._MaxValue != value))
+				{
+					this.OnMaxValueChanging(value);
+					this.SendPropertyChanging();
+					this._MaxValue = value;
+					this.SendPropertyChanged("MaxValue");
+					this.OnMaxValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VacancyID", DbType="Int")]
+		public System.Nullable<int> VacancyID
+		{
+			get
+			{
+				return this._VacancyID;
+			}
+			set
+			{
+				if ((this._VacancyID != value))
+				{
+					this.OnVacancyIDChanging(value);
+					this.SendPropertyChanging();
+					this._VacancyID = value;
+					this.SendPropertyChanged("VacancyID");
+					this.OnVacancyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salary", DbType="NVarChar(50)")]
+		public string Salary
+		{
+			get
+			{
+				return this._Salary;
+			}
+			set
+			{
+				if ((this._Salary != value))
+				{
+					this.OnSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._Salary = value;
+					this.SendPropertyChanged("Salary");
+					this.OnSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Centre", DbType="NVarChar(250)")]
+		public string Centre
+		{
+			get
+			{
+				return this._Centre;
+			}
+			set
+			{
+				if ((this._Centre != value))
+				{
+					this.OnCentreChanging(value);
+					this.SendPropertyChanging();
+					this._Centre = value;
+					this.SendPropertyChanged("Centre");
+					this.OnCentreChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblCandidateVacancyApplication")]
+	public partial class tblCandidateVacancyApplication : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ApplicationID;
+		
+		private string _UserID;
+		
+		private int _VacancyID;
+		
+		private string _IDNumber;
+		
+		private System.DateTime _ApplicationDate;
+		
+		private System.Nullable<int> _ApplicationStatusID;
+		
+		private System.Nullable<System.DateTime> _CreatedOn;
+		
+		private System.Nullable<int> _OrganisationID;
+		
+		private System.Nullable<int> _Declaration;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnApplicationIDChanging(int value);
+    partial void OnApplicationIDChanged();
+    partial void OnUserIDChanging(string value);
+    partial void OnUserIDChanged();
+    partial void OnVacancyIDChanging(int value);
+    partial void OnVacancyIDChanged();
+    partial void OnIDNumberChanging(string value);
+    partial void OnIDNumberChanged();
+    partial void OnApplicationDateChanging(System.DateTime value);
+    partial void OnApplicationDateChanged();
+    partial void OnApplicationStatusIDChanging(System.Nullable<int> value);
+    partial void OnApplicationStatusIDChanged();
+    partial void OnCreatedOnChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedOnChanged();
+    partial void OnOrganisationIDChanging(System.Nullable<int> value);
+    partial void OnOrganisationIDChanged();
+    partial void OnDeclarationChanging(System.Nullable<int> value);
+    partial void OnDeclarationChanged();
+    #endregion
+		
+		public tblCandidateVacancyApplication()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ApplicationID
+		{
+			get
+			{
+				return this._ApplicationID;
+			}
+			set
+			{
+				if ((this._ApplicationID != value))
+				{
+					this.OnApplicationIDChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationID = value;
+					this.SendPropertyChanged("ApplicationID");
+					this.OnApplicationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VacancyID", DbType="Int NOT NULL")]
+		public int VacancyID
+		{
+			get
+			{
+				return this._VacancyID;
+			}
+			set
+			{
+				if ((this._VacancyID != value))
+				{
+					this.OnVacancyIDChanging(value);
+					this.SendPropertyChanging();
+					this._VacancyID = value;
+					this.SendPropertyChanged("VacancyID");
+					this.OnVacancyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDNumber", DbType="VarChar(50)")]
+		public string IDNumber
+		{
+			get
+			{
+				return this._IDNumber;
+			}
+			set
+			{
+				if ((this._IDNumber != value))
+				{
+					this.OnIDNumberChanging(value);
+					this.SendPropertyChanging();
+					this._IDNumber = value;
+					this.SendPropertyChanged("IDNumber");
+					this.OnIDNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationDate", DbType="DateTime NOT NULL")]
+		public System.DateTime ApplicationDate
+		{
+			get
+			{
+				return this._ApplicationDate;
+			}
+			set
+			{
+				if ((this._ApplicationDate != value))
+				{
+					this.OnApplicationDateChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationDate = value;
+					this.SendPropertyChanged("ApplicationDate");
+					this.OnApplicationDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationStatusID", DbType="Int")]
+		public System.Nullable<int> ApplicationStatusID
+		{
+			get
+			{
+				return this._ApplicationStatusID;
+			}
+			set
+			{
+				if ((this._ApplicationStatusID != value))
+				{
+					this.OnApplicationStatusIDChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationStatusID = value;
+					this.SendPropertyChanged("ApplicationStatusID");
+					this.OnApplicationStatusIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedOn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this._CreatedOn;
+			}
+			set
+			{
+				if ((this._CreatedOn != value))
+				{
+					this.OnCreatedOnChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedOn = value;
+					this.SendPropertyChanged("CreatedOn");
+					this.OnCreatedOnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrganisationID", DbType="Int")]
+		public System.Nullable<int> OrganisationID
+		{
+			get
+			{
+				return this._OrganisationID;
+			}
+			set
+			{
+				if ((this._OrganisationID != value))
+				{
+					this.OnOrganisationIDChanging(value);
+					this.SendPropertyChanging();
+					this._OrganisationID = value;
+					this.SendPropertyChanged("OrganisationID");
+					this.OnOrganisationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Declaration", DbType="Int")]
+		public System.Nullable<int> Declaration
+		{
+			get
+			{
+				return this._Declaration;
+			}
+			set
+			{
+				if ((this._Declaration != value))
+				{
+					this.OnDeclarationChanging(value);
+					this.SendPropertyChanging();
+					this._Declaration = value;
+					this.SendPropertyChanged("Declaration");
+					this.OnDeclarationChanged();
 				}
 			}
 		}
@@ -22126,176 +22391,6 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 		}
 	}
 	
-	public partial class GetApprovedVacancyListForCandidatesResult
-	{
-		
-		private int _ID;
-		
-		private string _ReferenceNo;
-		
-		private string _Centre;
-		
-		private string _JobTitle;
-		
-		private string _DepartmentDiscription;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private System.Nullable<System.DateTime> _ClosingDate;
-		
-		private string _Salary;
-		
-		private string _EmploymentType;
-		
-		public GetApprovedVacancyListForCandidatesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this._ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReferenceNo", DbType="VarChar(50)")]
-		public string ReferenceNo
-		{
-			get
-			{
-				return this._ReferenceNo;
-			}
-			set
-			{
-				if ((this._ReferenceNo != value))
-				{
-					this._ReferenceNo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Centre", DbType="NVarChar(250)")]
-		public string Centre
-		{
-			get
-			{
-				return this._Centre;
-			}
-			set
-			{
-				if ((this._Centre != value))
-				{
-					this._Centre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(250)")]
-		public string JobTitle
-		{
-			get
-			{
-				return this._JobTitle;
-			}
-			set
-			{
-				if ((this._JobTitle != value))
-				{
-					this._JobTitle = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentDiscription", DbType="VarChar(150)")]
-		public string DepartmentDiscription
-		{
-			get
-			{
-				return this._DepartmentDiscription;
-			}
-			set
-			{
-				if ((this._DepartmentDiscription != value))
-				{
-					this._DepartmentDiscription = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this._CreatedDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClosingDate", DbType="Date")]
-		public System.Nullable<System.DateTime> ClosingDate
-		{
-			get
-			{
-				return this._ClosingDate;
-			}
-			set
-			{
-				if ((this._ClosingDate != value))
-				{
-					this._ClosingDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salary", DbType="VarChar(31)")]
-		public string Salary
-		{
-			get
-			{
-				return this._Salary;
-			}
-			set
-			{
-				if ((this._Salary != value))
-				{
-					this._Salary = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmploymentType", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
-		public string EmploymentType
-		{
-			get
-			{
-				return this._EmploymentType;
-			}
-			set
-			{
-				if ((this._EmploymentType != value))
-				{
-					this._EmploymentType = value;
-				}
-			}
-		}
-	}
-	
 	public partial class sp_GetVacancyAdDetailResult
 	{
 		
@@ -22803,6 +22898,176 @@ namespace eRecruitment.Sita.Web.App_Data.DAL
 				if ((this._BehaviouralCompetency != value))
 				{
 					this._BehaviouralCompetency = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetApprovedVacancyListForCandidatesResult
+	{
+		
+		private int _ID;
+		
+		private string _ReferenceNo;
+		
+		private string _Centre;
+		
+		private string _JobTitle;
+		
+		private string _DivisionDiscription;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<System.DateTime> _ClosingDate;
+		
+		private string _Salary;
+		
+		private string _EmploymentType;
+		
+		public GetApprovedVacancyListForCandidatesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReferenceNo", DbType="VarChar(50)")]
+		public string ReferenceNo
+		{
+			get
+			{
+				return this._ReferenceNo;
+			}
+			set
+			{
+				if ((this._ReferenceNo != value))
+				{
+					this._ReferenceNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Centre", DbType="NVarChar(250)")]
+		public string Centre
+		{
+			get
+			{
+				return this._Centre;
+			}
+			set
+			{
+				if ((this._Centre != value))
+				{
+					this._Centre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobTitle", DbType="NVarChar(250)")]
+		public string JobTitle
+		{
+			get
+			{
+				return this._JobTitle;
+			}
+			set
+			{
+				if ((this._JobTitle != value))
+				{
+					this._JobTitle = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DivisionDiscription", DbType="VarChar(150)")]
+		public string DivisionDiscription
+		{
+			get
+			{
+				return this._DivisionDiscription;
+			}
+			set
+			{
+				if ((this._DivisionDiscription != value))
+				{
+					this._DivisionDiscription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this._CreatedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClosingDate", DbType="Date")]
+		public System.Nullable<System.DateTime> ClosingDate
+		{
+			get
+			{
+				return this._ClosingDate;
+			}
+			set
+			{
+				if ((this._ClosingDate != value))
+				{
+					this._ClosingDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Salary", DbType="VarChar(31)")]
+		public string Salary
+		{
+			get
+			{
+				return this._Salary;
+			}
+			set
+			{
+				if ((this._Salary != value))
+				{
+					this._Salary = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmploymentType", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string EmploymentType
+		{
+			get
+			{
+				return this._EmploymentType;
+			}
+			set
+			{
+				if ((this._EmploymentType != value))
+				{
+					this._EmploymentType = value;
 				}
 			}
 		}

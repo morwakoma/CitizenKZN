@@ -14,6 +14,7 @@ namespace eRecruitment.Sita.Web.Models
        // public string VacancyName { get; set; }
         public string JobTitle { get; set; }
         public string Department { get; set; }
+        public string Division { get; set; }
         public string Centre { get; set; }
         public string EmploymentType { get; set; }
         public string Organisation { get; set; }
@@ -23,6 +24,7 @@ namespace eRecruitment.Sita.Web.Models
         public string Salary { get; set; }
         public string Status { get; set; }
         public int NumberOfOpenings { get; set; }
+
     }
 
     public class VacancyModels
@@ -32,7 +34,7 @@ namespace eRecruitment.Sita.Web.Models
       //  [Required]
         [Display(Name = "Reference No")]
         public string ReferenceNo { get; set; }
-        public string BPSNumber { get; set; }
+        public string BPSVacancyNo { get; set; }
         //  [Required]
         [Display(Name = "Vacancy Name")]
         public string VacancyName { get; set; }

@@ -307,7 +307,7 @@ namespace eRecruitment.Sita.Web
       {
         var data = (from a in _db.tblCandidateVacancyApplications
                     join b in _db.tblVacancies on a.VacancyID equals b.ID
-                    join e in _db.lutJobTitles on b.JobTitleID equals e.JobTitleID
+                    join e in _db.tblVacancyExtensions on a.VacancyID equals e.VacancyID
                     join d in _db.lutOrganisations on b.OrganisationID equals d.OrganisationID
                     where a.UserID == uid
                     select new { a.ApplicationID, e.JobTitle, a.ApplicationDate, b.ReferenceNo, b.ID, d.OrganisationName }).ToList();
@@ -821,7 +821,7 @@ namespace eRecruitment.Sita.Web
           e.ID = Convert.ToInt32(d.ID);
           e.ReferenceNo = Convert.ToString(d.ReferenceNo);
           e.JobTitle = Convert.ToString(d.JobTitle);
-          e.Department = Convert.ToString(d.DepartmentDiscription);
+          e.Division = Convert.ToString(d.DivisionDiscription);
           e.Centre = Convert.ToString(d.Centre);
           e.EmploymentType = Convert.ToString(d.EmploymentType);
           e.Salary = Convert.ToString(d.Salary);
