@@ -27,7 +27,7 @@
         <ol class="breadcrumb">
             <li><a href="~/Home/Jobs"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="~/Candidate/MyProfile">My Career Center</a></li>
-            <li class="active">User Profile (Z83)</li>
+            <li class="active">User Profile(Z83)</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -36,7 +36,7 @@
         <div class="box">
 
             <div class="box-header with-border">
-                <h3 class="box-title">My Profile (Z83)</h3>
+                <h3 class="box-title">My Profile(Z83)</h3>
 
                 <div class="box box-success" style="width:100%; border: 2px solid #3CB371; box-shadow:inset 0 1px 1px rgba(0,0,0,0.075); padding: 10px; margin-top: 10px;">
                     @*<marquee direction="left" bgcolor="white" style="font-weight: bold;">Please Note: Candidate Profile is only required to be completed once, then candidate can continue to apply for different jobs. Once the profile is completed, system will allow the candidate to update the profile at any given time.</marquee>*@
@@ -174,6 +174,7 @@
                         </div>
                         <!-- /.col -->
                         @Html.Hidden("myAttachmentID", Url.Action("AddAttachment"))
+
                         <div class="col-md-9">
                             <div id="tab" class="nav-tabs-custom">
                                 <ul class="nav nav-tabs">
@@ -347,7 +348,7 @@
                                                         @Html.EditorFor(i => item.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "RegistrationDate", @class = "form-control", @type = "date", placeholder = "RegistrationDate", tabindex = 7, value = @item.RegistrationDate } })
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="RegistrationNumberID">
+                                                <div class="form-group" id="RegistrationNumber">
                                                     <label for="inputRegistrationNumber" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;&nbsp; Registration Number<span class="required"></span></label>
                                                     @*<label for="inputRegistrationNumber" class="col-sm-2 control-label">Registration Number</label>*@
@@ -360,12 +361,12 @@
                                                        value = ""@*, onKeyPress = "return ValidateAlpha(event);"*@})
                                                     </div>
                                                 </div>
-                                                <div class="form-group" id="RegistrationBodyID">
+                                                <div class="form-group" id="RegistrationBody">
                                                     <label for="inputRegistrationBody" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;&nbsp; Registration Body<span class="required"></span></label>
                                                     @*<label for="inputRegistrationBody" class="col-sm-2 control-label">Registration Body</label>*@
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.RegistrationBody, null, new { @id = "RegistrationBody", @class = "form-control", placeholder = "Enter Registration Body", value = "" })@*, onKeyPress = "return ValidateAlpha(event);" })*@
+                                                        @Html.TextBoxFor(i => item.RegistrationBody, null, new { @id = "RegistrationBody", @class = "form-control", placeholder = "Enter Registration Body", value = "", onKeyPress = "return ValidateAlpha(event);" })
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -388,7 +389,7 @@
                                                     <label for="inputPreviouslyEmployedDepartment" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If Yes please specify@*<span class="required red" style="color:red;"> * </span>*@</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.ReEmploy, null, new { @id = "ReEmploy", @class = "form-control", placeholder = "Enter Conditions", value = "" })@*, onKeyPress = "return ValidateAlpha(event);" })*@
+                                                        @Html.TextBoxFor(i => item.ReEmploy, null, new { @id = "ReEmploy", @class = "form-control", placeholder = "Enter Conditions", value = "", onKeyPress = "return ValidateAlpha(event);" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="PreviouslyEmployedDepartment">
@@ -411,7 +412,7 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "" })
+                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="CriminalCase">
@@ -425,7 +426,7 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "" })
+                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
 
@@ -440,7 +441,7 @@
                                                     <label for="inputMisconductDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "" })
+                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "", onkeypress = "return ValidateAlpha(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryCase">
@@ -454,7 +455,7 @@
                                                     <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "" })
+                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return isNotCharacter(event)" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryProceedingID">
@@ -483,7 +484,7 @@
                                                     <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "" })
+                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return isNotCharacter(event)" })
                                                     </div>
                                                 </div>
 
@@ -497,14 +498,14 @@
 
                                                 <div class="form-group" id="YearsExperience">
                                                     <label for="inputYearsExperience" class="control-label"></label>
-                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have: </label>
+                                                    <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        <label>&nbsp;&nbsp;Private Sector:</label>
+                                                        <label>&nbsp;&nbsp;Private Sector:<span class="required" style="color:red;"> * </span></label>
 
                                                         @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
                                                     </div>
-                                                    <label>&nbsp;&nbsp;Public Sector:</label>
+                                                    <label>&nbsp;&nbsp;Public Sector:<span class="required" style="color:red;"> * </span></label>
 
                                                     <div>
                                                         @Html.TextBoxFor(i => item.YearsofExperiencePublic, null, new { @id = "YearsofExperiencePublic", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
@@ -557,11 +558,11 @@
                                                     </div>
                                                 </div>
                                                 @*<div class="form-group">
-                                                        <label for="inputCriminalOffense" class="col-sm-2 control-label">Criminal Offence<span class="required" style="color:red;"> * </span></label>
-                                                        <div class="col-sm-10">
-                                                            @Html.DropDownListFor(m => item.pkCriminalOffenseID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.pkCriminalOffenseID, "---Select....---"), new { @class = "form-control", id = "CriminalOffenseID", required = "required", value = "" })
-                                                        </div>
-                                                    </div>*@
+                                                    <label for="inputCriminalOffense" class="col-sm-2 control-label">Criminal Offence<span class="required" style="color:red;"> * </span></label>
+                                                    <div class="col-sm-10">
+                                                        @Html.DropDownListFor(m => item.pkCriminalOffenseID, new SelectList(ViewBag.YesorNo, "AnswerID", "Answer", item.pkCriminalOffenseID, "---Select....---"), new { @class = "form-control", id = "CriminalOffenseID", required = "required", value = "" })
+                                                    </div>
+                                                </div>*@
                                                 <hr>
                                                 <div class="form-group">
                                                     <label for="inputLanguageForCorrespondence" class="control-label">&nbsp;</label>
@@ -1160,7 +1161,7 @@
                                                         <input type="text" ng-model="refName" required class="form-control" id="txtrefName" name="txtrefName" />
                                                         <br>Company Name:<span style="color:red;"> * </span>
                                                         <input type="text" ng-model="companyName" required class="form-control" id="txtcompanyName" name="txtcompanyName" />
-                                                        <br>Relationship to You: <span style="color:red;"> * </span>
+                                                        <br>Relationship to You:
                                                         <input type="text" ng-model="positionHeld" required class="form-control" id="txtpositionHeld" name="txtpositionHeld" />
                                                         <br>Telephone Number:<span style="color:red;"> * </span>
                                                         <input type="text" ng-model="telNo" required class="form-control SAIDNumber" id="txttelNo" name="txttelNo" maxLength="10" />
@@ -1703,7 +1704,25 @@
             <!-- /.modal-dialog -->
         </div>
 
-
+        @*CityError Model*@
+        <div class="modal fade" id="myModalCity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please enter a City</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
         @*Province Model*@
         <div class="modal fade" id="fkProvinceIDModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1845,24 +1864,6 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <div class="modal fade" id="myModalCriminalOffenceDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please enter Criminal Offence Details</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
         @*CriminalCase Model*@
 
         <div class="modal fade" id="myModalCriminalcase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1874,24 +1875,6 @@
                     </div>
                     <div class="modal-body">
                         <p>Please Select one of the options in "Do you have any pending criminal case against you?"</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <div class="modal fade" id="myModalCriminalcaseDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please Enter Criminal Case details</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -1921,24 +1904,6 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <div class="modal fade" id="myModalMisconductDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please entr Misconduct Ddetails</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
         @*Disciplinary case Model*@
 
         <div class="modal fade" id="myModalDisciplinaryCase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1950,24 +1915,6 @@
                     </div>
                     <div class="modal-body">
                         <p>Please Select one of the options in "Do you have any pending disciplinary case against you?"</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <div class="modal fade" id="myModalDisciplinaryCaseDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please enter Deisciplinary case details</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -1997,24 +1944,6 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <!--<div class="modal fade" id="myModalDisciplinaryProceedingDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please enter Disciplinary Proceeding details</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>-->
-        <!-- /.modal-content -->
-        <!--</div>-->
-        <!-- /.modal-dialog -->
-        <!--</div>-->
         @*Business Modal*@
 
         <div class="modal fade" id="myModalBusiness" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2035,24 +1964,7 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-        <div class="modal fade" id="myModalBusinessDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please enter Business details</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
+
         @*RetiredorDiscarged Modal*@
 
         <div class="modal fade" id="myModalRetiredorDiscarged" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2064,45 +1976,6 @@
                     </div>
                     <div class="modal-body">
                         <p>Please Select one of the options in "Have you been discharged or retired from the Public Service on grounds of Ill-health or on condition that your cannot be re- employed?"</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        @*RegistrationBody Modal*@
-        <div class="modal fade" id="myModalRegistrationBody" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please Enter Registration Body</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-
-        @*RegistrationBody Modal*@
-        <div class="modal fade" id="myModalRegistrationNumber" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please Enter Registration Number</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -2243,8 +2116,6 @@
 
         }
     }
-
-    CriminalOffenceDesc
     function CheckDisciplinary() {
         var d = $("#DisciplinaryCaseID").val();
         /*alert($("#AnswerID").val());*/
@@ -2304,21 +2175,21 @@
         //alert($("#ProfessionallyRegisteredID").val());
         if (d == 1) {
             $("#RegistrationDate").show();
-            $("#RegistrationNumberID").show();
-            $("#RegistrationBodyID").show();
+            $("#RegistrationNumber").show();
+            $("#RegistrationBody").show();
 
             document.getElementById("RegistrationDate").required = true;
-            document.getElementById("RegistrationNumberID").required = true;
-            document.getElementById("RegistrationBodyID").required = true;
+            document.getElementById("RegistrationNumber").required = true;
+            document.getElementById("RegistrationBody").required = true;
         }
         else {
             $("#RegistrationDate").hide();
-            $("#RegistrationNumberID").hide();
-            $("#RegistrationBodyID").hide();
+            $("#RegistrationNumber").hide();
+            $("#RegistrationBody").hide();
 
             document.getElementById("RegistrationDate").required = false;
-            document.getElementById("RegistrationNumberID").required = false;
-            document.getElementById("RegistrationBodyID").required = false;
+            document.getElementById("RegistrationNumber").required = false;
+            document.getElementById("RegistrationBody").required = false;
         }
     }
 
@@ -2401,7 +2272,6 @@
         CheckCriminalCase();
         CheckDisciplinary();
         checkMethodofCommunication();
-
 
         $("#DateOfBirth").datepicker({
             format: 'dd/mm/yyyy',
@@ -2581,7 +2451,7 @@
     $('#btnPersonalInfo').on("click", function (e) {
         e.preventDefault(); //stop submit
         var mymodal = $('#myModal');
-        debugger
+
         var currentDate = new Date(); //use your date here
         //alert( currentDate.toLocaleDateString('en-US')); // "en-US" gives date in US Format - mm/dd/yy
         var dobYY = new Date($('#DateOfBirth').val());
@@ -2654,28 +2524,10 @@
             $('#myModalDriversLicense').modal('show');
             return;
         }
-        //RegistrationBody
-        else if (document.getElementById("RegistrationBody").value == '') {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalRegistrationBody').modal('show');
-            return;
-        }
-
-        //RegistrationBod
-        else if (document.getElementById("RegistrationNumber").value == '') {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalRegistrationNumber').modal('show');
-            return;
-        }
         //criminalOffence
         else if (document.getElementById("CriminalOffenceID").value == -1) {
             //alert($("#DriversLicenseID").val());
             $('#myModalCriminalOffence').modal('show');
-            return;
-        }
-        else if ($('#CriminalOffenceDesc').val() == null ) {
-           // alert($("#CriminalOffenceDesc").val());
-            $('#myModalCriminalOffenceDetails').modal('show');
             return;
         }
         //CriminalCase
@@ -2684,37 +2536,18 @@
             $('#myModalCriminalcase').modal('show');
             return;
         }
-        else if ($('#CriminalCaseDesc').val() == null || $('#CriminalCaseDesc').val() == '') {
-            /* alert($("#CriminalCaseDesc").val());*/
-            $('#myModalCriminalcaseDetails').modal('show');
-            return;
-        }
-
-
         //myMisconduct
         else if (document.getElementById("MisconductID").value == -1) {
             //alert($("#DriversLicenseID").val());
             $('#myModalMisconduct').modal('show');
             return;
         }
-        else if ($('#MisconductDesc').val() == null || $('#MisconductDesc').val() == '') {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalMisconductDetails').modal('show');
-            return;
-        }
-
         //DisciplinaryCase
         else if (document.getElementById("DisciplinaryCaseID").value == -1) {
             //alert($("#DriversLicenseID").val());
             $('#myModalDisciplinaryCase').modal('show');
             return;
         }
-        else if ($('#DisciplinaryCaseDesc').val() == null || $('#DisciplinaryCaseDesc').val() == '') {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalDisciplinaryCaseDetails').modal('show');
-            return;
-        }
-
         //DisciplinaryProceeding
         else if (document.getElementById("DisciplinaryProceeding").value == -1) {
             //alert($("#DriversLicenseID").val());
@@ -2733,12 +2566,6 @@
             $('#myModalBusiness').modal('show');
             return;
         }
-        else if ($('#BusinessDesc').val() == null || $('#BusinessDesc').val() == '') {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalBusinessDetails').modal('show');
-            return;
-        }
-
         //RelinquishBusiness
         else if (document.getElementById("RelinquishBusiness").value == -1) {
             //alert($("#DriversLicenseID").val());
@@ -2800,11 +2627,11 @@
             return;
         }
 
-        //Criminal Offense
-        else if (document.getElementById("CriminalOffenseID").value == -1) {
-            $('#myModalCriminalOffense').modal('show');
-            return;
-        }
+        ////Criminal Offense
+        //else if (document.getElementById("CriminalOffenseID").value == -1) {
+        //    $('#myModalCriminalOffense').modal('show');
+        //    return;
+        //}
 
         //Preferred Language For Correspondence
         else if (document.getElementById("LanguageForCorrespondenceID").value == -1) {
@@ -2819,7 +2646,6 @@
         }
         // City
         else if ($('#City').val() == null || $('#City').val() == '') {
-            //alert($("#City").val());
             $('#myModalCity').modal('show');
             return;
         }
@@ -2888,14 +2714,14 @@
         var textBox1 = document.getElementById("YearsofExperiencePublic");
         var currentValue1 = textBox.value;
         if (currentValue == 0) {
-            var modifiedValue = "";
+            var modifiedValue ="";
             textBox.value = modifiedValue;
         }
         if (currentValue == 0) {
             var modifiedValue = "";
             textBox1.value = modifiedValue;
         }
-
+       
     });
 </script>
 
