@@ -253,7 +253,7 @@
     <Compile Include="App_Data\appModels\eRecruitmentLookups.cs" />
     <Compile Include="Controllers\ScheduleInterviewsController.cs" />
     <Compile Include="Controllers\ShortlistingController.cs" />
-    <Compile Include="Controllers\VacancyController.cs" />
+    <Compile Include="Controllers\u.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -1771,7 +1771,17 @@ namespace eRecruitment.Sita.Web.Controllers
                 return RedirectToAction("ViewVacancyForApplying", new { id = id });
             }
             //==============================================================================================================
+            int profileID1 = (from a in _db.tblProfiles
+                              where a.UserID == uid
+                              select a.pkProfileID).FirstOrDefault();
+            int checkCV = _dal.checkCVAttached(profileID1);
 
+            if (Convert.ToInt32(checkCV)==0)
+            {
+                Session["CheckCV"] = "false";
+                return RedirectToAction("ViewVacancyForApplying", new { id = id });
+            }
+         
 
 
             //VacancyModels vacancyHistory = new VacancyModels();
@@ -1834,12 +1844,14 @@ namespace eRecruitment.Sita.Web.Controllers
         string recruiteremail = null;
         string organisationName = null;
         Nullable<int> profileID = null;
+        string division = null;
 
         var candidate = from a in _db.tblProfiles
                         join b in _db.tblCandidateVacancyApplications on a.IDNumber equals b.IDNumber
                         join c in _db.tblVacancies on b.VacancyID equals c.ID
                         join d in _db.tblVacancyExtensions on c.ID equals d.VacancyID
                         join g in _db.lutOrganisations on c.OrganisationID equals g.OrganisationID
+                        join f in _db.lutDivisions on c.DivisionID equals f.DivisionID
                         where a.UserID == uid && c.ID == id
 
                         select new
@@ -1851,7 +1863,8 @@ namespace eRecruitment.Sita.Web.Controllers
                           RecruiterEmail = c.RecruiterEmail,
                           JobApplied = d.JobTitle + " - " + " Job Level: " + d.JobLevel + " Reference No: " + c.ReferenceNo,
                           OrganisationName = g.OrganisationName + " (" + g.OrganisationCode + ")",
-                          Correspondence=a.CorrespondanceDetails
+                          Correspondence=a.CorrespondanceDetails,
+                          Division=f.DivisionDiscription
                         };
 
         foreach (var d in candidate)
@@ -1863,21 +1876,35 @@ namespace eRecruitment.Sita.Web.Controllers
           PhoneNumber = d.PhoneNumber;
           recruiteremail = d.RecruiterEmail;
           organisationName = d.OrganisationName;
+          division = d.Division;
         }
 
         rbuilder.Append("Dear: " + FullName + "<br/>");
         rbuilder.AppendLine();
         rbuilder.Append("<br/>");
         rbuilder.Append("Thank you for your application and interest shown for the position of " + JobApplied + " . "
-                        + "Correspondence will be limited to short listed candidates only. Should you not hear from us within two months of the closing date, please consider your application as unsuccessful.<br/> ");
-        rbuilder.Append("<br/>");
-        rbuilder.Append("<ul><b><li>It is the applicant`s responsibility to have foreign qualifications evaluated by the South African Qualifications Authority (SAQA).</li></b>");
-        rbuilder.Append("<b><li>" + organisationName + " reserves the right not to make an appointment.</li></b>");
-        rbuilder.Append("<b><li>Appointment is subject to getting a positive security clearance, the signing of a balance score card contract, verification of the applicants documents (Qualifications), and reference checking.</li></b></ul>");
+                        + division + "  Feedback will be limited to short listed candidates only. Should you not hear from us within two months of the closing date, please consider your application as unsuccessful.<br/> ");
+        rbuilder.Append("<br/><br/>");
+        rbuilder.Append("It is the applicant`s responsibility to have foreign qualifications evaluated by the South African Qualifications Authority (SAQA).");
+        //rbuilder.Append("<b><li>" + organisationName + " reserves the right not to make an appointment.</li></b>");
+        rbuilder.Append("Appointment is subject to a positive outcome of personnel suitability checks (criminal record,");
+        rbuilder.Append("citizenship, credit record, qualification verification and employment verification) prior to employment.  ");
+        rbuilder.Append("<br/><br/>");
+        rbuilder.Append("Candidates short-listed for an interview at any Provincial Department will be required to provide the required documentation ");
+        rbuilder.Append("the required documentation e.g. originally certified copies of qualification(s), ID, valid driver’s ");
+        rbuilder.Append("licence (where applicable) etc. on or before the date of the interview and failure to do so will result ");
+        rbuilder.Append("in the candidate being disqualified from being considered for the position.");
+        rbuilder.Append("<br/><br/>");
+        rbuilder.Append("The Department/Entity reserves the right not to make an appointment.");
         rbuilder.Append("<br/><br/>");
         rbuilder.Append("Thank you for your patience while we process all applications.");
         rbuilder.Append("<br/><br/>");
-        rbuilder.Append("Kind Regards<br/>E-Recruitment Team");
+        rbuilder.Append("<i>Please note: This e-mail was sent from a notification-only address that cannot accept incoming e-mail.");
+        rbuilder.Append("Please do not reply to this message. Please contact the Department should you have any ");
+        rbuilder.Append("enquiries regarding your application.  </i>");
+         rbuilder.Append("<br/><br/>");
+         rbuilder.Append( "Kind Regards<br/>");
+         rbuilder.Append(division +" "+ "E-Recruitment Team");
         string candidateEmail = rbuilder.ToString();
 
         notify.SendEmail(email, "e-Recruitment Notification", candidateEmail);

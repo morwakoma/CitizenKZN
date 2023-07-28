@@ -142,7 +142,9 @@ namespace eRecruitment.Sita.Web.Controllers
       using (eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext _db = new eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext())
       {
         var d = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
+                if (d != null) {
                 _dal.insertProfile(-1, "", -1, "", -1, -1, "", -1, -1, -1, "", -1, "", 0,0, d.pkProfileID);
+                }
 
                 ViewBag.Email = d.EmailAddress;
 
@@ -297,7 +299,7 @@ namespace eRecruitment.Sita.Web.Controllers
             int? ProfessionallyRegisteredID = item.ProfessionallyRegisteredID;
             string RegistrationDate = Convert.ToString(item.RegistrationDate);
             string RegistrationNumber = item.RegistrationNumber;
-            string RegistrationBody = this.RemoveSpecialCharacters(item.RegistrationBody);
+            string RegistrationBody = item.RegistrationBody;
             int? PreviouslyEmployedPS = item.PreviouslyEmployedPS;
             string ReEmployment = item.ReEmploy;
             string PreviouslyEmployedDepartment = item.PreviouslyEmployedDepartment;
@@ -550,7 +552,13 @@ namespace eRecruitment.Sita.Web.Controllers
             string PositionHeld1 = info.positionHeld;
             String text = info.positionHeld;
             string positionHeld1 = Convert.ToString(MvcHtmlString.Create(HttpUtility.HtmlEncode(text.Replace("•", ".").Replace("&amp;", "&").Replace("’", "'").Replace("–", "-"))));
-            string PositionHeld = this.RemoveSpecialCharacters(positionHeld1);
+            string PositionHeld= "";
+            if (positionHeld1 !=null)
+            {
+               PositionHeld = this.RemoveSpecialCharacters(positionHeld1);
+            }
+            
+    
             string Department = info.department;
             string startDate = info.startdate;
             string enddate = info.enddate;

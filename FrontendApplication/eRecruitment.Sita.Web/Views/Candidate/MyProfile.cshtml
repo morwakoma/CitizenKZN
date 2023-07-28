@@ -144,17 +144,17 @@
                                     <strong><i class="margin-r-5"></i> Skills</strong>
                                     <p>
                                         @*@{
-                                                var skillsData = from a in _db.tblSkillsProfiles
-                                                                 join b in _db.lutSkills on a.skillID equals b.skillID
-                                                                 join c in _db.tblProfiles on a.profileID equals c.pkProfileID
-                                                                 where c.UserID == userid
-                                                                 select new
-                                                                 {
-                                                                     SkillName = b.skillName
-                                                                 };
+                                            var skillsData = from a in _db.tblSkillsProfiles
+                                                             join b in _db.lutSkills on a.skillID equals b.skillID
+                                                             join c in _db.tblProfiles on a.profileID equals c.pkProfileID
+                                                             where c.UserID == userid
+                                                             select new
+                                                             {
+                                                                 SkillName = b.skillName
+                                                             };
 
-                                                var skills = skillsData.ToList();
-                                            }*@
+                                            var skills = skillsData.ToList();
+                                        }*@
                                         @if (ViewBag.SkillsProf != null)
                                         {
                                             foreach (var d in ViewBag.SkillsProf)
@@ -189,7 +189,7 @@
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="activity">
                                         <!-- Post -->
-                                        @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal uploadMyProfileForm", enctype = "multipart/form-data", role = "form", id = "myForm" }))
+                                        @using (Html.BeginForm("UpdateProfile", "Candidate", FormMethod.Post, new { @class = "form-horizontal uploadMyProfileForm", enctype = "multipart/form-data", role = "form", id = "myForm", onsubmit = "validateZ83Details();" }))
                                         {
 
                                             @Html.AntiForgeryToken()
@@ -200,8 +200,8 @@
                                             foreach (var item in Model)
                                             {
                                                 @*<div style="color:red">
-                                                        @Html.ValidationSummary()
-                                                    </div>*@
+                                                    @Html.ValidationSummary()
+                                                </div>*@
                                                 <br />
                                                 <div class="form-group">
                                                     <label for="inputName" class="col-sm-2 control-label">ID Number<span class="required" style="color:red;"></span></label>
@@ -345,7 +345,7 @@
                                                     <label>&nbsp;&nbsp;&nbsp; Registration Date<span class="required"></span></label>
                                                     @*<label for="inputRegistrationDate" class="col-sm-2 control-label">Registration Date</label>*@
                                                     <div>
-                                                        @Html.EditorFor(i => item.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "RegistrationDate", @class = "form-control", @type = "date", placeholder = "RegistrationDate", tabindex = 7, value = @item.RegistrationDate } })
+                                                        @Html.EditorFor(i => item.RegistrationDate, "{0:dd/MM/yyyy}", new { htmlAttributes = new { @id = "RegistrationDate", @class = "form-control", @type = "date", placeholder = "RegistrationDate", tabindex = 7, value = @item.RegistrationDate, required = "required" } })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="RegistrationNumber">
@@ -358,7 +358,9 @@
                                                        @id = "RegistrationNumber",
                                                        @class = "form-control",
                                                        placeholder = "Enter Registration Number",
-                                                       value = ""@*, onKeyPress = "return ValidateAlpha(event);"*@})
+                                                       value = "",
+                                                       required = "required"
+                                                        })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="RegistrationBody">
@@ -412,7 +414,7 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.CriminalOffenceDesc, null, new { @id = "CriminalOffenceDesc", @class = "form-control", placeholder = "enter criminal offence ", value = "", required = "required" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="CriminalCase">
@@ -426,7 +428,7 @@
                                                     <label for="inputCriminalCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.CriminalCaseDesc, null, new { @id = "CriminalCaseDesc", @class = "form-control", placeholder = "enter pending criminal case ", value = "",type="text", required = "required" })
                                                     </div>
                                                 </div>
 
@@ -441,7 +443,7 @@
                                                     <label for="inputMisconductDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "", onkeypress = "return ValidateAlpha(event)" })
+                                                        @Html.TextBoxFor(i => item.MisconductDesc, null, new { @id = "MisconductDesc", @class = "form-control", placeholder = "enter misconduct details ", value = "" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryCase">
@@ -455,7 +457,7 @@
                                                     <label for="inputDisciplinaryCaseDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp; If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "", onkeypress = "return isNotCharacter(event)" })
+                                                        @Html.TextBoxFor(i => item.DisciplinaryCaseDesc, null, new { @id = "DisciplinaryCaseDesc", @class = "form-control", placeholder = "enter disciplinary case details", value = "" })
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="DisciplinaryProceedingID">
@@ -484,7 +486,7 @@
                                                     <label for="inputBusinessDesc" class="control-label">&nbsp;</label>
                                                     <label>&nbsp;&nbsp;If yes (provide the details):</label>
                                                     <div>
-                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "", onkeypress = "return isNotCharacter(event)" })
+                                                        @Html.TextBoxFor(i => item.BusinessDesc, null, new { @id = "BusinessDesc", @class = "form-control", placeholder = "enter business Desc", value = "" })
                                                     </div>
                                                 </div>
 
@@ -500,12 +502,12 @@
                                                     <label for="inputYearsExperience" class="control-label"></label>
                                                     <label>&nbsp;&nbsp;Please specify the total number of years of experience you have:<span class="required" style="color:red;"> * </span></label>
                                                     <div>
-                                                        <label>&nbsp;&nbsp;Private Sector:<span class="required" style="color:red;"> * </span></label>
+                                                        <label>&nbsp;&nbsp;Private Sector:</label>
 
                                                         @Html.TextBoxFor(i => item.YearsExperiencePrivate, null, new { @id = "YearsExperiencePrivate", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
 
                                                     </div>
-                                                    <label>&nbsp;&nbsp;Public Sector:<span class="required" style="color:red;"> * </span></label>
+                                                    <label>&nbsp;&nbsp;Public Sector:</label>
 
                                                     <div>
                                                         @Html.TextBoxFor(i => item.YearsofExperiencePublic, null, new { @id = "YearsofExperiencePublic", @class = "form-control", placeholder = "enter years of experience", value = "", onkeypress = "return isNumberKey(event)" })
@@ -528,7 +530,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group" id="OtherNatureOfDisability">
-                                                    <label for="inputOtherNatureOfDisability" class="col-sm-2 control-label">If Other, Details</label>
+                                                    <label for="inputOtherNatureOfDisability" class="col-sm-2 control-label">If Other, Details <span class="required"></span></label>
                                                     <div class="col-sm-10">
                                                         @Html.TextBoxFor(i => item.OtherNatureOfDisability, null, new { @id = "OtherNatureOfDisability", @class = "form-control", placeholder = "Enter Nature if Disability is Other", value = "", onKeyPress = "return ValidateAlpha(event);" })
                                                     </div>
@@ -595,31 +597,31 @@
                                                 </div>
 
                                                 @*<div class="form-group">
-                                                        <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
-                                                        <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
-                                                        <div class="col-sm-10">
-                                                            @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
-                                                        </div>
-                                                    </div>*@
+                                                    <label for="inputCorrespondanceDetails" class="col-sm-2 control-label">&nbsp;</label>
+                                                    <label>&nbsp;&nbsp; Correspondence Details<span class="required" style="color:red;"> * </span></label>
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(i => item.CorrespondanceDetails, null, new { @id = "CorrespondanceDetails", @class = "form-control", placeholder = "Enter Correspondence Details", required = "required", value = "" })
+                                                    </div>
+                                                </div>*@
                                                 <hr>
 
                                                 @*<span style="color:red;">@ViewBag.Note</span>*@
                                                 <br>
                                                 <br />
                                                 @*<div class="form-group">
-                                                      <span class="required" style="color:red;"> PDF / Word </span>
-                                                      <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
-                                                      <div class="col-sm-10">
-                                                        <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
-                                                      </div>
-                                                    </div>*@
+                                                  <span class="required" style="color:red;"> PDF / Word </span>
+                                                  <label for="inputCVUpload" class="col-sm-2 control-label">Upload CV</label>
+                                                  <div class="col-sm-10">
+                                                    <input class="input-file uniform_on" id="postedCV" name="postedCV" type="file" disabled="disabled">
+                                                  </div>
+                                                </div>*@
                                                 @*<div class="form-group">
-                                                      <span class="required" style="color:red;"> PDF </span>
-                                                      <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
-                                                      <div class="col-sm-10">
-                                                        <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
-                                                      </div>
-                                                    </div>*@
+                                                  <span class="required" style="color:red;"> PDF </span>
+                                                  <label for="inputIDUpload" class="col-sm-2 control-label">ID Document</label>
+                                                  <div class="col-sm-10">
+                                                    <input class="input-file uniform_on" id="postedID" name="postedID" type="file">
+                                                  </div>
+                                                </div>*@
                                                 {
                                                     var terms = _db.tblProfiles.Where(x => x.UserID == userid).FirstOrDefault();
                                                     bool t = Convert.ToBoolean(terms.TermsAndConditions);
@@ -633,9 +635,9 @@
                                                                         <input type="checkbox" name="TermsAndConditions" id="TermsAndConditions"> I agree to the <a href="#" data-toggle="modal" data-target="#myTerms">terms and conditions</a>
                                                                     </label>
                                                                     @*<label>
-                                                                            @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
-                                                                            <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
-                                                                        </label>*@
+                                                                        @Html.CheckBoxFor(m => item.TermsAndConditions, new { htmlAttributes = new { @class = "form-control", @type = "checkbox", @required = "required", tabindex = 23, @onchange="GetTermsAndConditions()" } })
+                                                                        <span class="lbl"> I agree to the <a href="#">terms and conditions</a></span>
+                                                                    </label>*@
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -716,14 +718,14 @@
                                             <div ng-switch-when="Load">
 
                                                 @*@{ if (@TempData["Message"] != null)
-                                                        {
-                                                            <div class="alert alert-success alert-dismissible" id="MyWorkflow">
-                                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                                <h4><i class="icon fa fa-check"></i> Message!</h4>
-                                                                Application successfully sent.
-                                                            </div>
-                                                        }
-                                                    }*@
+                                                    {
+                                                        <div class="alert alert-success alert-dismissible" id="MyWorkflow">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                            <h4><i class="icon fa fa-check"></i> Message!</h4>
+                                                            Application successfully sent.
+                                                        </div>
+                                                    }
+                                                }*@
                                                 <button id="Add" name="Add" class="btn btn-success" ng-click="AddEducation()"><span class="fa fa-plus"></span> Add New Education History</button><br />
                                                 <br />
                                                 <table id="example12" class="table table-bordered table-striped">
@@ -740,8 +742,8 @@
                                                     </thead>
                                                     <tbody>
                                                         @*<pre>
-                                                                {{EducationListData | json}}
-                                                            </pre>*@
+                                                            {{EducationListData | json}}
+                                                        </pre>*@
                                                         <tr data-ng-repeat="d in EducationListData">
                                                             <td>{{d.institutionName}}</td>
                                                             <td>{{d.qualificationName}}</td>
@@ -856,24 +858,24 @@
                                                             <input type="text" ng-model="reasonForLeaving" class="form-control" id="reasonForLeaving" name="reasonForLeaving" /><br>
                                                         </div>
                                                         @*<div class="row">
-                                                                <div class="col-md-6">
-                                                                    <br />
-                                                                    Were You Previously Employed In The Public Service?:<span style="color:red;"> * </span>
-                                                                    <select class="form-control" ng-model="previouslyEmployedPS" id="previouslyEmployedPS" name="previouslyEmployedPS">
-                                                                        <option value="0" ng-selected>--Select--</option>
-                                                                        <option value="1">Yes</option>
-                                                                        <option value="2">No</option>
-                                                                    </select>
+                                                            <div class="col-md-6">
+                                                                <br />
+                                                                Were You Previously Employed In The Public Service?:<span style="color:red;"> * </span>
+                                                                <select class="form-control" ng-model="previouslyEmployedPS" id="previouslyEmployedPS" name="previouslyEmployedPS">
+                                                                    <option value="0" ng-selected>--Select--</option>
+                                                                    <option value="1">Yes</option>
+                                                                    <option value="2">No</option>
+                                                                </select>
 
-                                                                </div>
-                                                            </div><br />*@
+                                                            </div>
+                                                        </div><br />*@
                                                         @*<div class="showReEmp" ng-if="previouslyEmployedPS == 1">
 
-                                                                Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:<span style="color:red;"> * </span>
-                                                                <input type="text" ng-model="reEmployment" required class="form-control" id="reEmployment" name="reEmployment" /><br>
-                                                                Provide The Name Of The Previous Employing Department:<span style="color:red;"> * </span>
-                                                                <input type="text" ng-model="previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartment" name="previouslyEmployedDepartment" /><br>
-                                                            </div>*@
+                                                            Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:<span style="color:red;"> * </span>
+                                                            <input type="text" ng-model="reEmployment" required class="form-control" id="reEmployment" name="reEmployment" /><br>
+                                                            Provide The Name Of The Previous Employing Department:<span style="color:red;"> * </span>
+                                                            <input type="text" ng-model="previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartment" name="previouslyEmployedDepartment" /><br>
+                                                        </div>*@
 
 
                                                         <button type="button" class="btn btn-success" ng-click="AddWorkHistoryInfo()"> <span class="fa fa-save success"></span> Save</button>
@@ -931,8 +933,8 @@
 
                                             <div ng-switch-when="Edit">
                                                 @*<pre>
-                                                        {{WorkHistoryDataForEdit | json}}
-                                                    </pre>*@
+                                                    {{WorkHistoryDataForEdit | json}}
+                                                </pre>*@
                                                 <!-- Form Element sizes -->
                                                 <div class="box box-success">
                                                     <div class="box-header with-border">
@@ -979,26 +981,26 @@
                                                             <br>
                                                         </div>
                                                         @*<div class="row">
-                                                                <div class="col-md-6">
-                                                                    <br />
-                                                                    Were You Previously Employed In The Public Service?:
-                                                                    <select class="form-control" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedPS" id="previouslyEmployedPSEdit" name="previouslyEmployedPSEdit">
-                                                                        <option value="0">--Select--</option>
-                                                                        <option value="1" ng-selected="data[0].previouslyEmployedPS == 1">Yes</option>
-                                                                        <option value="2" ng-selected="data[0].previouslyEmployedPS == 2">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div><br />*@
+                                                            <div class="col-md-6">
+                                                                <br />
+                                                                Were You Previously Employed In The Public Service?:
+                                                                <select class="form-control" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedPS" id="previouslyEmployedPSEdit" name="previouslyEmployedPSEdit">
+                                                                    <option value="0">--Select--</option>
+                                                                    <option value="1" ng-selected="data[0].previouslyEmployedPS == 1">Yes</option>
+                                                                    <option value="2" ng-selected="data[0].previouslyEmployedPS == 2">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div><br />*@
                                                         @*<div class="showReEmp" ng-if="WorkHistoryDataForEdit[0].previouslyEmployedPS == 1">
 
 
-                                                                Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:
-                                                                <input type="text" ng-model="WorkHistoryDataForEdit[0].reEmployment" required class="form-control" id="reEmploymentEdit" name="reEmploymentEdit" />
-                                                                <br>
-                                                                Provide The Name Of The Previous Employing Department:
-                                                                <input type="text" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartmentEdit" name="previouslyEmployedDepartmentEdit" />
-                                                                <br>
-                                                            </div>*@
+                                                            Indicate Whether Any Conditions Exist That Prevents Your Re-Employment:
+                                                            <input type="text" ng-model="WorkHistoryDataForEdit[0].reEmployment" required class="form-control" id="reEmploymentEdit" name="reEmploymentEdit" />
+                                                            <br>
+                                                            Provide The Name Of The Previous Employing Department:
+                                                            <input type="text" ng-model="WorkHistoryDataForEdit[0].previouslyEmployedDepartment" required class="form-control" id="previouslyEmployedDepartmentEdit" name="previouslyEmployedDepartmentEdit" />
+                                                            <br>
+                                                        </div>*@
                                                         <button type="button" class="btn btn-success" ng-click="UpdateWorkHistoryInfo(WorkHistoryDataForEdit[0].workHistoryID)"> <span class="fa fa-save success"></span> Save</button>
                                                         <button type="button" class="btn btn-danger" ng-click="GetCandidateWorkHistoryData()"><span class="fa fa-close danger"></span> Cancel</button>
                                                     </div>
@@ -1207,8 +1209,8 @@
                                                                         <li><a href="#" class="elements" ng-click="GetCandidateReferenceForEdit(d.referrenceID)"><span class="fa fa-pencil" style="color:blue;"></span> Edit</a></li>
                                                                         <li><a href="#" class="elements" ng-click="DeleteCandidateReference(d.referrenceID)"><span class="fa fa-trash danger" style="color:red;"></span> Delete</a></li>
                                                                         @*<li>
-                                                                                <a href="@Url.Action("Delete", "Admin")" onclick="return confirm('Are you sure you want to delete this record?')"><span class="fa fa-trash danger" style="color:red"></span> Delete</a>
-                                                                            </li>*@
+                                                                            <a href="@Url.Action("Delete", "Admin")" onclick="return confirm('Are you sure you want to delete this record?')"><span class="fa fa-trash danger" style="color:red"></span> Delete</a>
+                                                                        </li>*@
                                                                     </ul>
                                                                 </div>
                                                             </td>
@@ -1326,22 +1328,22 @@
 
                                             </div>
                                             @*<div ng-switch-when="Add">
-                                                    <div class="box box-success">
-                                                        <div class="box-header with-border">
-                                                            <h3 class="box-title">Add Attachment</h3>
-                                                        </div>
-
-                                                        <div class="box-body">
-                                                            Attachment Name:<br />
-                                                            <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
-                                                            <br>Attachment:
-                                                            <input type="file" required class="form-control" id="postedFile" name="postedFile" />
-                                                            <br />
-                                                            <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
-                                                            <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
-                                                        </div>
+                                                <div class="box box-success">
+                                                    <div class="box-header with-border">
+                                                        <h3 class="box-title">Add Attachment</h3>
                                                     </div>
-                                                </div>*@
+
+                                                    <div class="box-body">
+                                                        Attachment Name:<br />
+                                                        <input type="text" required class="form-control" id="attachmentName" name="attachmentName" />
+                                                        <br>Attachment:
+                                                        <input type="file" required class="form-control" id="postedFile" name="postedFile" />
+                                                        <br />
+                                                        <button type="submit" class="btn btn-success"> <span class="fa fa-save success"></span> Save</button>
+                                                        <button type="button" class="btn btn-danger" ng-click="GetCandidateAttachmentData()"><span class="fa fa-close danger"></span> Cancel</button>
+                                                    </div>
+                                                </div>
+                                            </div>*@
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -1564,6 +1566,25 @@
             <!-- /.modal-dialog -->
         </div>
 
+        @*Professionally Registered Model*@
+        <div class="modal fade" id="myModalProfessionallyRegisteredDate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please Select Professionally Registered</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
         @*Were you previously employed in the Public Service*@
         <div class="modal fade" id="myModalPreviouslyEmployedPS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -1864,6 +1885,27 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+        @*CriminalOffenseDetails Model*@
+
+        <div class="modal fade" id="myModalCriminalOffenceDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel"> Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Provide Crininal offence details</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
         @*CriminalCase Model*@
 
         <div class="modal fade" id="myModalCriminalcase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2074,19 +2116,21 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<script>
+<script></script>
 
-    $(document).ready(function () {
-        $('#mask').fadeIn(500);
+    <script>
+
+        $(document).ready(function () {
+            $('#mask').fadeIn(500);
         $('#mask').fadeTo("slow", 0.9);
         $('.window .close').click(function (e) {
             e.preventDefault();
-            $('#mask').hide();
-            $('.window').hide();
+        $('#mask').hide();
+        $('.window').hide();
         });
         $('#mask').click(function () {
             $(this).hide();
-            $('.window').hide();
+        $('.window').hide();
         });
     });
 
@@ -2094,73 +2138,73 @@
 
 <script>
     function CheckDisability() {
-        var d = $("#AnswerID").val();
-        //alert($("#AnswerID").val());
-        if (d == 1) {
-            $("#DisabilityDetails").show();
-        }
-        else {
-            $("#DisabilityDetails").hide();
-            $("#OtherNatureOfDisability").hide();
-        }
+    var d = $("#AnswerID").val();
+    //alert($("#AnswerID").val());
+    if (d == 1) {
+        $("#DisabilityDetails").show();
     }
+    else {
+        $("#DisabilityDetails").hide();
+    $("#OtherNatureOfDisability").hide();
+    }
+}
 
     function CheckCriminalOffence() {
-        var d = $("#CriminalOffenceID").val();
-        /* alert($("#CriminalCaseDesc").val());*/
-        if (d == 1) {
-            $("#CriminalOffenceDesc").show();
-        }
-        else {
-            $("#CriminalOffenceDesc").hide();
-
-        }
+    var d = $("#CriminalOffenceID").val();
+    /* alert($("#CriminalCaseDesc").val());*/
+    if (d == 1) {
+        $("#CriminalOffenceDesc").show();
     }
+    else {
+        $("#CriminalOffenceDesc").hide();
+
+    }
+}
     function CheckDisciplinary() {
-        var d = $("#DisciplinaryCaseID").val();
-        /*alert($("#AnswerID").val());*/
-        if (d == 1) {
-            $("#DisciplinaryCaseDesc").show();
-        }
-        else {
-            $("#DisciplinaryCaseDesc").hide();
-        }
+    var d = $("#DisciplinaryCaseID").val();
+    /*alert($("#AnswerID").val());*/
+    if (d == 1) {
+        $("#DisciplinaryCaseDesc").show();
     }
+    else {
+        $("#DisciplinaryCaseDesc").hide();
+    }
+}
     function CheckCriminalCase() {
-        var d = $("#CriminalCaseID").val();
-        /* alert($("#CriminalOffence").val());*/
-        if (d == 1) {
-            $("#CriminalCaseDesc").show();
-        }
-        else {
-            $("#CriminalCaseDesc").hide();
-
-        }
+    var d = $("#CriminalCaseID").val();
+    /* alert($("#CriminalOffence").val());*/
+    if (d == 1) {
+        $("#CriminalCaseDesc").show();
     }
+    else {
+        $("#CriminalCaseDesc").hide();
+
+    }
+}
     function CheckMisconduct() {
-        var d = $("#MisconductID").val();
-        /*alert($("#AnswerID").val());*/
-        if (d == 1) {
-            $("#MisconductDesc").show();
-        }
-        else {
-            $("#MisconductDesc").hide();
-
-        }
+    var d = $("#MisconductID").val();
+    /*alert($("#AnswerID").val());*/
+    if (d == 1) {
+        $("#MisconductDesc").show();
     }
+    else {
+        $("#MisconductDesc").hide();
+
+    }
+}
 
     function CheckBusiness() {
-        var d = $("#BusinessID").val();
-        //alert($("#AnswerID").val());
-        if (d == 1) {
-            $("#BusinessDesc").show();
-        }
-        else {
-            $("#BusinessDesc").hide();
-
-        }
+    var d = $("#BusinessID").val();
+    //alert($("#AnswerID").val());
+    if (d == 1) {
+        $("#BusinessDesc").show();
     }
-    function CheckAnyconditionsPreventing() {
+    else {
+        $("#BusinessDesc").hide();
+
+    }
+}
+        function CheckAnyconditionsPreventing() {
         var d = $("#ConditionsThatPreventsReEmploymentID").val();
         if (d == 1) {
             $("#ReEmployment").show();
@@ -2169,161 +2213,160 @@
             $("#ReEmployment").hide();
         }
     }
-
     function CheckProfessionallyRegistered() {
-        var d = $("#ProfessionallyRegisteredID").val();
-        //alert($("#ProfessionallyRegisteredID").val());
-        if (d == 1) {
-            $("#RegistrationDate").show();
-            $("#RegistrationNumber").show();
-            $("#RegistrationBody").show();
+    var d = $("#ProfessionallyRegisteredID").val();
+    //alert($("#ProfessionallyRegisteredID").val());
+    if (d == 1) {
+        $("#RegistrationDate").show();
+    $("#RegistrationNumber").show();
+    $("#RegistrationBody").show();
 
-            document.getElementById("RegistrationDate").required = true;
-            document.getElementById("RegistrationNumber").required = true;
-            document.getElementById("RegistrationBody").required = true;
-        }
-        else {
-            $("#RegistrationDate").hide();
-            $("#RegistrationNumber").hide();
-            $("#RegistrationBody").hide();
-
-            document.getElementById("RegistrationDate").required = false;
-            document.getElementById("RegistrationNumber").required = false;
-            document.getElementById("RegistrationBody").required = false;
-        }
+    document.getElementById("RegistrationDate").required = true;
+    document.getElementById("RegistrationNumber").required = true;
+    document.getElementById("RegistrationBody").required = true;
     }
+    else {
+        $("#RegistrationDate").hide();
+    $("#RegistrationNumber").hide();
+    $("#RegistrationBody").hide();
+
+    document.getElementById("RegistrationDate").required = false;
+    document.getElementById("RegistrationNumber").required = false;
+    document.getElementById("RegistrationBody").required = false;
+    }
+}
 
     function CheckPreviouslyEmployedPS() {
-        var d = $("#PreviouslyEmployedPSID").val();
-        //alert($("#PreviouslyEmployedPSID").val());
-        if (d == 1) {
-            $("#ReEmployment").show();
-            $("#PreviouslyEmployedDepartment").show();
+    var d = $("#PreviouslyEmployedPSID").val();
+    //alert($("#PreviouslyEmployedPSID").val());
+    if (d == 1) {
+        $("#ReEmployment").show();
+    $("#PreviouslyEmployedDepartment").show();
 
-            document.getElementById("PreviouslyEmployedDepartment").required = true;
-            document.getElementById("ReEmployment").required = true;
-        }
-        else {
-            $("#ReEmployment").hide();
-            $("#PreviouslyEmployedDepartment").hide();
-
-            document.getElementById("ReEmployment").required = false;
-            document.getElementById("PreviouslyEmployedDepartment").required = false;
-
-        }
+    document.getElementById("PreviouslyEmployedDepartment").required = true;
+    document.getElementById("ReEmployment").required = true;
     }
+    else {
+        $("#ReEmployment").hide();
+    $("#PreviouslyEmployedDepartment").hide();
+
+    document.getElementById("ReEmployment").required = false;
+    document.getElementById("PreviouslyEmployedDepartment").required = false;
+
+    }
+}
 
     function CheckDisabilityNature() {
-        var d = $("#DisabilityID").val();
-        if (d == 6) {
-            $("#OtherNatureOfDisability").show();
-        }
-        else {
-            $("#OtherNatureOfDisability").hide();
-        }
+    var d = $("#DisabilityID").val();
+    if (d == 6) {
+        $("#OtherNatureOfDisability").show();
     }
+    else {
+        $("#OtherNatureOfDisability").hide();
+    }
+}
     function checkMethodofCommunication() {
-        var d = $("#methodofCommunicationId").val();
-        if (d == 3) {
-            $("#EmailTextbox").show();
-        }
-        else {
-            $("#EmailTextbox").hide();
-        }
+    var d = $("#methodofCommunicationId").val();
+    if (d == 3) {
+        $("#EmailTextbox").show();
     }
+    else {
+        $("#EmailTextbox").hide();
+    }
+}
     function CheckNationality() {
-        var d = $("#CitizenID").val();
-        if (d == 2) {
-            $("#NationanityDetails").show();
-            $("#WorkPermit").show();
-        }
-        else {
-            $("#NationanityDetails").hide();
-            $("#WorkPermit").hide();
-        }
+    var d = $("#CitizenID").val();
+    if (d == 2) {
+        $("#NationanityDetails").show();
+    $("#WorkPermit").show();
     }
+    else {
+        $("#NationanityDetails").hide();
+    $("#WorkPermit").hide();
+    }
+}
 
     function CheckWorkPermit() {
-        var a = $("#WorkPermitID").val();
-        if (a == 1) {
-            $("#WorkPermitNo").show();
-        }
-        else {
-            $("#WorkPermitNo").hide();
-        }
+    var a = $("#WorkPermitID").val();
+    if (a == 1) {
+        $("#WorkPermitNo").show();
     }
+    else {
+        $("#WorkPermitNo").hide();
+    }
+}
 </script>
 <script>
     $(document).ready(function () {
-        var body = document.getElementsByTagName('BODY')[0];
+    var body = document.getElementsByTagName('BODY')[0];
 
-        if ((body && body.readyState == 'loaded') || (body && body.readyState == 'complete')) {
-        }
-        CheckDisability();
-        CheckDisabilityNature();
-        CheckNationality();
-        CheckWorkPermit();
-        CheckProfessionallyRegistered();
-        CheckPreviouslyEmployedPS();
-        CheckAnyconditionsPreventing();
-        CheckCriminalOffence();
-        CheckMisconduct();
-        CheckBusiness();
-        CheckCriminalCase();
-        CheckDisciplinary();
-        checkMethodofCommunication();
+    if ((body && body.readyState == 'loaded') || (body && body.readyState == 'complete')) {
+    }
+    CheckDisability();
+    CheckDisabilityNature();
+    CheckNationality();
+    CheckWorkPermit();
+    CheckProfessionallyRegistered();
+    CheckPreviouslyEmployedPS();
+    CheckAnyconditionsPreventing();
+    CheckCriminalOffence();
+    CheckMisconduct();
+    CheckBusiness();
+    CheckCriminalCase();
+    CheckDisciplinary();
+    checkMethodofCommunication();
 
-        $("#DateOfBirth").datepicker({
-            format: 'dd/mm/yyyy',
-            //maxDate: moment(new Date())
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
-        $("#startDate").datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: new Date(),
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
-        $("#endDate").datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: new Date(),
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
-        $("#startDateEdit").datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: new Date(),
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
-        $("#endDateEdit").datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: new Date(),
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
-
-        $("#startDateQual").datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: new Date(),
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
-        $("#endDateQual").datepicker({
-            format: 'dd/mm/yyyy',
-            startDate: new Date(),
-        }).on('changeDate', function (e) {
-            $(this).datepicker('hide');
-        });
-
+    $("#DateOfBirth").datepicker({
+        format: 'dd/mm/yyyy',
+        //maxDate: moment(new Date())
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
     });
+
+    $("#startDate").datepicker({
+        format: 'dd/mm/yyyy',
+    startDate: new Date(),
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+    $("#endDate").datepicker({
+        format: 'dd/mm/yyyy',
+    startDate: new Date(),
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+    $("#startDateEdit").datepicker({
+        format: 'dd/mm/yyyy',
+    startDate: new Date(),
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+    $("#endDateEdit").datepicker({
+        format: 'dd/mm/yyyy',
+    startDate: new Date(),
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+
+    $("#startDateQual").datepicker({
+        format: 'dd/mm/yyyy',
+    startDate: new Date(),
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+    $("#endDateQual").datepicker({
+        format: 'dd/mm/yyyy',
+    startDate: new Date(),
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
+});
 
     function SelectedIndexChangedWorkPermit() {
         $(function () {
@@ -2363,62 +2406,62 @@
 
     function GetTermsAndConditions() {
         alert("Anotha");
-        if ($('#TermsAndConditions').is(":checked")) {
-            alert("I am shecked");
-        }
+    if ($('#TermsAndConditions').is(":checked")) {
+        alert("I am shecked");
     }
+}
 
 
     $('#TermsAndConditions').change(function () {
-        if ($('#TermsAndConditions').is(":checked")) {
-            $(':input[type="button"]').prop('disabled', false);
-        } else { $(':input[type="button"]').prop('disabled', true); }
-    });
+    if ($('#TermsAndConditions').is(":checked")) {
+        $(':input[type="button"]').prop('disabled', false);
+    } else {$(':input[type="button"]').prop('disabled', true); }
+});
 
     function isNumberKey(evt) {
-        //var e = evt || window.event;
-        var charCode = (evt.which) ? evt.which : evt.keyCode
-        if (charCode != 46 && charCode > 31
-            && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-    }
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode != 46 && charCode > 31
+    && (charCode < 48 || charCode > 57))
+    return false;
+    return true;
+}
 
     function isNotCharacter(evt) {
-        //var e = evt || window.event;
-        var charCode = (evt.which) ? evt.which : evt.keyCode
-        if (
-            (charCode >= 48 && charCode <= 57) ||  // 0-9
-            (charCode >= 65 && charCode <= 90) ||  // A-Z
-            (charCode >= 97 && charCode <= 122) || // a-z
-            charCode === 32 ||                     // Space
-            charCode === 46                        // Decimal point '.'
-        )
-            return true;
-        return false;
-    }
+    //var e = evt || window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (
+        (charCode >= 48 && charCode <= 57) ||  // 0-9
+        (charCode >= 65 && charCode <= 90) ||  // A-Z
+        (charCode >= 97 && charCode <= 122) || // a-z
+    charCode === 32 ||                     // Space
+    charCode === 46                        // Decimal point '.'
+    )
+    return true;
+    return false;
+}
     function ValidateAlpha(evt) {
-        var keyCode = (evt.which) ? evt.which : evt.keyCode
-        if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+    var keyCode = (evt.which) ? evt.which : evt.keyCode
+    if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
 
-            return false;
-        return true;
-    }
+    return false;
+    return true;
+}
     function GetQualificationID(d) {
         document.getElementById("hdnQualificationID").value = d;
-        $('hdnQualificationID').val(d);
-        //alert(d);
-    }
+    $('hdnQualificationID').val(d);
+    //alert(d);
+}
     function GetWorkHistoryID(d) {
         document.getElementById("hdnWorkHistoryID").value = d;
-        $('hdnWorkHistoryID').val(d);
-        //alert(d);
-    }
+    $('hdnWorkHistoryID').val(d);
+    //alert(d);
+}
     function GetReferenceID(d) {
         document.getElementById("hdnReferenceID").value = d;
-        $('hdnReferenceID').val(d);
-        //alert(d);
-    }
+    $('hdnReferenceID').val(d);
+    //alert(d);
+}
     function myFunction() {
         $(function () {
             $('form.my_form').submit(function (event) {
@@ -2435,243 +2478,253 @@
                 });
             });
         });
-    }
+}
 
     $(function () {
-        var image = $("#imgFileUpload");
-        image.click(function () {
-            $("#Test").show();
-            $("#Test").delay(5000).fadeOut("slow");
-
-        });
+    var image = $("#imgFileUpload");
+    image.click(function () {
+        $("#Test").show();
+    $("#Test").delay(5000).fadeOut("slow");
 
     });
+
+});
 </script>
 <script>
     $('#btnPersonalInfo').on("click", function (e) {
         e.preventDefault(); //stop submit
-        var mymodal = $('#myModal');
+    var mymodal = $('#myModal');
 
-        var currentDate = new Date(); //use your date here
-        //alert( currentDate.toLocaleDateString('en-US')); // "en-US" gives date in US Format - mm/dd/yy
-        var dobYY = new Date($('#DateOfBirth').val());
-        var dd = String(currentDate.getDate()).padStart(2, '0');
-        var mm = String(currentDate.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = currentDate.getFullYear();
-        currentDate = mm + '/' + dd + '/' + yyyy;
-        var age = parseInt(yyyy) - parseInt(dobYY.getFullYear());
+    var currentDate = new Date(); //use your date here
+    //alert( currentDate.toLocaleDateString('en-US')); // "en-US" gives date in US Format - mm/dd/yy
+    var dobYY = new Date($('#DateOfBirth').val());
+    var dd = String(currentDate.getDate()).padStart(2, '0');
+    var mm = String(currentDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = currentDate.getFullYear();
+    currentDate = mm + '/' + dd + '/' + yyyy;
+    var age = parseInt(yyyy) - parseInt(dobYY.getFullYear());
+   
+    //alert(dobYY.getFullYear() + ' : ' + yyyy);
+    //if (age > 60) {
+    //    mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is above 60!');
+    //    mymodal.modal('show');
+    //    return;
+    //}
+    if (age < 18) {
+        mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is below 18!');
+    mymodal.modal('show');
+    return;
+    }
 
-        //alert(dobYY.getFullYear() + ' : ' + yyyy);
-        //if (age > 60) {
-        //    mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is above 60!');
-        //    mymodal.modal('show');
-        //    return;
-        //}
-        if (age < 18) {
-            mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is below 18!');
-            mymodal.modal('show');
-            return;
-        }
+    // Date of birth
+    if ($('#DateOfBirth').val() == null || $('#DateOfBirth').val() == '') {
+        //mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is above 60!');
+        //mymodal.modal('show');
+        $('#myModalBirthDate').modal('show');
+    return;
+    }
 
-        // Date of birth
-        if ($('#DateOfBirth').val() == null || $('#DateOfBirth').val() == '') {
-            //mymodal.find('.modal-body').text('You are not allowed to use this functionality, age is above 60!');
-            //mymodal.modal('show');
-            $('#myModalBirthDate').modal('show');
-            return;
+    if (dobYY > currentDate) {
+        mymodal.find('.modal-body').text('Date of Birth cannot be in the future!');
+    mymodal.modal('show');
+    return;
         }
+        myModalProfessionallyRegisteredDate
 
-        if (dobYY > currentDate) {
-            mymodal.find('.modal-body').text('Date of Birth cannot be in the future!');
-            mymodal.modal('show');
-            return;
-        }
+    //Race
+    if (document.getElementById("RaceID").value == -1) {
+        mymodal.find('.modal-body').text('Please select Race');
+    mymodal.modal('show');
+    return;
+    }
+  
+    //Gender
+    else if (document.getElementById("GenderID").value == -1) {
+        mymodal.find('.modal-body').text('Please select Gender');
+    mymodal.modal('show');
+    return;
+    }
+    //
+    else if ($('#TelNoDuringWorkingHours').val() == null || $('#DateOfBirth').val() == '') {
+        $('#myModalTelNoDuring').modal('show');
+    return;
+    }
 
-        //Race
-        if (document.getElementById("RaceID").value == -1) {
-            mymodal.find('.modal-body').text('Please select Race');
-            mymodal.modal('show');
-            return;
-        }
+    //Province
+    else if (document.getElementById("fkProvinceID").value == -1) {
+        mymodal.find('.modal-body').text('Please select Province');
+    mymodal.modal('show');
+    return;
+    }
 
-        //Gender
-        else if (document.getElementById("GenderID").value == -1) {
-            mymodal.find('.modal-body').text('Please select Gender');
-            mymodal.modal('show');
-            return;
-        }
-        //
-        else if ($('#TelNoDuringWorkingHours').val() == null || $('#DateOfBirth').val() == '') {
-            $('#myModalTelNoDuring').modal('show');
-            return;
-        }
+    //Disability
+    else if (document.getElementById("AnswerID").value == -1) {
+        $('#myModalDisability').modal('show');
+    return;
+    }
+    //DriversLicense
+    else if (document.getElementById("DriversLicenseID").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalDriversLicense').modal('show');
+    return;
+    }
+    //criminalOffence
+    else if (document.getElementById("CriminalOffenceID").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalCriminalOffence').modal('show');
+    return;
+    }
 
-        //Province
-        else if (document.getElementById("fkProvinceID").value == -1) {
-            mymodal.find('.modal-body').text('Please select Province');
-            mymodal.modal('show');
-            return;
-        }
+    //else if ($('#CriminalOffenceDesc').val() == null || $('#CriminalOffenceDesc').val() == "") {
+    //    $('#myModalCriminalOffenceDetails').modal('show');
+    //return; // prevent form submission
+    //}
+    //CriminalCase
+    //else if (document.getElementById("CriminalCaseID").value == -1) {
+    //    //alert($("#DriversLicenseID").val());
+    //    $('#myModalCriminalcase').modal('show');
+    //return;
+    //}
+    //myMisconduct
+    else if (document.getElementById("MisconductID").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalMisconduct').modal('show');
+    return;
+    }
+    //DisciplinaryCase
+    else if (document.getElementById("DisciplinaryCaseID").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalDisciplinaryCase').modal('show');
+    return;
+    }
+    //DisciplinaryProceeding
+    else if (document.getElementById("DisciplinaryProceeding").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalDisciplinaryProceeding').modal('show');
+    return;
+    }
+    //RetiredorDiscarged
+    else if (document.getElementById("RetiredorDiscarged").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalRetiredorDiscarged').modal('show');
+    return;
+    }
+    //Business
+    else if (document.getElementById("BusinessID").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalBusiness').modal('show');
+    return;
+    }
+    //RelinquishBusiness
+    else if (document.getElementById("RelinquishBusiness").value == -1) {
+        //alert($("#DriversLicenseID").val());
+        $('#myModalRelinquishBusiness').modal('show');
+    return;
+    }
 
-        //Disability
-        else if (document.getElementById("AnswerID").value == -1) {
-            $('#myModalDisability').modal('show');
-            return;
-        }
-        //DriversLicense
-        else if (document.getElementById("DriversLicenseID").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalDriversLicense').modal('show');
-            return;
-        }
-        //criminalOffence
-        else if (document.getElementById("CriminalOffenceID").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalCriminalOffence').modal('show');
-            return;
-        }
-        //CriminalCase
-        else if (document.getElementById("CriminalCaseID").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalCriminalcase').modal('show');
-            return;
-        }
-        //myMisconduct
-        else if (document.getElementById("MisconductID").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalMisconduct').modal('show');
-            return;
-        }
-        //DisciplinaryCase
-        else if (document.getElementById("DisciplinaryCaseID").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalDisciplinaryCase').modal('show');
-            return;
-        }
-        //DisciplinaryProceeding
-        else if (document.getElementById("DisciplinaryProceeding").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalDisciplinaryProceeding').modal('show');
-            return;
-        }
-        //RetiredorDiscarged
-        else if (document.getElementById("RetiredorDiscarged").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalRetiredorDiscarged').modal('show');
-            return;
-        }
-        //Business
-        else if (document.getElementById("BusinessID").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalBusiness').modal('show');
-            return;
-        }
-        //RelinquishBusiness
-        else if (document.getElementById("RelinquishBusiness").value == -1) {
-            //alert($("#DriversLicenseID").val());
-            $('#myModalRelinquishBusiness').modal('show');
-            return;
-        }
+    //CompletedMatric
+    else if (document.getElementById("MatricID").value == -1) {
+        //alert($("#MatricID").val());
+        $('#myModalCompletedMatric').modal('show');
+    return;
+    }
+    //ProfessionallyRegistered
+    else if (document.getElementById("ProfessionallyRegisteredID").value == -1) {
+        $('#myModalProfessionallyRegistered').modal('show');
+    return;
+    }
 
-        //CompletedMatric
-        else if (document.getElementById("MatricID").value == -1) {
-            //alert($("#MatricID").val());
-            $('#myModalCompletedMatric').modal('show');
-            return;
-        }
-        //ProfessionallyRegistered
-        else if (document.getElementById("ProfessionallyRegisteredID").value == -1) {
-            $('#myModalProfessionallyRegistered').modal('show');
-            return;
-        }
+    //PreviouslyEmployedPS
+    else if (document.getElementById("PreviouslyEmployedPSID").value == -1) {
+        //alert($("#PreviouslyEmployedPSID").val());
+        $('#myModalPreviouslyEmployedPS').modal('show');
+    return;
+    }
 
-        //PreviouslyEmployedPS
-        else if (document.getElementById("PreviouslyEmployedPSID").value == -1) {
-            //alert($("#PreviouslyEmployedPSID").val());
-            $('#myModalPreviouslyEmployedPS').modal('show');
-            return;
-        }
-
-        //ConditionsThatPreventsReEmploymentID
-        if (document.getElementById("ConditionsThatPreventsReEmploymentID").value == -1) {
-            mymodal.find('.modal-body').text('Are there any conditions that prevents your re-employment?');
-            mymodal.modal('show');
-            return;
-        }
-
-        ////ConditionsThatPreventsReEmploymentID = Yes
+    //ConditionsThatPreventsReEmploymentID
+    if (document.getElementById("ConditionsThatPreventsReEmploymentID").value == -1) {
+        mymodal.find('.modal-body').text('Are there any conditions that prevents your re-employment?');
+    mymodal.modal('show');
+    return;
+    }
+   //if ($('#CriminalOffenceDesc').val() == null || $('#CriminalOffenceDesc').val() == '') {
+   //     $('#myModalCriminalOffenceDetails').modal('show');
+   //     return;
+   // }
+    ////ConditionsThatPreventsReEmploymentID = Yes
         if (document.getElementById("ConditionsThatPreventsReEmploymentID").value == 1
-            && (document.getElementById("ReEmploy").value == '' || document.getElementById("ReEmploy").value == null)) {
-            alert(document.getElementById("ReEmploy").value);
-            mymodal.find('.modal-body').text('Please specify the conditions that exists that prevents your re-employment?');
-            mymodal.modal('show');
-            return;
+            && (document.getElementById("ReEmploy").value == null || document.getElementById("ReEmploy").value == 'undefined')) {
+       // alert(document.getElementById("ReEmploy").value);
+    mymodal.find('.modal-body').text('Please specify the conditions that exists that prevents your re-employment?');
+    mymodal.modal('show');
+    return;
 
-            //    //ReEmployment
-            //    //var x = $('#ReEmployment').val();
-            //    //var xc = $('#item_ReEmployment').val();
-            //    //alert(x + " : " + xc);
-            //    var dc = document.getElementById("ReEmploy").value;
-            //    alert(dc);
-            //    if (document.getElementById("ReEmploy").value == "")
-            //    {
-            //        mymodal.find('.modal-body').text('Please specify the conditions that exists that prevents your re-employment?');
-            //        mymodal.modal('show');
-            //        return;
-            //    }
-        }
+        //    //ReEmployment
+        //    //var x = $('#ReEmployment').val();
+        //    //var xc = $('#item_ReEmployment').val();
+        //    //alert(x + " : " + xc);
+        //    var dc = document.getElementById("ReEmploy").value;
+        //    alert(dc);
+        //    if (document.getElementById("ReEmploy").value == "")
+        //    {
+        //        mymodal.find('.modal-body').text('Please specify the conditions that exists that prevents your re-employment?');
+        //        mymodal.modal('show');
+        //        return;
+        //    }
+    }
+     
+    //Nationality
+    else if (document.getElementById("CitizenID").value == -1) {
+        $('#myModalSACitizen').modal('show');
+    return;
+    }
 
-        //Nationality
-        else if (document.getElementById("CitizenID").value == -1) {
-            $('#myModalSACitizen').modal('show');
-            return;
-        }
+    ////Criminal Offense
+    //else if (document.getElementById("CriminalOffenseID").value == -1) {
+    //    $('#myModalCriminalOffense').modal('show');
+    //    return;
+    //}
 
-        ////Criminal Offense
-        //else if (document.getElementById("CriminalOffenseID").value == -1) {
-        //    $('#myModalCriminalOffense').modal('show');
-        //    return;
-        //}
+    //Preferred Language For Correspondence
+    else if (document.getElementById("LanguageForCorrespondenceID").value == -1) {
+        $('#myModalLanguageForCorrespondenceID').modal('show');
+    return;
+    }
 
-        //Preferred Language For Correspondence
-        else if (document.getElementById("LanguageForCorrespondenceID").value == -1) {
-            $('#myModalLanguageForCorrespondenceID').modal('show');
-            return;
-        }
+    //TelNoDuringWorkingHours
+    else if (document.getElementById("TelNoDuringWorkingHours").value == -1) {
+        $('#myModalTelNoDuringWorkingHours').modal('show');
+    return;
+    }
+    // City
+    else if ($('#City').val() == null || $('#City').val() == '') {
+        $('#myModalCity').modal('show');
+    return;
+   }
+        
+    //
+    else if ($('#fkProvinceID').val() == null || $('#fkProvinceID').val() == '' || $('#fkProvinceID') == -1) {
+        $('#fkProvinceIDModel').modal('show');
+    return;
+    }
+    else if ($('#postalCode').val() == null || $('#postalCode').val() == '' || $('#postalCode') == -1) {
+        $('#postalCodeModel').modal('show');
+    return;
+    }
+    else if ($('#AnswerID').val() == null || $('#AnswerID').val() == '' || $('#AnswerID') == -1) {
+        $('#disabilityModel').modal('show');
+    return;
+    }
+    //else if ($('#item_MethodOfCommunicationID').val() == null || $('#item_MethodOfCommunicationID').val() == '' || $('#item_MethodOfCommunicationID') == -1) {
+    //    $('#CorrespondenceModel').modal('show');
+    //    return;
+    //}
+    else {
+        document.getElementById("myForm").submit();
 
-        //TelNoDuringWorkingHours
-        else if (document.getElementById("TelNoDuringWorkingHours").value == -1) {
-            $('#myModalTelNoDuringWorkingHours').modal('show');
-            return;
-        }
-        // City
-        else if ($('#City').val() == null || $('#City').val() == '') {
-            $('#myModalCity').modal('show');
-            return;
-        }
-        //
-        else if ($('#fkProvinceID').val() == null || $('#fkProvinceID').val() == '' || $('#fkProvinceID') == -1) {
-            $('#fkProvinceIDModel').modal('show');
-            return;
-        }
-        else if ($('#postalCode').val() == null || $('#postalCode').val() == '' || $('#postalCode') == -1) {
-            $('#postalCodeModel').modal('show');
-            return;
-        }
-        else if ($('#AnswerID').val() == null || $('#AnswerID').val() == '' || $('#AnswerID') == -1) {
-            $('#disabilityModel').modal('show');
-            return;
-        }
-        //else if ($('#item_MethodOfCommunicationID').val() == null || $('#item_MethodOfCommunicationID').val() == '' || $('#item_MethodOfCommunicationID') == -1) {
-        //    $('#CorrespondenceModel').modal('show');
-        //    return;
-        //}
-        else {
-            document.getElementById("myForm").submit();
+    }
 
-        }
-
-    });
+});
 
     $(function () {
         $(document).on("submit", "#CreateFundingfrm", function (event) {
@@ -2704,24 +2757,39 @@
             //}
         });
 
-    });
+});
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Step 3: Get the textbox element and its current value
-        var textBox = document.getElementById("YearsExperiencePrivate");
-        var currentValue = textBox.value;
-        var textBox1 = document.getElementById("YearsofExperiencePublic");
-        var currentValue1 = textBox.value;
-        if (currentValue == 0) {
-            var modifiedValue ="";
-            textBox.value = modifiedValue;
-        }
-        if (currentValue == 0) {
-            var modifiedValue = "";
-            textBox1.value = modifiedValue;
-        }
-       
-    });
+    // Step 3: Get the textbox element and its current value
+    var textBox = document.getElementById("YearsExperiencePrivate");
+    var currentValue = textBox.value;
+    var textBox1 = document.getElementById("YearsofExperiencePublic");
+    var currentValue1 = textBox.value;
+    if (currentValue == 0) {
+        var modifiedValue = "";
+    textBox.value = modifiedValue;
+    }
+    if (currentValue == 0) {
+        var modifiedValue = "";
+    textBox1.value = modifiedValue;
+    }
+
+
+
+});
 </script>
+@*<script>
+        document.getElementById("submit").addEventListener("click", function (event) {
+            var id = document.getElementById("CriminalOffenceDesc").value;
+            debugger;
+            if (id == "" || name == "") {
+                event.preventDefault();
+                $('#myModalCriminalOffenceDetails').modal('show');
+                alert("value can't be null");
+            }
+        });
+    </script>*@
+
+
 

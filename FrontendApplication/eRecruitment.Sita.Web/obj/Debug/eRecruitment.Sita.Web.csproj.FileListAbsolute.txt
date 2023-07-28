@@ -2636,9 +2636,6 @@ D:\kZNCode\Frontend_P2\Frontend_P2\FrontendApplication\eRecruitment.Sita.Web\obj
 D:\kZNCode\Frontend_P2\Frontend_P2\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.dll
 D:\kZNCode\Frontend_P2\Frontend_P2\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.pdb
 D:\kZNCode\Frontend_P2\Frontend_P2\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.csproj.AssemblyReference.cache
-D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\itextsharp.xml
-D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.dll
-D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.csproj.CoreCompileInputs.cache
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\ApplicationInsights.config
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\roslyn\csc.exe
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\roslyn\csc.exe.config
@@ -2720,6 +2717,7 @@ D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\EntityFramew
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\EntityFramework.SqlServer.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\EPPlus.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\ExcelNumberFormat.xml
+D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\itextsharp.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\System.Web.Helpers.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\System.Web.Mvc.xml
@@ -2750,6 +2748,8 @@ D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\Microsoft.AI
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\Microsoft.AI.WindowsServer.xml
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\bin\Microsoft.AI.Web.xml
+D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.csproj.CoreCompileInputs.cache
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.csproj.CopyComplete
+D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.dll
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.pdb
 D:\WorkKZN\CitizenKZN\FrontendApplication\eRecruitment.Sita.Web\obj\Debug\eRecruitment.Sita.Web.csproj.AssemblyReference.cache

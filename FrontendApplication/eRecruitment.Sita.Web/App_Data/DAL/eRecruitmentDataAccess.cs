@@ -3299,9 +3299,19 @@ public List<ProfileViewModel> GetCandidateProfileInfo(string ID)
         return IDNumbers;
       }
     }
+        // check CV 
+        public int checkCVAttached(int profileID)
+        {
+            using (eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext _db = new eRecruitment.Sita.Web.App_Data.DAL.eRecruitmentDataClassesDataContext())
+            {
+                var data = _db.Attachments.Where(x => x.ProfileID == profileID && x.DocumentType == "CV").Count();
 
 
-    public int GetOrganisationID(string userid)
+                return data;
+            }
+        }
+
+        public int GetOrganisationID(string userid)
     {
       return _db.AspNetUserRoles.Where(x => x.UserId == userid).Select(x => x.OrganisationID).FirstOrDefault();
     }
